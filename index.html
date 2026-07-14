@@ -235,6 +235,50 @@ h1,h2,h3,h4{
   color:var(--mint);
 }
 
+/* ===== Hero Layout ===== */
+.hero-content{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:80px;
+    flex-wrap:wrap;
+}
+
+.hero-text{
+    flex:1;
+    min-width:350px;
+}
+
+.hero-image{
+    flex:0 0 360px;
+    display:flex;
+    justify-content:center;
+}
+
+.hero-image img{
+    width:340px;
+    max-width:100%;
+    border-radius:20px;
+    border:3px solid var(--cyan);
+    box-shadow:0 0 35px rgba(62,230,224,.35);
+    transition:.4s;
+}
+
+.hero-image img:hover{
+    transform:scale(1.03);
+}
+
+@media(max-width:900px){
+    .hero-content{
+        flex-direction:column-reverse;
+        text-align:center;
+    }
+
+    .hero-text{
+        min-width:100%;
+    }
+}
+
 /* ===== sections general ===== */
 section{
   position:relative;
@@ -504,10 +548,36 @@ footer{
   </div>
 
   <section class="hero">
-    <div class="eyebrow">UNDERGRADUATE · TRANSPORT MANAGEMENT &amp; LOGISTICS ENGINEERING</div>
-    <h1>Weerasiri Gamaarachchige<br>Ravindu Shakye<br>Wickremasinghe</h1>
-    <p class="subline">Moving the world through innovative engineering and smart design.</p>
-    <div class="type-cycle"><span id="typeText"></span><span class="cursor-char"></span></div>
+    <div class="hero-content">
+
+      <div class="hero-text">
+
+        <div class="eyebrow">
+            UNDERGRADUATE · TRANSPORT MANAGEMENT &amp; LOGISTICS ENGINEERING
+        </div>
+
+        <h1>
+            Weerasiri Gamaarachchige<br>
+            Ravindu Shakye<br>
+            Wickremasinghe
+        </h1>
+
+        <p class="subline">
+            Moving the world through innovative engineering and smart design.
+        </p>
+
+        <div class="type-cycle">
+            <span id="typeText"></span>
+            <span class="cursor-char"></span>
+        </div>
+
+      </div>
+
+      <div class="hero-image">
+        <img src="Portfolio pic/IMG-20251114-WA0050.jpg" alt="Ravindu">
+      </div>
+
+    </div>
   </section>
 
   <section id="about">
