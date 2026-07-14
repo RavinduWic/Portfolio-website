@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ravindu Shakye Wickremasinghe — Transport &amp; Logistics Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-void:#050b14;
+  --bg-panel:#0b1826;
+  --bg-panel-2:#0f2233;
+  --border-slate:#1c3a4d;
+  --cyan:#3ee6e0;
+  --mint:#4dffb4;
+  --coral:#ff6b5e;
+  --ink:#dce8f0;
+  --ink-dim:#84a0ae;
+  --ink-faint:#4b6472;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--bg-void);
+  color:var(--ink);
+  font-family:'Barlow',sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+  cursor:none;
+}
+
+::selection{background:var(--cyan);color:var(--bg-void);}
+
+a{color:inherit;text-decoration:none;}
+
+h1,h2,h3,h4{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  color:#fff;
+}
+
+.mono{
+  font-family:'Share Tech Mono',monospace;
+  letter-spacing:0.03em;
+}
+
+/* ===== background canvas ===== */
+#net-canvas{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+}
+
+/* ===== custom cursor ===== */
+.cursor-dot{
+  position:fixed;
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--cyan);
+  box-shadow:0 0 8px var(--cyan),0 0 16px var(--cyan);
+  pointer-events:none;
+  z-index:9999;
+  transform:translate(-50%,-50%);
+  top:0;left:0;
+}
+.cursor-ring{
+  position:fixed;
+  width:34px;height:34px;
+  border-radius:50%;
+  border:1px solid var(--mint);
+  pointer-events:none;
+  z-index:9998;
+  transform:translate(-50%,-50%);
+  top:0;left:0;
+  transition:width .25s ease,height .25s ease,border-color .25s ease,opacity .25s ease;
+}
+.cursor-ring.magnet{
+  width:58px;height:58px;
+  border-color:var(--coral);
+  background:rgba(255,107,94,0.06);
+}
+.cursor-trail{
+  position:fixed;
+  width:4px;height:4px;
+  border-radius:50%;
+  background:var(--mint);
+  pointer-events:none;
+  z-index:9997;
+  top:0;left:0;
+  transform:translate(-50%,-50%);
+  opacity:0.7;
+}
+
+@media (hover:none), (pointer:coarse){
+  body{cursor:auto;}
+  .cursor-dot,.cursor-ring,.cursor-trail{display:none;}
+}
+
+/* ===== layout shell ===== */
+.wrap{
+  position:relative;
+  z-index:1;
+}
+
+.manifest-strip{
+  position:sticky;
+  top:0;
+  z-index:50;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:0.7rem 1.6rem;
+  background:rgba(5,11,20,0.85);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border-slate);
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.72rem;
+  color:var(--ink-dim);
+  flex-wrap:wrap;
+}
+.manifest-strip .seg{display:flex;align-items:center;gap:0.5rem;}
+.manifest-strip .tag{
+  color:var(--mint);
+  border:1px solid rgba(77,255,180,0.35);
+  padding:0.1rem 0.5rem;
+  border-radius:2px;
+}
+.manifest-strip .route{color:var(--cyan);}
+.manifest-strip nav{display:flex;gap:1.4rem;}
+.manifest-strip nav a{color:var(--ink-dim);transition:color .2s;}
+.manifest-strip nav a:hover{color:var(--cyan);}
+
+/* ===== hero ===== */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:8vh 6vw 6vh;
+  position:relative;
+}
+.hero .eyebrow{
+  font-family:'Share Tech Mono',monospace;
+  color:var(--mint);
+  font-size:0.85rem;
+  letter-spacing:0.25em;
+  margin-bottom:1.4rem;
+  display:flex;
+  align-items:center;
+  gap:0.6rem;
+}
+.hero .eyebrow::before{
+  content:"";
+  width:8px;height:8px;
+  background:var(--mint);
+  border-radius:50%;
+  box-shadow:0 0 10px var(--mint);
+  animation:pulse 1.6s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.25;}}
+
+.hero h1{
+  font-size:clamp(2.1rem,6.4vw,5.4rem);
+  line-height:0.98;
+  max-width:16ch;
+  background:linear-gradient(100deg,#fff 30%,var(--cyan) 65%,var(--mint) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero .subline{
+  margin-top:1.6rem;
+  font-size:clamp(1rem,2vw,1.3rem);
+  color:var(--ink-dim);
+  font-weight:400;
+  max-width:44ch;
+}
+.type-cycle{
+  margin-top:2.2rem;
+  font-family:'Share Tech Mono',monospace;
+  font-size:1rem;
+  color:var(--cyan);
+  min-height:1.6em;
+  border-left:2px solid var(--mint);
+  padding-left:0.9rem;
+}
+.type-cycle .cursor-char{
+  display:inline-block;
+  width:8px;
+  background:var(--mint);
+  margin-left:2px;
+  animation:blink 0.9s steps(1) infinite;
+}
+@keyframes blink{50%{opacity:0;}}
+
+.hero .cta-row{
+  margin-top:3rem;
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+.btn{
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.82rem;
+  letter-spacing:0.08em;
+  padding:0.85rem 1.5rem;
+  border:1px solid var(--border-slate);
+  border-radius:2px;
+  background:rgba(255,255,255,0.02);
+  transition:all .25s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+}
+.btn.primary{
+  border-color:var(--cyan);
+  color:var(--cyan);
+}
+.btn.primary:hover{
+  background:var(--cyan);
+  color:var(--bg-void);
+  box-shadow:0 0 24px rgba(62,230,224,0.45);
+}
+.btn.ghost:hover{
+  border-color:var(--mint);
+  color:var(--mint);
+}
+
+/* ===== sections general ===== */
+section{
+  position:relative;
+  padding:9vh 6vw;
+  max-width:1280px;
+  margin:0 auto;
+}
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:1rem;
+  margin-bottom:3rem;
+  border-bottom:1px solid var(--border-slate);
+  padding-bottom:1rem;
+}
+.section-head .idx{
+  font-family:'Share Tech Mono',monospace;
+  color:var(--ink-faint);
+  font-size:0.85rem;
+}
+.section-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);}
+
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .7s ease, transform .7s ease;
+}
+.reveal.in-view{opacity:1;transform:translateY(0);}
+
+/* ===== about ===== */
+.about-grid{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:3rem;
+  align-items:start;
+}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr;}}
+.about-copy p{
+  color:var(--ink-dim);
+  line-height:1.8;
+  margin-bottom:1.2rem;
+  font-size:0.98rem;
+}
+.about-copy p strong{color:var(--ink);font-weight:500;}
+.about-card{
+  background:linear-gradient(160deg,var(--bg-panel),var(--bg-panel-2));
+  border:1px solid var(--border-slate);
+  border-radius:4px;
+  padding:1.8rem;
+}
+.about-card .row{
+  display:flex;
+  justify-content:space-between;
+  padding:0.7rem 0;
+  border-bottom:1px dashed rgba(75,100,114,0.3);
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.82rem;
+}
+.about-card .row:last-child{border-bottom:none;}
+.about-card .row span:first-child{color:var(--ink-faint);}
+.about-card .row span:last-child{color:var(--mint);text-align:right;}
+
+/* ===== capabilities ===== */
+.cap-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1.4rem;
+}
+.cap-card{
+  background:rgba(255,255,255,0.02);
+  border:1px solid var(--border-slate);
+  border-radius:4px;
+  padding:1.6rem;
+  position:relative;
+  overflow:hidden;
+  transition:transform .3s ease,border-color .3s ease;
+}
+.cap-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--cyan);
+}
+.cap-card::before{
+  content:attr(data-code);
+  position:absolute;
+  top:0.9rem;right:1rem;
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.7rem;
+  color:var(--ink-faint);
+}
+.cap-card h3{
+  font-size:1.15rem;
+  color:var(--cyan);
+  margin-bottom:0.9rem;
+  max-width:80%;
+}
+.cap-card ul{list-style:none;}
+.cap-card li{
+  color:var(--ink-dim);
+  font-size:0.88rem;
+  padding:0.35rem 0;
+  padding-left:1rem;
+  position:relative;
+  line-height:1.5;
+}
+.cap-card li::before{
+  content:"›";
+  position:absolute;
+  left:0;
+  color:var(--mint);
+}
+
+/* ===== timeline ===== */
+.log-timeline{
+  border-left:1px solid var(--border-slate);
+  margin-left:0.6rem;
+}
+.log-entry{
+  position:relative;
+  padding:0 0 2.6rem 2.2rem;
+}
+.log-entry:last-child{padding-bottom:0;}
+.log-entry::before{
+  content:"";
+  position:absolute;
+  left:-5.5px;top:0.3rem;
+  width:10px;height:10px;
+  border-radius:50%;
+  background:var(--bg-void);
+  border:2px solid var(--mint);
+}
+.log-entry .stamp{
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.72rem;
+  color:var(--coral);
+  letter-spacing:0.06em;
+  margin-bottom:0.4rem;
+  display:block;
+}
+.log-entry h3{
+  font-size:1.25rem;
+  color:#fff;
+  margin-bottom:0.4rem;
+}
+.log-entry ul{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 40px;
+
+    /* Leave space before the first column */
+    padding-left: 40px;
+
+    list-style-position: outside;
+}
+.log-entry li{
+  margin-bottom: 10px;
+  color:var(--ink-dim);
+  font-size:0.92rem;
+  line-height:0.5;
+  max-width:60ch;
+}
+
+/* ===== certifications ===== */
+.cert-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1.4rem;
+}
+.cert-card{
+  background:var(--bg-panel);
+  border:1px solid var(--border-slate);
+  border-radius:4px;
+  overflow:hidden;
+  transition:border-color .3s ease,transform .3s ease;
+}
+.cert-card:hover{
+  border-color:var(--mint);
+  transform:translateY(-3px);
+}
+.cert-frame{
+  height:190px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    linear-gradient(rgba(62,230,224,0.05),rgba(62,230,224,0.05)),
+    repeating-linear-gradient(45deg,rgba(255,255,255,0.02) 0 2px,transparent 2px 14px);
+  border-bottom:1px solid var(--border-slate);
+  padding:1rem;
+}
+.cert-frame img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  filter:drop-shadow(0 0 10px rgba(62,230,224,0.15));
+}
+.cert-meta{
+  padding:1rem 1.2rem 1.3rem;
+}
+.cert-meta .verified{
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.68rem;
+  color:var(--mint);
+  letter-spacing:0.1em;
+  display:flex;
+  align-items:center;
+  gap:0.4rem;
+  margin-bottom:0.5rem;
+}
+.cert-meta .verified::before{content:"✓";}
+.cert-meta h4{
+  font-size:1rem;
+  color:var(--ink);
+  text-transform:none;
+  font-weight:500;
+  letter-spacing:0;
+  line-height:1.4;
+}
+
+/* ===== contact / footer ===== */
+.contact-panel{
+  background:linear-gradient(160deg,var(--bg-panel),var(--bg-panel-2));
+  border:1px solid var(--border-slate);
+  border-radius:6px;
+  padding:3rem;
+  text-align:center;
+}
+.contact-panel h2{font-size:clamp(1.8rem,4vw,3rem);margin-bottom:1rem;}
+.contact-panel p{color:var(--ink-dim);max-width:50ch;margin:0 auto 2rem;}
+.contact-links{
+  display:flex;
+  justify-content:center;
+  gap:1.2rem;
+  flex-wrap:wrap;
+}
+footer{
+  text-align:center;
+  padding:2.4rem 1rem 3rem;
+  color:var(--ink-faint);
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.75rem;
+}
+
+@media (max-width:600px){
+  section{padding:7vh 5vw;}
+  .contact-panel{padding:2rem 1.2rem;}
+}
+</style>
+</head>
+<body>
+
+<canvas id="net-canvas"></canvas>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div class="wrap">
+
+  <div class="manifest-strip">
+    <div class="seg"><span class="route">CMB</span>&nbsp;→&nbsp;<span class="tag">GLOBAL</span></div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#log">Log</a>
+      <a href="#certs">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="seg mono" id="clockSeg">STATUS: <span class="tag">ACTIVE</span></div>
+  </div>
+
+  <section class="hero">
+    <div class="eyebrow">UNDERGRADUATE · TRANSPORT MANAGEMENT &amp; LOGISTICS ENGINEERING</div>
+    <h1>Weerasiri Gamaarachchige<br>Ravindu Shakye<br>Wickremasinghe</h1>
+    <p class="subline">Moving the world through innovative engineering and smart design.</p>
+    <div class="type-cycle"><span id="typeText"></span><span class="cursor-char"></span></div>
+  </section>
+
+  <section id="about">
+    <div class="section-head reveal"><span class="idx">01</span><h2>About</h2></div>
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <p>I am an undergraduate in <strong>Transport Management and Logistics Engineering</strong> at the University of Moratuwa with a strong passion for the maritime, aviation, and logistics industries. I am particularly interested in improving transport systems through innovation, data-driven decision-making, and sustainable engineering solutions.</p>
+        <p>My academic background has strengthened my analytical and problem-solving skills, while my leadership experience as the <strong>Club Service Avenue Director</strong> of the Rotaract Club of the University of Moratuwa has enhanced my abilities in project management, teamwork, and communication. Through organizing and leading multiple large-scale projects and community initiatives, I have developed the confidence to work effectively in dynamic and collaborative environments.</p>
+        <p>I am committed to continuous learning and enjoy exploring emerging technologies, supply chain optimization, and smart mobility solutions that shape the future of global transportation. My ambition is to contribute to the advancement of the maritime and aviation sectors by delivering innovative, efficient, and sustainable transport solutions while creating meaningful value for the industry and society.</p>
+      </div>
+      <div class="about-card reveal">
+        <div class="row"><span>FIELD</span><span>Transport &amp; Logistics</span></div>
+        <div class="row"><span>INSTITUTION</span><span>University of Moratuwa</span></div>
+        <div class="row"><span>FOCUS</span><span>Aviation / Maritime</span></div>
+        <div class="row"><span>ROLE</span><span>Avenue Director, Rotaract</span></div>
+        <div class="row"><span>STATUS</span><span>Undergraduate — Active</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="capabilities">
+    <div class="section-head reveal"><span class="idx">02</span><h2>Core Capabilities</h2></div>
+    <div class="cap-grid">
+      <div class="cap-card reveal" data-code="AV/MAR">
+        <h3>Aviation &amp; Maritime Logistics</h3>
+        <ul>
+          <li>Cargo Handling training — IAAC, Colombo</li>
+          <li>SriLankan Aviation College Camp certification</li>
+          <li>Logistics Engineering</li>
+          <li>Supply Chain Optimization</li>
+        </ul>
+      </div>
+      <div class="cap-card reveal" data-code="DES/IT">
+        <h3>Creative Design &amp; IT</h3>
+        <ul>
+          <li>NVQ Level 4 Certified Computer Graphic Designer</li>
+          <li>Media Pipelines</li>
+          <li>Interface Asset Generation</li>
+          <li>Advanced Microsoft Excel Mastery</li>
+        </ul>
+      </div>
+      <div class="cap-card reveal" data-code="SYS/AI">
+        <h3>Advanced Systems</h3>
+        <ul>
+          <li>AI/ML Engineering foundations — Stage 1 (SLIIT CODE)</li>
+          <li>AI for Supply Chains</li>
+        </ul>
+      </div>
+      <div class="cap-card reveal" data-code="LEAD">
+        <h3>Leadership &amp; Strategy</h3>
+        <ul>
+          <li>Club Service Avenue Director — Rotaract</li>
+          <li>Project Management</li>
+          <li>Public Speaking</li>
+          <li>Professional Certificate in Marketing — SLIM</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="log">
+    <div class="section-head reveal"><span class="idx">03</span><h2>Volunteering Log</h2></div>
+    <div class="log-timeline">
+      <div class="log-entry reveal">
+        <span class="stamp mono">ROTARACT CLUB (UOM)</span><br>
+        <h3>AS MEMBER</h3>
+        <ul>
+	  <li>Binara Padura</li>
+          <li>MonsterMash</li>
+          <li>Zooxanthellae</li>
+          <li>RUR'25</li>
+          <li>Colours</li>
+          <li>Kowul Wasanthaya</li>
+	</ul><br>
+        <h3>AS CHAIRPERSON</h3>
+        <ul>
+	  <li>Image</li>
+          <li>General Meeting</li>
+	</ul><br>
+        <h3>AS DIRECTOR (CLUB SERVICE AVENUE)</h3>
+	<ul>
+          <li>Rac Hike</li>
+          <li>Installation Ceremony</li>
+          <li>CarterDay Ceremony</li>
+	  <li>Binara Padura</li>
+          <li>MonsterMash</li>
+          <li>Lailat'26</li>
+          <li>RUR'26</li>
+          <li>General Meetings</li>
+	</ul>
+      </div>
+      <div class="log-entry reveal">
+        <span class="stamp mono">LEO CLUB (UOM)</span><br>
+        <h3>AS MEMBER</h3>
+        <ul>
+	  <li>Phoenix</li>
+          <li>Tharka</li>
+          <li>TerraForma</li>
+	</ul><br>
+        <h3>AS CHAIRPERSON</h3>
+	<ul>
+          <li>Leo Padura</li>
+	</ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="certs">
+    <div class="section-head reveal"><span class="idx">04</span><h2>Verified Certifications</h2></div>
+    <div class="cert-grid">
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Alison_Certificate-6774-59487604_page-0001.jpg" alt="AI for Supply Chains certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · ALISON</span><h4>AI for Supply Chains &amp; Logistics (Alison Professional Certificate)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="sticker_1776306269719.png" alt="Aviation Education Camp certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · SRILANKAN AVIATION</span><h4>Aviation Education Camp (SriLankan Aviation College)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Ravindu Wickremasinghe - 2026-06-26_page-0001.jpg" alt="AI/ML Engineer Stage 1 certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · SLIIT</span><h4>AI/ML Engineer - Stage 1 (CODE, Faculty of Computing — SLIIT)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Coursera 3B6CCRTWMDWV_page-0001.jpg" alt="Work Smarter with Excel certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · MICROSOFT/COURSERA</span><h4>Work Smarter with Excel (Microsoft &amp; Coursera)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="sticker_1776305607876.png" alt="Professional Certificate in Marketing badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · SLIM</span><h4>Professional Certificate in Marketing (Sri Lanka Institute of Marketing — SLIM)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="sticker_1776305345018.png" alt="Computer Graphic Designer certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · TVEC</span><h4>Computer Graphic Designer (NVQ Level 4 — TVEC)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="sticker_1776306763121.png" alt="Esoft Metro Campus certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · ESOFT METRO CAMPUS</span><h4>Certificate in Information Technology (Esoft Metro Campus - Colombo 04)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="sticker_1776306815880.png" alt="AI for Supply Chains certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · INSTITUTE OF LANGUAGE DEVELOPMENT</span><h4>Diploma in English (Institute of Language Development - Maharagama)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="sticker_1776307564636.png" alt="Aviation Education Camp certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · ROTARACT CLUB</span><h4>Membership (Rotaract Club of University of Moratuwa)</h4></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-panel reveal">
+      <h2>Open Channel</h2>
+      <p>Direct lines for collaboration, opportunities, and conversations on transport, logistics, and smart mobility.</p>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:rswic2003@gmail.com">✉ Email Direct</a>
+        <a class="btn ghost" href="https://wa.me/94723615351" target="_blank" rel="noopener">◈ WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="mono">© 2026 W.G. RAVINDU SHAKYE WICKREMASINGHE — TRANSPORT · LOGISTICS · AVIATION · MARITIME</footer>
+
+</div>
+
+<script>
+/* ================= particle network ================= */
+(function(){
+  const canvas=document.getElementById('net-canvas');
+  const ctx=canvas.getContext('2d');
+  let w,h,particles=[];
+  const mouse={x:null,y:null,radius:150};
+
+  function resize(){
+    w=canvas.width=window.innerWidth;
+    h=canvas.height=window.innerHeight;
+  }
+  window.addEventListener('resize',resize);
+  resize();
+
+  const COUNT=Math.min(90,Math.floor((window.innerWidth*window.innerHeight)/16000));
+  function initParticles(){
+    particles=[];
+    for(let i=0;i<COUNT;i++){
+      particles.push({
+        x:Math.random()*w,
+        y:Math.random()*h,
+        vx:(Math.random()-0.5)*0.35,
+        vy:(Math.random()-0.5)*0.35,
+        r:Math.random()*1.6+0.6
+      });
+    }
+  }
+  initParticles();
+
+  window.addEventListener('mousemove',(e)=>{
+    mouse.x=e.clientX;
+    mouse.y=e.clientY;
+  });
+  window.addEventListener('mouseout',()=>{mouse.x=null;mouse.y=null;});
+
+  function step(){
+    ctx.clearRect(0,0,w,h);
+
+    for(const p of particles){
+      p.x+=p.vx;
+      p.y+=p.vy;
+      if(p.x<0||p.x>w)p.vx*=-1;
+      if(p.y<0||p.y>h)p.vy*=-1;
+    }
+
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const a=particles[i],b=particles[j];
+        const dx=a.x-b.x,dy=a.y-b.y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<130){
+          ctx.strokeStyle=`rgba(62,230,224,${(1-dist/130)*0.18})`;
+          ctx.lineWidth=1;
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y);
+          ctx.lineTo(b.x,b.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    if(mouse.x!==null){
+      for(const p of particles){
+        const dx=p.x-mouse.x,dy=p.y-mouse.y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<mouse.radius){
+          ctx.strokeStyle=`rgba(77,255,180,${(1-dist/mouse.radius)*0.5})`;
+          ctx.lineWidth=1;
+          ctx.beginPath();
+          ctx.moveTo(p.x,p.y);
+          ctx.lineTo(mouse.x,mouse.y);
+          ctx.stroke();
+        }
+      }
+      ctx.fillStyle='rgba(255,107,94,0.9)';
+      ctx.beginPath();
+      ctx.arc(mouse.x,mouse.y,3,0,Math.PI*2);
+      ctx.fill();
+    }
+
+    for(const p of particles){
+      ctx.fillStyle='rgba(220,232,240,0.55)';
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fill();
+    }
+
+    requestAnimationFrame(step);
+  }
+  step();
+})();
+
+/* ================= custom cursor ================= */
+(function(){
+  const dot=document.getElementById('cursorDot');
+  const ring=document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  let lastTrail=0;
+
+  window.addEventListener('mousemove',(e)=>{
+    mx=e.clientX;my=e.clientY;
+    dot.style.left=mx+'px';
+    dot.style.top=my+'px';
+
+    const now=performance.now();
+    if(now-lastTrail>40){
+      lastTrail=now;
+      const trail=document.createElement('div');
+      trail.className='cursor-trail';
+      trail.style.left=mx+'px';
+      trail.style.top=my+'px';
+      document.body.appendChild(trail);
+      const start=performance.now();
+      function fade(){
+        const elapsed=performance.now()-start;
+        const t=elapsed/600;
+        if(t>=1){trail.remove();return;}
+        trail.style.opacity=String(0.7*(1-t));
+        trail.style.transform=`translate(-50%,-50%) scale(${1-t*0.6})`;
+        requestAnimationFrame(fade);
+      }
+      requestAnimationFrame(fade);
+    }
+  });
+
+  function easeRing(){
+    rx+=(mx-rx)*0.15;
+    ry+=(my-ry)*0.15;
+    ring.style.left=rx+'px';
+    ring.style.top=ry+'px';
+    requestAnimationFrame(easeRing);
+  }
+  easeRing();
+
+  const magnets=document.querySelectorAll('a,button,.btn,.cap-card,.cert-card');
+  magnets.forEach(el=>{
+    el.addEventListener('mouseenter',()=>ring.classList.add('magnet'));
+    el.addEventListener('mouseleave',()=>ring.classList.remove('magnet'));
+  });
+})();
+
+/* ================= hero typing loop ================= */
+(function(){
+  const strings=[
+    "Optimizing logistics networks.",
+    "Navigating future transport infrastructure.",
+    "Bridging tech design with system logistics."
+  ];
+  const el=document.getElementById('typeText');
+  let sIdx=0,cIdx=0,deleting=false;
+
+  function tick(){
+    const current=strings[sIdx];
+    if(!deleting){
+      cIdx++;
+      el.textContent=current.slice(0,cIdx);
+      if(cIdx===current.length){
+        deleting=true;
+        setTimeout(tick,1500);
+        return;
+      }
+      setTimeout(tick,55);
+    }else{
+      cIdx--;
+      el.textContent=current.slice(0,cIdx);
+      if(cIdx===0){
+        deleting=false;
+        sIdx=(sIdx+1)%strings.length;
+        setTimeout(tick,300);
+        return;
+      }
+      setTimeout(tick,30);
+    }
+  }
+  tick();
+})();
+
+/* ================= scroll reveal ================= */
+(function(){
+  const items=document.querySelectorAll('.reveal');
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.15});
+  items.forEach(item=>io.observe(item));
+})();
+</script>
+
+</body>
+</html>
