@@ -497,6 +497,66 @@ section{
   line-height:1.4;
 }
 
+/* ===== ongoing qualifications ===== */
+.oq-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.4rem;
+}
+.oq-card{
+  background:rgba(255,255,255,0.02);
+  border:1px solid var(--border-slate);
+  border-radius:4px;
+  padding:1.4rem 1.6rem;
+  transition:transform .3s ease,border-color .3s ease;
+}
+.oq-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--coral);
+}
+.oq-card .status{
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.68rem;
+  color:var(--coral);
+  letter-spacing:0.1em;
+  display:inline-flex;
+  align-items:center;
+  gap:0.4rem;
+  margin-bottom:0.7rem;
+  border:1px solid rgba(255,107,94,0.35);
+  padding:0.1rem 0.5rem;
+  border-radius:2px;
+}
+.oq-card h4{
+  font-size:1.02rem;
+  color:var(--ink);
+  text-transform:none;
+  font-weight:500;
+  letter-spacing:0;
+  line-height:1.4;
+  margin-bottom:0.5rem;
+}
+.oq-card h4 a{
+  color:var(--cyan);
+  transition:color .2s;
+  border-bottom:1px dashed rgba(62,230,224,0.35);
+}
+.oq-card h4 a:hover{
+  color:var(--mint);
+  border-color:var(--mint);
+}
+.oq-card .provider{
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.78rem;
+  color:var(--ink-dim);
+}
+.oq-card .provider a{
+  color:var(--ink-dim);
+}
+.oq-card .provider a:hover{
+  color:var(--mint);
+}
+
 /* ===== contact / footer ===== */
 .contact-panel{
   background:linear-gradient(160deg,var(--bg-panel),var(--bg-panel-2));
@@ -542,6 +602,7 @@ footer{
       <a href="#capabilities">Capabilities</a>
       <a href="#log">Log</a>
       <a href="#certs">Certifications</a>
+      <a href="#ongoing">Ongoing</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="seg mono" id="clockSeg">STATUS: <span class="tag">ACTIVE</span></div>
@@ -727,6 +788,47 @@ footer{
     </div>
   </section>
 
+  <section id="ongoing">
+    <div class="section-head reveal"><span class="idx">05</span><h2>Ongoing Professional Qualifications</h2></div>
+    <div class="oq-grid">
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4>Cargo Handling Course</h4>
+        <span class="provider mono">IAAC, Colombo 10</span>
+      </div>
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4><a href="https://www.coursera.org/specializations/practice-solidworks-3d-cad" target="_blank" rel="noopener">SOLIDWORKS 3D CAD for Education</a></h4>
+        <span class="provider mono"><a href="https://www.coursera.org/specializations/practice-solidworks-3d-cad" target="_blank" rel="noopener">New York State Department of Labor</a></span>
+      </div>
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4><a href="https://www.coursera.org/specializations/microsoft-power-bi-data-analyst" target="_blank" rel="noopener">Power BI Data Analyst</a></h4>
+        <span class="provider mono"><a href="https://www.coursera.org/specializations/microsoft-power-bi-data-analyst" target="_blank" rel="noopener">Microsoft</a></span>
+      </div>
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4><a href="https://www.coursera.org/learn/machine-learning/home/welcome" target="_blank" rel="noopener">Supervised Machine Learning: Regression and Classification</a></h4>
+        <span class="provider mono">New York State Department of Labor</span>
+      </div>
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4><a href="https://www.coursera.org/learn/wharton-accounting/home/welcome" target="_blank" rel="noopener">Introduction to Financial Accounting</a></h4>
+        <span class="provider mono">University of Pennsylvania</span>
+      </div>
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4><a href="https://www.coursera.org/learn/mandarin-chinese-1/home/welcome" target="_blank" rel="noopener">Mandarin Chinese 1: Chinese for Beginners</a></h4>
+        <span class="provider mono">Shanghai Jiao Tong University</span>
+      </div>
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4><a href="https://www.coursera.org/learn/fundamentals-of-international-business/home/welcome" target="_blank" rel="noopener">Fundamentals of International Business</a></h4>
+        <span class="provider mono">University of London</span>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="contact-panel reveal">
       <h2>Open Channel</h2>
@@ -882,7 +984,7 @@ footer{
   }
   easeRing();
 
-  const magnets=document.querySelectorAll('a,button,.btn,.cap-card,.cert-card');
+  const magnets=document.querySelectorAll('a,button,.btn,.cap-card,.cert-card,.oq-card');
   magnets.forEach(el=>{
     el.addEventListener('mouseenter',()=>ring.classList.add('magnet'));
     el.addEventListener('mouseleave',()=>ring.classList.remove('magnet'));
