@@ -1,1117 +1,1158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio of W.G. Ravindu Shakye Wickremasinghe — Undergraduate in Transport Management & Logistics Engineering at University of Moratuwa. Specializing in Supply Chain, Aviation, Maritime Logistics, and Data Analytics.">
-  <meta name="keywords" content="Ravindu Wickremasinghe, Transport Engineering, Logistics, Supply Chain, Aviation, Maritime, University of Moratuwa, Rotaract, Sri Lanka, Portfolio">
-  <meta name="author" content="Ravindu Shakye Wickremasinghe">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ravindu Shakye Wickremasinghe — Transport &amp; Logistics Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-void:#050b14;
+  --bg-panel:#0b1826;
+  --bg-panel-2:#0f2233;
+  --border-slate:#1c3a4d;
+  --cyan:#3ee6e0;
+  --mint:#4dffb4;
+  --coral:#ff6b5e;
+  --ink:#dce8f0;
+  --ink-dim:#84a0ae;
+  --ink-faint:#4b6472;
+}
 
-  <!-- OpenGraph Meta for Professional Social Sharing -->
-  <meta property="og:title" content="Ravindu Shakye Wickremasinghe — Transport & Logistics Engineering">
-  <meta property="og:description" content="Moving the world through innovative engineering, smart logistics design, and data-driven systems.">
-  <meta property="og:type" content="website">
+*{margin:0;padding:0;box-sizing:border-box;}
 
-  <title>Ravindu Shakye Wickremasinghe — Transport &amp; Logistics Engineering | Portfolio</title>
+html{scroll-behavior:smooth;}
 
-  <!-- Google Fonts Preconnect & Load -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+body{
+  background:var(--bg-void);
+  color:var(--ink);
+  font-family:'Barlow',sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+  cursor:none;
+}
 
-  <!-- Main Design Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+::selection{background:var(--cyan);color:var(--bg-void);}
+
+a{color:inherit;text-decoration:none;}
+
+h1{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  color:#fff;
+}
+
+h2,h3,h4{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  color:#fff;
+}
+
+.mono{
+  font-family:'Share Tech Mono',monospace;
+  letter-spacing:0.03em;
+}
+
+/* ===== background canvas ===== */
+#net-canvas{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+}
+
+/* ===== custom cursor ===== */
+.cursor-dot{
+  position:fixed;
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--cyan);
+  box-shadow:0 0 8px var(--cyan),0 0 16px var(--cyan);
+  pointer-events:none;
+  z-index:9999;
+  transform:translate(-50%,-50%);
+  top:0;left:0;
+}
+.cursor-ring{
+  position:fixed;
+  width:34px;height:34px;
+  border-radius:50%;
+  border:1px solid var(--mint);
+  pointer-events:none;
+  z-index:9998;
+  transform:translate(-50%,-50%);
+  top:0;left:0;
+  transition:width .25s ease,height .25s ease,border-color .25s ease,opacity .25s ease;
+}
+.cursor-ring.magnet{
+  width:58px;height:58px;
+  border-color:var(--coral);
+  background:rgba(255,107,94,0.06);
+}
+.cursor-trail{
+  position:fixed;
+  width:4px;height:4px;
+  border-radius:50%;
+  background:var(--mint);
+  pointer-events:none;
+  z-index:9997;
+  top:0;left:0;
+  transform:translate(-50%,-50%);
+  opacity:0.7;
+}
+
+@media (hover:none), (pointer:coarse){
+  body{cursor:auto;}
+  .cursor-dot,.cursor-ring,.cursor-trail{display:none;}
+}
+
+/* ===== layout shell ===== */
+.wrap{
+  position:relative;
+  z-index:1;
+}
+
+.manifest-strip{
+  position:sticky;
+  top:0;
+  z-index:50;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:0.7rem 1.6rem;
+  background:rgba(5,11,20,0.85);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border-slate);
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.72rem;
+  color:var(--ink-dim);
+  flex-wrap:wrap;
+}
+.manifest-strip .seg{display:flex;align-items:center;gap:0.5rem;}
+.manifest-strip .tag{
+  color:var(--mint);
+  border:1px solid rgba(77,255,180,0.35);
+  padding:0.1rem 0.5rem;
+  border-radius:2px;
+}
+.manifest-strip .route{color:var(--cyan);}
+.manifest-strip nav{display:flex;gap:1.4rem;}
+.manifest-strip nav a{color:var(--ink-dim);transition:color .2s;}
+.manifest-strip nav a:hover{color:var(--cyan);}
+
+/* ===== hero ===== */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:8vh 6vw 6vh;
+  position:relative;
+}
+.hero .eyebrow{
+  font-family:'Share Tech Mono',monospace;
+  color:var(--mint);
+  font-size:0.85rem;
+  letter-spacing:0.25em;
+  margin-bottom:1.4rem;
+  display:flex;
+  align-items:center;
+  gap:0.6rem;
+}
+.hero .eyebrow::before{
+  content:"";
+  width:8px;height:8px;
+  background:var(--mint);
+  border-radius:50%;
+  box-shadow:0 0 10px var(--mint);
+  animation:pulse 1.6s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.25;}}
+
+.hero h1{
+  font-size:clamp(2.1rem,6.4vw,5.4rem);
+  line-height:0.98;
+  max-width:16ch;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+  background:linear-gradient(270deg,#fff 30%,var(--cyan) 65%,var(--mint) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero .subline{
+  margin-top:1.6rem;
+  font-size:clamp(1rem,2vw,1.3rem);
+  color:var(--ink-dim);
+  font-weight:400;
+  max-width:44ch;
+}
+.type-cycle{
+  margin-top:2.2rem;
+  font-family:'Share Tech Mono',monospace;
+  font-size:1rem;
+  color:var(--cyan);
+  min-height:1.6em;
+  border-left:2px solid var(--mint);
+  padding-left:0.9rem;
+}
+.type-cycle .cursor-char{
+  display:inline-block;
+  width:8px;
+  background:var(--mint);
+  margin-left:2px;
+  animation:blink 0.9s steps(1) infinite;
+}
+@keyframes blink{50%{opacity:0;}}
+
+.hero .cta-row{
+  margin-top:3rem;
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+.btn{
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.82rem;
+  letter-spacing:0.08em;
+  padding:0.85rem 1.5rem;
+  border:1px solid var(--border-slate);
+  border-radius:2px;
+  background:rgba(255,255,255,0.02);
+  transition:all .25s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+}
+.btn.primary{
+  border-color:var(--cyan);
+  color:var(--cyan);
+}
+.btn.primary:hover{
+  background:var(--cyan);
+  color:var(--bg-void);
+  box-shadow:0 0 24px rgba(62,230,224,0.45);
+}
+.btn.ghost:hover{
+  border-color:var(--mint);
+  color:var(--mint);
+}
+
+/* ===== Hero Layout ===== */
+.hero-content{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:80px;
+    flex-wrap:wrap;
+}
+
+.hero-text{
+    flex:1;
+    min-width:350px;
+}
+
+.hero-image{
+    flex:0 0 360px;
+    display:flex;
+    justify-content:center;
+}
+
+.hero-image img{
+    width:340px;
+    max-width:100%;
+    border-radius:20px;
+    border:3px solid var(--cyan);
+    box-shadow:0 0 35px rgba(62,230,224,.35);
+    transition:.4s;
+}
+
+.hero-image img:hover{
+    transform:scale(1.03);
+}
+
+@media(max-width:900px){
+    .hero-content{
+        flex-direction:column-reverse;
+        text-align:center;
+    }
+
+    .hero-text{
+        min-width:100%;
+    }
+}
+
+/* ===== sections general ===== */
+section{
+  position:relative;
+  padding:9vh 6vw;
+  max-width:1280px;
+  margin:0 auto;
+}
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:1rem;
+  margin-bottom:3rem;
+  border-bottom:1px solid var(--border-slate);
+  padding-bottom:1rem;
+}
+.section-head .idx{
+  font-family:'Share Tech Mono',monospace;
+  color:var(--ink-faint);
+  font-size:0.85rem;
+}
+.section-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);}
+
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .7s ease, transform .7s ease;
+}
+.reveal.in-view{opacity:1;transform:translateY(0);}
+
+/* ===== about ===== */
+.about-grid{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:3rem;
+  align-items:start;
+}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr;}}
+.about-copy p{
+  color:var(--ink-dim);
+  line-height:1.8;
+  margin-bottom:1.2rem;
+  font-size:0.98rem;
+}
+.about-copy p strong{color:var(--ink);font-weight:500;}
+.about-card{
+  background:linear-gradient(160deg,var(--bg-panel),var(--bg-panel-2));
+  border:1px solid var(--border-slate);
+  border-radius:4px;
+  padding:1.8rem;
+}
+.about-card .row{
+  display:flex;
+  justify-content:space-between;
+  padding:0.7rem 0;
+  border-bottom:1px dashed rgba(75,100,114,0.3);
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.82rem;
+}
+.about-card .row:last-child{border-bottom:none;}
+.about-card .row span:first-child{color:var(--ink-faint);}
+.about-card .row span:last-child{color:var(--mint);text-align:right;}
+
+/* ===== capabilities ===== */
+.cap-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1.4rem;
+}
+.cap-card{
+  background:rgba(255,255,255,0.02);
+  border:1px solid var(--border-slate);
+  border-radius:4px;
+  padding:1.6rem;
+  position:relative;
+  overflow:hidden;
+  transition:transform .3s ease,border-color .3s ease;
+}
+.cap-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--cyan);
+}
+.cap-card::before{
+  content:attr(data-code);
+  position:absolute;
+  top:0.9rem;right:1rem;
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.7rem;
+  color:var(--ink-faint);
+}
+.cap-card h3{
+  font-size:1.15rem;
+  color:var(--cyan);
+  margin-bottom:0.9rem;
+  max-width:80%;
+}
+.cap-card ul{list-style:none;}
+.cap-card li{
+  color:var(--ink-dim);
+  font-size:0.88rem;
+  padding:0.35rem 0;
+  padding-left:1rem;
+  position:relative;
+  line-height:1.5;
+}
+.cap-card li::before{
+  content:"›";
+  position:absolute;
+  left:0;
+  color:var(--mint);
+}
+
+/* ===== timeline ===== */
+.log-timeline{
+  border-left:1px solid var(--border-slate);
+  margin-left:0.6rem;
+}
+.log-entry{
+  position:relative;
+  padding:0 0 2.6rem 2.2rem;
+}
+.log-entry:last-child{padding-bottom:0;}
+.log-entry::before{
+  content:"";
+  position:absolute;
+  left:-5.5px;top:0.3rem;
+  width:10px;height:10px;
+  border-radius:50%;
+  background:var(--bg-void);
+  border:2px solid var(--mint);
+}
+.log-entry .stamp{
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.72rem;
+  color:var(--coral);
+  letter-spacing:0.06em;
+  margin-bottom:0.4rem;
+  display:block;
+}
+.log-entry h3{
+  font-size:1.25rem;
+  color:#fff;
+  margin-bottom:0.4rem;
+}
+.log-entry ul{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 40px;
+
+    /* Leave space before the first column */
+    padding-left: 40px;
+
+    list-style-position: outside;
+}
+.log-entry li{
+  margin-bottom: 10px;
+  color:var(--ink-dim);
+  font-size:0.92rem;
+  line-height:0.5;
+  max-width:60ch;
+}
+
+/* ===== certifications ===== */
+.cert-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1.4rem;
+}
+.cert-card{
+  background:var(--bg-panel);
+  border:1px solid var(--border-slate);
+  border-radius:4px;
+  overflow:hidden;
+  transition:border-color .3s ease,transform .3s ease;
+}
+.cert-card:hover{
+  border-color:var(--mint);
+  transform:translateY(-3px);
+}
+.cert-frame{
+  height:190px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    linear-gradient(rgba(62,230,224,0.05),rgba(62,230,224,0.05)),
+    repeating-linear-gradient(45deg,rgba(255,255,255,0.02) 0 2px,transparent 2px 14px);
+  border-bottom:1px solid var(--border-slate);
+  padding:1rem;
+}
+.cert-frame img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  filter:drop-shadow(0 0 10px rgba(62,230,224,0.15));
+}
+.cert-meta{
+  padding:1rem 1.2rem 1.3rem;
+}
+.cert-meta .verified{
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.68rem;
+  color:var(--mint);
+  letter-spacing:0.1em;
+  display:flex;
+  align-items:center;
+  gap:0.4rem;
+  margin-bottom:0.5rem;
+}
+.cert-meta .verified::before{content:"✓";}
+.cert-meta h4{
+  font-size:1rem;
+  color:var(--ink);
+  text-transform:none;
+  font-weight:500;
+  letter-spacing:0;
+  line-height:1.4;
+}
+
+/* ===== ongoing qualifications ===== */
+.oq-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.4rem;
+}
+.oq-card{
+  background:rgba(255,255,255,0.02);
+  border:1px solid var(--border-slate);
+  border-radius:4px;
+  padding:1.4rem 1.6rem;
+  transition:transform .3s ease,border-color .3s ease;
+}
+.oq-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--coral);
+}
+.oq-card .status{
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.68rem;
+  color:var(--coral);
+  letter-spacing:0.1em;
+  display:inline-flex;
+  align-items:center;
+  gap:0.4rem;
+  margin-bottom:0.7rem;
+  border:1px solid rgba(255,107,94,0.35);
+  padding:0.1rem 0.5rem;
+  border-radius:2px;
+}
+.oq-card h4{
+  font-size:1.02rem;
+  color:var(--ink);
+  text-transform:none;
+  font-weight:500;
+  letter-spacing:0;
+  line-height:1.4;
+  margin-bottom:0.5rem;
+}
+.oq-card h4 a{
+  color:var(--cyan);
+  transition:color .2s;
+  border-bottom:1px dashed rgba(62,230,224,0.35);
+}
+.oq-card h4 a:hover{
+  color:var(--mint);
+  border-color:var(--mint);
+}
+.oq-card .provider{
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.78rem;
+  color:var(--ink-dim);
+}
+.oq-card .provider a{
+  color:var(--ink-dim);
+}
+.oq-card .provider a:hover{
+  color:var(--mint);
+}
+
+/* ===== contact / footer ===== */
+.contact-panel{
+  background:linear-gradient(160deg,var(--bg-panel),var(--bg-panel-2));
+  border:1px solid var(--border-slate);
+  border-radius:6px;
+  padding:3rem;
+  text-align:center;
+}
+.contact-panel h2{font-size:clamp(1.8rem,4vw,3rem);margin-bottom:1rem;}
+.contact-panel p{color:var(--ink-dim);max-width:50ch;margin:0 auto 2rem;}
+.contact-links{
+  display:flex;
+  justify-content:center;
+  gap:1.2rem;
+  flex-wrap:wrap;
+}
+.contact-address{
+    margin-top:1.5rem;
+    color:var(--ink-dim);
+    line-height:1.7;
+    font-size:0.8rem;
+}
+footer{
+  text-align:center;
+  padding:2.4rem 1rem 3rem;
+  color:var(--ink-faint);
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.75rem;
+}
+
+@media (max-width:600px){
+  section{padding:7vh 5vw;}
+  .contact-panel{padding:2rem 1.2rem;}
+}
+</style>
 </head>
 <body>
 
-  <!-- Ambient Radar Canvas & Background Glow -->
-  <canvas id="net-canvas"></canvas>
-  <div class="radar-grid-bg"></div>
-  <div class="ambient-glow ambient-1"></div>
-  <div class="ambient-glow ambient-2"></div>
+<canvas id="net-canvas"></canvas>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-  <!-- Custom Cursor System -->
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
+<div class="wrap">
 
-  <div class="wrap">
+  <div class="manifest-strip">
+    <div class="seg"><span class="route">CMB</span>&nbsp;→&nbsp;<span class="tag">GLOBAL</span></div>
+    <nav>
+      <a href="#about">About</a>
+	  <a href="#achievements">Educational</a>
+      <a href="#capabilities">Capabilities</a>
+	  <a href="#experience">Professional</a>
+      <a href="#log">Volunteering</a>
+	  <a href="#interests">Interests</a>
+      <a href="#certs">Certifications</a>
+      <a href="#ongoing">Ongoing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="seg mono" id="clockSeg">STATUS: <span class="tag">ACTIVE</span></div>
+  </div>
 
-    <!-- ==========================================================================
-         TOP MANIFEST STRIP & NAVIGATION
-         ========================================================================== -->
-    <header class="manifest-strip" id="manifestStrip">
-      <div class="manifest-brand">
-        <div class="telemetry-pulse" title="System Live"></div>
-        <div class="seg">
-          <span class="route-tag">CMB</span>&nbsp;→&nbsp;<span class="pill-badge">GLOBAL</span>
+  <section class="hero">
+    <div class="hero-content">
+
+      <div class="hero-text">
+
+        <div class="eyebrow">
+            UNDERGRADUATE · TRANSPORT MANAGEMENT &amp; LOGISTICS ENGINEERING
         </div>
-      </div>
 
-      <nav id="mainNav">
-        <a href="#about" class="active">About</a>
-        <a href="#education">Education</a>
-        <a href="#capabilities">Capabilities</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#volunteering">Volunteering</a>
-        <a href="#interests">Interests</a>
-        <a href="#certs">Certifications</a>
-        <a href="#ongoing">Ongoing</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <div class="manifest-actions">
-        <div class="clock-telemetry mono" id="clockSeg">
-          CMB // <span class="tag">ACTIVE</span>
-        </div>
-        <button type="button" class="btn-pitch-badge trigger-pitch-modal" title="View 60-Second Interview Dossier">
-          ⚡ Quick Pitch
-        </button>
-        <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </header>
-
-    <!-- ==========================================================================
-         HERO SECTION
-         ========================================================================== */ -->
-    <section class="hero" id="hero">
-      <div class="hero-content">
-
-        <div class="hero-text">
-          <div class="hero-eyebrow-container">
-            <span class="telemetry-pulse"></span>
-            <span class="hero-eyebrow">
-              UNDERGRADUATE // TRANSPORT MANAGEMENT &amp; LOGISTICS ENGINEERING
-            </span>
-          </div>
-
-          <h1 class="hero-title">
-            W.G. Ravindu Shakye<br>
+        <h1>
+            Weerasiri Gamaarachchige<br>
+            Ravindu Shakye<br>
             Wickremasinghe
-          </h1>
+        </h1>
 
-          <div class="hero-tagline">
-            Transport &amp; Logistics Engineer
-            <span class="domain-pill">UOM TMLE</span>
-            <span class="domain-pill" style="color:var(--cyan);border-color:rgba(62,230,224,0.4);">NVQ-4 DESIGNER</span>
-          </div>
-
-          <p class="subline">
-            Moving the world through innovative engineering, smart supply chain analytics, and human-centered design. Delivering precision across maritime, aviation, and multimodal transport systems.
-          </p>
-
-          <div class="type-cycle">
-            <span id="typeText"></span>
-            <span class="cursor-char"></span>
-          </div>
-
-          <div class="cta-row">
-            <button type="button" class="btn primary trigger-pitch-modal">
-              ⚡ Executive Pitch (Interview Deck)
-            </button>
-            <a class="btn highlight cv-download-btn" href="Portfolio pic/Ravindu_Shakye_Wickremasinghe_CV.pdf" download="Ravindu_Shakye_Wickremasinghe_CV.pdf" title="Download Official Curriculum Vitae">
-              ↓ Download CV
-            </a>
-            <a class="btn ghost" href="#contact">
-              ✉ Connect With Me
-            </a>
-          </div>
-        </div>
-
-        <div class="hero-image-container">
-          <div class="hero-avatar-frame">
-            <div class="hero-avatar-inner">
-              <img id="heroProfilePic" src="Portfolio pic/IMG-20251114-WA0050.jpg" alt="W.G. Ravindu Shakye Wickremasinghe">
-              <!-- Visual Fallback in case local photo path is pending -->
-              <div class="avatar-fallback" id="heroPicFallback" style="display:none;">
-                <div class="avatar-icon-ring">RW</div>
-                <div style="font-family:var(--font-display);font-size:1.4rem;color:#fff;letter-spacing:0.04em;margin-bottom:0.4rem;">
-                  RAVINDU SHAKYE
-                </div>
-                <div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--mint);letter-spacing:0.08em;">
-                  TRANSPORT &amp; LOGISTICS // UOM
-                </div>
-              </div>
-            </div>
-            <div class="avatar-badge-overlay">
-              <span class="badge-dot"></span>
-              <span>AVAILABLE FOR INTERNSHIP // 2025-2026</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Live Telemetry KPI Strip -->
-      <div class="telemetry-strip reveal">
-        <div class="telemetry-card">
-          <div class="telemetry-icon">🎯</div>
-          <div class="telemetry-data">
-            <div class="number">3.47 / 4.0</div>
-            <div class="label">CUMULATIVE GPA // UOM</div>
-          </div>
-        </div>
-
-        <div class="telemetry-card">
-          <div class="telemetry-icon">⭐</div>
-          <div class="telemetry-data">
-            <div class="number">DEAN'S LIST</div>
-            <div class="label">SEMESTER 4 DISTINCTION</div>
-          </div>
-        </div>
-
-        <div class="telemetry-card">
-          <div class="telemetry-icon">📜</div>
-          <div class="telemetry-data">
-            <div class="number">10+ VERIFIED</div>
-            <div class="label">GLOBAL CERTIFICATIONS</div>
-          </div>
-        </div>
-
-        <div class="telemetry-card">
-          <div class="telemetry-icon">🚀</div>
-          <div class="telemetry-data">
-            <div class="number">15+ PROJECTS</div>
-            <div class="label">LEADERSHIP &amp; OPS ROLES</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         01 ABOUT SECTION
-         ========================================================================== -->
-    <section id="about">
-      <div class="section-head reveal">
-        <div class="section-title-wrap">
-          <span class="idx">01</span>
-          <h2>Professional Profile</h2>
-        </div>
-        <span class="section-subtitle">Candidate Background &amp; Engineering Philosophy</span>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-copy reveal">
-          <p>
-            I am an undergraduate reading for a <strong>BSc. in Transport Management and Logistics Engineering</strong> at the <strong>University of Moratuwa</strong>, driven by an enduring passion for transforming the maritime, aviation, and global supply chain sectors through engineering rigor, simulation modeling, and data-driven decision architectures.
-          </p>
-          <p>
-            My engineering coursework has grounded me in transport modeling, network planning, and quantitative optimization. Concurrently, serving as the <strong>Club Service Avenue Director</strong> for the Rotaract Club of the University of Moratuwa has tested and sharpened my real-world capacities in large-scale event logistics, budget forecasting, stakeholder coordination, and high-pressure team execution.
-          </p>
-          <p>
-            As a certified <strong>NVQ Level 4 Computer Graphic Designer</strong> with formal foundations in AI/ML engineering, I bring a unique dual capability: the analytical depth to solve complex logistics bottlenecks, paired with the creative mastery to design compelling dashboards, presentations, and technical documentation. I am eager to contribute fresh energy, high accountability, and measurable value to your team.
-          </p>
-
-          <div class="about-highlight-box">
-            <p>
-              "My objective is to merge quantitative transport modeling, smart mobility systems, and operational excellence to build resilient logistics backbones for global industry."
-            </p>
-          </div>
-        </div>
-
-        <div class="about-card reveal">
-          <div class="card-header-badge">
-            <span class="badge-dot"></span> CANDIDATE TELEMETRY SPECIFICATION
-          </div>
-          <div class="row">
-            <span>DEGREE</span>
-            <span>BSc. Transport Management &amp; Logistics Engineering</span>
-          </div>
-          <div class="row">
-            <span>INSTITUTION</span>
-            <span>University of Moratuwa</span>
-          </div>
-          <div class="row">
-            <span>ALMA MATER</span>
-            <span>Royal College, Colombo 07</span>
-          </div>
-          <div class="row">
-            <span>STATUS</span>
-            <span>Undergraduate // Actively Seeking Internship</span>
-          </div>
-          <div class="row">
-            <span>CORE FOCUS</span>
-            <span>Aviation / Maritime / Supply Chain / GIS / Analytics</span>
-          </div>
-          <div class="row">
-            <span>LOCATION</span>
-            <span>Colombo, Sri Lanka (Hybrid / Relocation Ready)</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         02 EDUCATIONAL ACHIEVEMENTS
-         ========================================================================== -->
-    <section id="education">
-      <div class="section-head reveal">
-        <div class="section-title-wrap">
-          <span class="idx">02</span>
-          <h2>Educational Track</h2>
-        </div>
-        <span class="section-subtitle">Academic Foundations &amp; Scholastic Honors</span>
-      </div>
-
-      <div class="edu-grid">
-        <div class="edu-card dean reveal">
-          <div class="edu-badge-top">
-            <span class="institution">UNIVERSITY OF MORATUWA</span>
-            <span class="year-tag">2023 — PRESENT</span>
-          </div>
-          <h3>BSc. (Hons) Transport Management &amp; Logistics Engineering</h3>
-          <p class="degree-sub">Department of Transport &amp; Logistics Management — Faculty of Engineering</p>
-          
-          <div class="edu-metrics-row">
-            <div class="metric-pill">
-              <span class="metric-val">3.47</span>
-              <span class="metric-lbl">CURRENT GPA</span>
-            </div>
-            <div class="metric-pill mint">
-              <span class="metric-val">DEAN'S LIST</span>
-              <span class="metric-lbl">SEMESTER 4</span>
-            </div>
-          </div>
-
-          <ul>
-            <li>Rigorous curriculum covering Logistics Engineering, Freight Transport, Operations Research, and Supply Chain Simulation.</li>
-            <li>Advanced training in transport demand modeling, spatial network analysis, and statistical decision sciences.</li>
-            <li>Active involvement in multidisciplinary engineering cohorts and industry engagement workshops.</li>
-          </ul>
-        </div>
-
-        <div class="edu-card reveal">
-          <div class="edu-badge-top">
-            <span class="institution">ROYAL COLLEGE, COLOMBO 07</span>
-            <span class="year-tag">SECONDARY EDUCATION</span>
-          </div>
-          <h3>G.C.E. Advanced Level &amp; Ordinary Level</h3>
-          <p class="degree-sub">Physical Science Stream (Combined Mathematics, Physics, Chemistry)</p>
-
-          <div class="edu-metrics-row">
-            <div class="metric-pill">
-              <span class="metric-val">PREMIER</span>
-              <span class="metric-lbl">COLLEGE ALUMNI</span>
-            </div>
-          </div>
-
-          <ul>
-            <li>Strong foundation in analytical mathematics, physics, and empirical problem solving.</li>
-            <li>Developed early communication, teamwork, and discipline through rich school clubs and societies.</li>
-            <li>Gained entry into the University of Moratuwa's prestigious Transport Management &amp; Logistics Engineering program.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         03 CAPABILITIES & SKILLS MATRIX (FILTERABLE)
-         ========================================================================== -->
-    <section id="capabilities">
-      <div class="section-head reveal">
-        <div class="section-title-wrap">
-          <span class="idx">03</span>
-          <h2>Technical Matrix &amp; Capabilities</h2>
-        </div>
-        <span class="section-subtitle">Domain Mastery &amp; Engineering Toolsets</span>
-      </div>
-
-      <!-- Category Filter Pills -->
-      <div class="cap-filter-bar reveal">
-        <button type="button" class="cap-filter-btn active" data-filter="all">All Disciplines</button>
-        <button type="button" class="cap-filter-btn" data-filter="logistics">Logistics &amp; Supply Chain</button>
-        <button type="button" class="cap-filter-btn" data-filter="analytics">Data &amp; Programming</button>
-        <button type="button" class="cap-filter-btn" data-filter="simulation">Simulation &amp; CAD</button>
-        <button type="button" class="cap-filter-btn" data-filter="design">Design &amp; Media</button>
-        <button type="button" class="cap-filter-btn" data-filter="leadership">Leadership &amp; Langs</button>
-      </div>
-
-      <div class="cap-grid">
-
-        <!-- Card: Aviation & Maritime -->
-        <div class="cap-card reveal" data-code="AV/MAR" data-category="logistics">
-          <div class="cap-card-icon">✈ ⚓</div>
-          <h3>Aviation &amp; Maritime Logistics</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Cargo Handling</span>
-            <span class="skill-tag">Airport Ops</span>
-            <span class="skill-tag">Port Terminals</span>
-            <span class="skill-tag">SC Optimization</span>
-          </div>
-          <ul>
-            <li>Certified Cargo Handling training — IAAC, Colombo</li>
-            <li>SriLankan Aviation College Camp Certification &amp; Aircraft Ground Operations</li>
-            <li>Multimodal freight transport network design &amp; container logistics</li>
-            <li>Supply chain risk mitigation &amp; inventory bottleneck resolution</li>
-          </ul>
-        </div>
-
-        <!-- Card: Data & Programming -->
-        <div class="cap-card reveal" data-code="DATA/IT" data-category="analytics">
-          <div class="cap-card-icon">📊 💻</div>
-          <h3>Data Analytics &amp; Programming</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Power BI</span>
-            <span class="skill-tag">R Studio</span>
-            <span class="skill-tag">MS Excel</span>
-            <span class="skill-tag">C# .NET</span>
-          </div>
-          <ul>
-            <li>Python data analytics (Pandas, NumPy, Matplotlib) for logistics metrics</li>
-            <li>Power BI interactive dashboard design &amp; KPI tracking</li>
-            <li>Statistical analysis, hypothesis testing, and regression modeling with R</li>
-            <li>Advanced Excel: Pivot tables, VBA macros, sensitivity analysis &amp; solvers</li>
-            <li>Visual Studio C# object-oriented programming foundations</li>
-          </ul>
-        </div>
-
-        <!-- Card: Simulation & GIS -->
-        <div class="cap-card reveal" data-code="SIM/GIS" data-category="simulation">
-          <div class="cap-card-icon">🌐 📐</div>
-          <h3>Transport Simulation &amp; CAD</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">SUMO</span>
-            <span class="skill-tag">CUBE</span>
-            <span class="skill-tag">QGIS</span>
-            <span class="skill-tag">SOLIDWORKS</span>
-            <span class="skill-tag">FreeCAD</span>
-          </div>
-          <ul>
-            <li>Microscopic traffic simulation &amp; signal timing optimization using SUMO</li>
-            <li>Macroscopic transport network planning &amp; origin-destination analysis with CUBE</li>
-            <li>Spatial GIS mapping, catchment area analysis, and route modeling in QGIS</li>
-            <li>Parametric 3D mechanical and structural modeling with FreeCAD &amp; SOLIDWORKS</li>
-          </ul>
-        </div>
-
-        <!-- Card: Creative Design & IT -->
-        <div class="cap-card reveal" data-code="DES/IT" data-category="design">
-          <div class="cap-card-icon">🎨 🖋</div>
-          <h3>Creative Design &amp; Digital Media</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">NVQ Level 4</span>
-            <span class="skill-tag">Photoshop</span>
-            <span class="skill-tag">Illustrator</span>
-            <span class="skill-tag">InDesign</span>
-            <span class="skill-tag">Premiere Pro</span>
-          </div>
-          <ul>
-            <li>NVQ Level 4 Certified Computer Graphic Designer (TVEC Recognized)</li>
-            <li>Editorial layout, technical report visual design, and executive presentation decks</li>
-            <li>Vector graphics, corporate identity design, and visual communications</li>
-            <li>Video editing, motion storytelling, and brand assets with Premiere Pro</li>
-          </ul>
-        </div>
-
-        <!-- Card: Advanced Knowledge & Systems -->
-        <div class="cap-card reveal" data-code="SYS/AI" data-category="analytics logistics">
-          <div class="cap-card-icon">🤖 📦</div>
-          <h3>Advanced Systems &amp; Applied AI</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">AI/ML Stage 1</span>
-            <span class="skill-tag">Supply Chain AI</span>
-            <span class="skill-tag">Marketing (SLIM)</span>
-            <span class="skill-tag">Alert Automation</span>
-          </div>
-          <ul>
-            <li>AI/ML Engineering foundations — Stage 1 (SLIIT CODE)</li>
-            <li>AI for Supply Chains &amp; Logistics (Alison Professional Certificate)</li>
-            <li>Product Distribution &amp; Intelligent Alert System (Geethani Motors project)</li>
-            <li>Professional Certificate in Marketing (Sri Lanka Institute of Marketing — SLIM)</li>
-          </ul>
-        </div>
-
-        <!-- Card: Leadership & Languages -->
-        <div class="cap-card reveal" data-code="LEAD/LANG" data-category="leadership">
-          <div class="cap-card-icon">🧭 🗣</div>
-          <h3>Leadership, Strategy &amp; Languages</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Avenue Director</span>
-            <span class="skill-tag">Budgeting</span>
-            <span class="skill-tag">Public Speaking</span>
-            <span class="skill-tag">Trilingual</span>
-          </div>
-          <ul>
-            <li>Club Service Avenue Director — Rotaract Club of University of Moratuwa</li>
-            <li>Budget planning, risk mitigation, and operational resource logistics</li>
-            <li>Executive presentation, negotiation, and cross-functional team direction</li>
-            <li>Languages: Sinhala (Native), English (Professional Working), Tamil (Working)</li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         04 APPLIED PROJECTS & CASE STUDIES (INTERVIEW SHOWCASE)
-         ========================================================================== -->
-    <section id="projects">
-      <div class="section-head reveal">
-        <div class="section-title-wrap">
-          <span class="idx">04</span>
-          <h2>Applied Projects &amp; Case Studies</h2>
-        </div>
-        <span class="section-subtitle">Practical Engineering &amp; Problem Solving In Action</span>
-      </div>
-
-      <div class="projects-grid">
-
-        <!-- Project 1: Geethani Motors -->
-        <div class="project-card reveal">
-          <div class="project-meta-top">
-            <span class="project-category">SUPPLY CHAIN &amp; IT</span>
-            <span class="project-scope">INDUSTRY CASE STUDY</span>
-          </div>
-          <h3>Product Distribution &amp; Alert System</h3>
-          <p class="project-desc">
-            Engineered a streamlined distribution monitoring framework for Geethani Motors, automating spare parts inventory tracking, dispatch intervals, and shortage alerts to prevent costly supply stockouts.
-          </p>
-          <ul class="project-highlights">
-            <li>Designed automated thresholds for replenishment and delivery tracking.</li>
-            <li>Reduced manual reconciliation errors and enhanced dispatch transparency.</li>
-            <li>Provided actionable telemetry for branch management and warehouse ops.</li>
-          </ul>
-          <div class="project-tech-stack">
-            <span class="tech-tag">Inventory Control</span>
-            <span class="tech-tag">Data Tracking</span>
-            <span class="tech-tag">Alert Automation</span>
-            <span class="tech-tag">Process Flow</span>
-          </div>
-        </div>
-
-        <!-- Project 2: SUMO Traffic Simulation -->
-        <div class="project-card reveal">
-          <div class="project-meta-top">
-            <span class="project-category">TRANSPORT SIMULATION</span>
-            <span class="project-scope">UOM ENGINEERING LAB</span>
-          </div>
-          <h3>Microscopic Corridor Traffic Simulation (SUMO)</h3>
-          <p class="project-desc">
-            Constructed a microscopic simulation model of a high-density suburban arterial corridor using SUMO, evaluating signal timings, queue lengths, and vehicle emissions under varied peak-hour scenarios.
-          </p>
-          <ul class="project-highlights">
-            <li>Imported OpenStreetMap network geometry and calibrated vehicle car-following models.</li>
-            <li>Simulated signal phase adjustments, demonstrating potential delay reductions.</li>
-            <li>Generated quantitative reports on travel time variability and bottlenecks.</li>
-          </ul>
-          <div class="project-tech-stack">
-            <span class="tech-tag">SUMO Simulation</span>
-            <span class="tech-tag">Traffic Engineering</span>
-            <span class="tech-tag">Data Calibration</span>
-            <span class="tech-tag">Flow Analytics</span>
-          </div>
-        </div>
-
-        <!-- Project 3: Spatial Logistics in QGIS -->
-        <div class="project-card reveal">
-          <div class="project-meta-top">
-            <span class="project-category">SPATIAL ANALYTICS</span>
-            <span class="project-scope">GIS RESEARCH PROJECT</span>
-          </div>
-          <h3>Multimodal Transport Network &amp; GIS Mapping</h3>
-          <p class="project-desc">
-            Utilized QGIS to map transit catchment zones, regional freight arterial accessibility, and multimodal node connectivity across key commercial transport corridors in the Western Province.
-          </p>
-          <ul class="project-highlights">
-            <li>Integrated spatial layers with demographics to assess public transit accessibility.</li>
-            <li>Analyzed last-mile freight delivery vulnerabilities and route circuity.</li>
-            <li>Rendered high-clarity thematic maps for policy and engineering review.</li>
-          </ul>
-          <div class="project-tech-stack">
-            <span class="tech-tag">QGIS Spatial</span>
-            <span class="tech-tag">Network Analysis</span>
-            <span class="tech-tag">Spatial Join</span>
-            <span class="tech-tag">Cartography</span>
-          </div>
-        </div>
-
-        <!-- Project 4: Rotaract Operations Management -->
-        <div class="project-card reveal">
-          <div class="project-meta-top">
-            <span class="project-category">OPERATIONS &amp; LOGISTICS</span>
-            <span class="project-scope">AVENUE DIRECTORATE</span>
-          </div>
-          <h3>Large-Scale Event Logistics &amp; Budget Optimization</h3>
-          <p class="project-desc">
-            Orchestrated the comprehensive physical logistics, venue coordination, procurement schedules, and budget allocations for over 8 flagship initiatives as Club Service Avenue Director at Rotaract Mora.
-          </p>
-          <ul class="project-highlights">
-            <li>Formulated and balanced comprehensive avenue fiscal budgets and vendor contracts.</li>
-            <li>Coordinated crowd movement, security protocols, and timeline milestones.</li>
-            <li>Ensured flawless delivery for marquee projects including Binara Padura and RUR'26.</li>
-          </ul>
-          <div class="project-tech-stack">
-            <span class="tech-tag">Budget Forecasting</span>
-            <span class="tech-tag">Risk Assessment</span>
-            <span class="tech-tag">Resource Allocation</span>
-            <span class="tech-tag">Operations</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         05 PROFESSIONAL EXPERIENCE
-         ========================================================================== -->
-    <section id="experience">
-      <div class="section-head reveal">
-        <div class="section-title-wrap">
-          <span class="idx">05</span>
-          <h2>Professional Experience &amp; Mentorship</h2>
-        </div>
-        <span class="section-subtitle">Industry Engagement &amp; Practical Roles</span>
-      </div>
-
-      <div class="experience-container">
-        
-        <!-- Experience 1: PWI -->
-        <div class="exp-card reveal">
-          <div class="exp-card-header">
-            <div>
-              <span class="exp-company">PWI (PVT) LTD.</span>
-              <h3>Graphic Designer (IETI NVQ Level 4 Intern)</h3>
-            </div>
-            <span class="exp-duration">PROFESSIONAL INTERNSHIP</span>
-          </div>
-          <p>
-            Served as a graphic design intern fulfilling National Vocational Qualification (NVQ Level 4) accreditation standards through IETI. Produced high-impact visual design assets, brand identity materials, and promotional collateral.
-          </p>
-          <ul>
-            <li>Applied vector design principles in Adobe Illustrator and Photoshop to create commercial client collateral.</li>
-            <li>Collaborated with senior production managers to prepare digital files for high-precision offset and digital printing.</li>
-            <li>Honed strict attention to detail, deadline management, and client feedback integration.</li>
-          </ul>
-          <div class="exp-skills-row">
-            <span class="tech-tag">Commercial Graphic Design</span>
-            <span class="tech-tag">Adobe Illustrator</span>
-            <span class="tech-tag">Adobe Photoshop</span>
-            <span class="tech-tag">Pre-Press Quality</span>
-          </div>
-        </div>
-
-        <!-- Experience 2: CWIT Mentee -->
-        <div class="exp-card reveal">
-          <div class="exp-card-header">
-            <div>
-              <span class="exp-company">CWIT (CONNECTING WOMEN IN TECHNOLOGY / CORPORATE LEADERSHIP)</span>
-              <h3>Corporate Mentee</h3>
-            </div>
-            <span class="exp-duration">LEADERSHIP MENTORSHIP</span>
-          </div>
-          <p>
-            Selected as an active mentee within the CWIT mentorship ecosystem, engaging with industry leaders, corporate executives, and technology professionals to develop executive presence, strategic thinking, and corporate communication skills.
-          </p>
-          <ul>
-            <li>Participated in specialized workshops on modern workplace dynamics, career navigation, and strategic stakeholder alignment.</li>
-            <li>Gained direct exposure to contemporary industry expectations across corporate technology, analytics, and leadership.</li>
-          </ul>
-          <div class="exp-skills-row">
-            <span class="tech-tag">Executive Communication</span>
-            <span class="tech-tag">Industry Networking</span>
-            <span class="tech-tag">Strategic Leadership</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         06 VOLUNTEERING & LEADERSHIP LOG
-         ========================================================================== -->
-    <section id="volunteering">
-      <div class="section-head reveal">
-        <div class="section-title-wrap">
-          <span class="idx">06</span>
-          <h2>Leadership &amp; Volunteering Log</h2>
-        </div>
-        <span class="section-subtitle">Rotaract, Leo, and Academic Community Impact</span>
-      </div>
-
-      <div class="vol-grid">
-
-        <!-- Rotaract Club Card -->
-        <div class="vol-card reveal">
-          <span class="vol-role-badge">AVENUE DIRECTOR &amp; CHAIRPERSON</span>
-          <h3>Rotaract Club of University of Moratuwa</h3>
-          <span class="vol-org">ROTARACT DISTRICT 3220 // MORA ROTARACT</span>
-          <p class="vol-desc">
-            Rotaract Mora is recognized globally for running some of the largest youth-led projects in South Asia. Directed the Club Service Avenue, leading teams and coordinating massive-scale logistics.
-          </p>
-
-          <div class="vol-initiatives-wrap">
-            <h4>AS CLUB SERVICE AVENUE DIRECTOR</h4>
-            <div class="vol-tags-cluster">
-              <span class="vol-tag">Rac Hike</span>
-              <span class="vol-tag">Installation Ceremony</span>
-              <span class="vol-tag">CharterDay Ceremony</span>
-              <span class="vol-tag">Binara Padura</span>
-              <span class="vol-tag">MonsterMash</span>
-              <span class="vol-tag">Lailat'26</span>
-              <span class="vol-tag">RUR'26</span>
-              <span class="vol-tag">General Meetings</span>
-            </div>
-
-            <h4>AS CHAIRPERSON</h4>
-            <div class="vol-tags-cluster">
-              <span class="vol-tag">Project Image</span>
-              <span class="vol-tag">General Meeting</span>
-            </div>
-
-            <h4>AS COMMITTEE MEMBER</h4>
-            <div class="vol-tags-cluster">
-              <span class="vol-tag">Binara Padura</span>
-              <span class="vol-tag">MonsterMash</span>
-              <span class="vol-tag">Zooxanthellae</span>
-              <span class="vol-tag">RUR'25</span>
-              <span class="vol-tag">Colours</span>
-              <span class="vol-tag">Kowul Wasanthaya</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Leo Club Card -->
-        <div class="vol-card reveal">
-          <span class="vol-role-badge">PROJECT CHAIRPERSON</span>
-          <h3>Leo Club of University of Moratuwa</h3>
-          <span class="vol-org">LIONS CLUBS INTERNATIONAL // DISTRICT 306</span>
-          <p class="vol-desc">
-            Led cultural and community initiatives fostering camaraderie, youth engagement, and social responsibility across the campus community.
-          </p>
-
-          <div class="vol-initiatives-wrap">
-            <h4>AS CHAIRPERSON</h4>
-            <div class="vol-tags-cluster">
-              <span class="vol-tag">Leo Padura (Flagship Cultural Eve)</span>
-            </div>
-
-            <h4>AS ACTIVE MEMBER</h4>
-            <div class="vol-tags-cluster">
-              <span class="vol-tag">Project Phoenix</span>
-              <span class="vol-tag">Project Tharka</span>
-              <span class="vol-tag">Project TerraForma</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Academic & CSR Card -->
-        <div class="vol-card reveal">
-          <span class="vol-role-badge">PROJECT SECRETARY</span>
-          <h3>Academic Community Service</h3>
-          <span class="vol-org">DEPARTMENT OF TRANSPORT &amp; LOGISTICS MANAGEMENT</span>
-          <p class="vol-desc">
-            Spearheaded organizational and documentation logistics for departmental CSR initiatives designed to bridge educational access for underprivileged communities.
-          </p>
-
-          <div class="vol-initiatives-wrap">
-            <h4>AS SECRETARY</h4>
-            <div class="vol-tags-cluster">
-              <span class="vol-tag">CSR Project: Beyond the Books</span>
-            </div>
-            <p style="font-size:0.85rem;color:var(--ink-dim);margin-top:0.8rem;line-height:1.6;">
-              Coordinated donations, school supplies, educational workshops, and stakeholder logistics for primary schools, instilling lifelong values of social responsibility.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         07 AREAS OF INTEREST
-         ========================================================================== -->
-    <section id="interests">
-      <div class="section-head reveal">
-        <div class="section-title-wrap">
-          <span class="idx">07</span>
-          <h2>Areas of Interest</h2>
-        </div>
-        <span class="section-subtitle">Long-Term Professional Focus &amp; Passion Areas</span>
-      </div>
-
-      <div class="interest-grid">
-        <div class="interest-card reveal">
-          <div class="interest-icon">✈</div>
-          <h3>Aviation</h3>
-          <p>Airport terminal planning, fleet scheduling, air cargo routing, and sustainable aviation fuels.</p>
-        </div>
-
-        <div class="interest-card reveal">
-          <div class="interest-icon">⚓</div>
-          <h3>Maritime</h3>
-          <p>Container terminal throughput, smart port automation, berth allocation, and ocean freight logistics.</p>
-        </div>
-
-        <div class="interest-card reveal">
-          <div class="interest-icon">🌐</div>
-          <h3>International Business</h3>
-          <p>Global supply chain networks, trade lane geopolitics, tariffs, and cross-border trade facilitation.</p>
-        </div>
-
-        <div class="interest-card reveal">
-          <div class="interest-icon">🎨</div>
-          <h3>Design &amp; UI/UX</h3>
-          <p>Industrial visualization, human-centered dashboard design, and brand asset engineering.</p>
-        </div>
-
-        <div class="interest-card reveal">
-          <div class="interest-icon">🔭</div>
-          <h3>Exploring &amp; Mobility</h3>
-          <p>Emerging transport technologies, autonomous electric vehicles, and future urban mobility systems.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         08 VERIFIED CERTIFICATIONS (WITH LIGHTBOX INSPECTION)
-         ========================================================================== -->
-    <section id="certs">
-      <div class="section-head reveal">
-        <div class="section-title-wrap">
-          <span class="idx">08</span>
-          <h2>Verified Certifications</h2>
-        </div>
-        <span class="section-subtitle">Click Any Certificate To Inspect Official Credential</span>
-      </div>
-
-      <div class="cert-grid">
-
-        <!-- Cert 1: Alison AI Supply Chain -->
-        <div class="cert-card reveal" data-cert-desc="Comprehensive qualification covering AI applications, predictive demand forecasting, automated warehousing, and intelligent transport management.">
-          <div class="cert-frame">
-            <img src="Portfolio pic/Alison_Certificate-6774-59487604_page-0001.jpg" alt="AI for Supply Chains &amp; Logistics Certification">
-          </div>
-          <div class="cert-meta">
-            <span class="verified mono">VERIFIED // ALISON</span>
-            <h4>AI for Supply Chains &amp; Logistics</h4>
-            <span class="cert-action-btn">🔍 Click to Inspect Credential</span>
-          </div>
-        </div>
-
-        <!-- Cert 2: SriLankan Aviation College -->
-        <div class="cert-card reveal" data-cert-desc="Comprehensive aviation immersion covering aircraft turnaround operations, ramp services, air cargo handling, and flight dispatch fundamentals.">
-          <div class="cert-frame">
-            <img src="Portfolio pic/sticker_1776306269719.png" alt="Aviation Education Camp Certification">
-          </div>
-          <div class="cert-meta">
-            <span class="verified mono">VERIFIED // SRILANKAN AVIATION</span>
-            <h4>Aviation Education Camp</h4>
-            <span class="cert-action-btn">🔍 Click to Inspect Credential</span>
-          </div>
-        </div>
-
-        <!-- Cert 3: SLIIT AI/ML Stage 1 -->
-        <div class="cert-card reveal" data-cert-desc="Foundational engineering credential in Artificial Intelligence, Python data pipelines, regression, and algorithmic decision structures from SLIIT CODE.">
-          <div class="cert-frame">
-            <img src="Portfolio pic/Ravindu Wickremasinghe - 2026-06-26_page-0001.jpg" alt="AI/ML Engineer Stage 1 Certification">
-          </div>
-          <div class="cert-meta">
-            <span class="verified mono">VERIFIED // SLIIT CODE</span>
-            <h4>AI/ML Engineer - Stage 1</h4>
-            <span class="cert-action-btn">🔍 Click to Inspect Credential</span>
-          </div>
-        </div>
-
-        <!-- Cert 4: Microsoft Excel -->
-        <div class="cert-card reveal" data-cert-desc="Advanced Microsoft certification validating proficiency in multi-sheet financial modeling, data cleaning, advanced lookup functions, and dashboard creation.">
-          <div class="cert-frame">
-            <img src="Portfolio pic/Coursera 3B6CCRTWMDWV_page-0001.jpg" alt="Work Smarter with Microsoft Excel Certification">
-          </div>
-          <div class="cert-meta">
-            <span class="verified mono">VERIFIED // MICROSOFT &amp; COURSERA</span>
-            <h4>Work Smarter with Excel</h4>
-            <span class="cert-action-btn">🔍 Click to Inspect Credential</span>
-          </div>
-        </div>
-
-        <!-- Cert 5: SLIM Marketing -->
-        <div class="cert-card reveal" data-cert-desc="Professional certification examining market research, consumer behavior, brand management, and strategic marketing communications from SLIM.">
-          <div class="cert-frame">
-            <img src="Portfolio pic/sticker_1776305607876.png" alt="Professional Certificate in Marketing SLIM">
-          </div>
-          <div class="cert-meta">
-            <span class="verified mono">VERIFIED // SLIM</span>
-            <h4>Professional Certificate in Marketing</h4>
-            <span class="cert-action-btn">🔍 Click to Inspect Credential</span>
-          </div>
-        </div>
-
-        <!-- Cert 6: TVEC NVQ Level 4 Graphic Designer -->
-        <div class="cert-card reveal" data-cert-desc="National Vocational Qualification Level 4 recognized by the Tertiary and Vocational Education Commission (TVEC) Sri Lanka for commercial graphic design.">
-          <div class="cert-frame">
-            <img src="Portfolio pic/sticker_1776305345018.png" alt="Computer Graphic Designer NVQ 4 Certification">
-          </div>
-          <div class="cert-meta">
-            <span class="verified mono">VERIFIED // TVEC SRI LANKA</span>
-            <h4>Computer Graphic Designer (NVQ Level 4)</h4>
-            <span class="cert-action-btn">🔍 Click to Inspect Credential</span>
-          </div>
-        </div>
-
-        <!-- Cert 7: ESOFT IT -->
-        <div class="cert-card reveal" data-cert-desc="Formal certification in information technology infrastructure, software fundamentals, and business database administration.">
-          <div class="cert-frame">
-            <img src="Portfolio pic/sticker_1776306763121.png" alt="Esoft IT Certification">
-          </div>
-          <div class="cert-meta">
-            <span class="verified mono">VERIFIED // ESOFT METRO CAMPUS</span>
-            <h4>Certificate in Information Technology</h4>
-            <span class="cert-action-btn">🔍 Click to Inspect Credential</span>
-          </div>
-        </div>
-
-        <!-- Cert 8: Diploma in English -->
-        <div class="cert-card reveal" data-cert-desc="Comprehensive diploma covering professional spoken communication, technical business writing, and executive presentations.">
-          <div class="cert-frame">
-            <img src="Portfolio pic/sticker_1776306815880.png" alt="Diploma in English Certification">
-          </div>
-          <div class="cert-meta">
-            <span class="verified mono">VERIFIED // INST. OF LANGUAGE DEV.</span>
-            <h4>Diploma in English</h4>
-            <span class="cert-action-btn">🔍 Click to Inspect Credential</span>
-          </div>
-        </div>
-
-        <!-- Cert 9: Rotaract Membership -->
-        <div class="cert-card reveal" data-cert-desc="Official membership credential validating leadership service, ethical standards, and high-impact community engagement with Rotaract Mora.">
-          <div class="cert-frame">
-            <img src="Portfolio pic/sticker_1776307564636.png" alt="Rotaract Mora Membership Credential">
-          </div>
-          <div class="cert-meta">
-            <span class="verified mono">VERIFIED // ROTARACT MORA</span>
-            <h4>Rotaract Club Membership Accreditation</h4>
-            <span class="cert-action-btn">🔍 Click to Inspect Credential</span>
-          </div>
-        </div>
-
-        <!-- Cert 10: International Business Univ. of London -->
-        <div class="cert-card reveal" data-cert-desc="Executive course exploring multinational corporation strategies, global supply chains, international trade policy, and foreign market entry.">
-          <div class="cert-frame">
-            <img src="Portfolio pic/Internatinal_Business_page-0001.jpg" alt="Fundamentals of International Business Certification">
-          </div>
-          <div class="cert-meta">
-            <span class="verified mono">VERIFIED // UNIV. OF LONDON / COURSERA</span>
-            <h4>Fundamentals of International Business</h4>
-            <span class="cert-action-btn">🔍 Click to Inspect Credential</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         09 ONGOING QUALIFICATIONS
-         ========================================================================== -->
-    <section id="ongoing">
-      <div class="section-head reveal">
-        <div class="section-title-wrap">
-          <span class="idx">09</span>
-          <h2>Ongoing Continuous Learning</h2>
-        </div>
-        <span class="section-subtitle">Active Upskilling In Transport, AI, and Analytics</span>
-      </div>
-
-      <div class="oq-grid">
-
-        <!-- Ongoing 1: Cargo Handling -->
-        <div class="oq-card reveal">
-          <div class="oq-card-header">
-            <span class="status mono">IN PROGRESS</span>
-            <div class="progress-indicator"><div class="bar" style="width:85%;"></div></div>
-          </div>
-          <h4>Cargo Handling Professional Course</h4>
-          <span class="provider mono">IAAC, Colombo 10</span>
-        </div>
-
-        <!-- Ongoing 2: SOLIDWORKS -->
-        <div class="oq-card reveal">
-          <div class="oq-card-header">
-            <span class="status mono">IN PROGRESS</span>
-            <div class="progress-indicator"><div class="bar" style="width:75%;"></div></div>
-          </div>
-          <h4><a href="https://www.coursera.org/specializations/practice-solidworks-3d-cad" target="_blank" rel="noopener">SOLIDWORKS 3D CAD for Education ↗</a></h4>
-          <span class="provider mono"><a href="https://www.coursera.org/specializations/practice-solidworks-3d-cad" target="_blank" rel="noopener">Dassault Systèmes</a></span>
-        </div>
-
-        <!-- Ongoing 3: Power BI Data Analyst -->
-        <div class="oq-card reveal">
-          <div class="oq-card-header">
-            <span class="status mono">IN PROGRESS</span>
-            <div class="progress-indicator"><div class="bar" style="width:80%;"></div></div>
-          </div>
-          <h4><a href="https://www.coursera.org/specializations/microsoft-power-bi-data-analyst" target="_blank" rel="noopener">Power BI Data Analyst Specialization ↗</a></h4>
-          <span class="provider mono"><a href="https://www.coursera.org/specializations/microsoft-power-bi-data-analyst" target="_blank" rel="noopener">Microsoft</a></span>
-        </div>
-
-        <!-- Ongoing 4: Supervised ML -->
-        <div class="oq-card reveal">
-          <div class="oq-card-header">
-            <span class="status mono">IN PROGRESS</span>
-            <div class="progress-indicator"><div class="bar" style="width:65%;"></div></div>
-          </div>
-          <h4><a href="https://www.coursera.org/learn/machine-learning/home/welcome" target="_blank" rel="noopener">Supervised Machine Learning: Regression &amp; Classification ↗</a></h4>
-          <span class="provider mono">DeepLearning.AI / Andrew Ng</span>
-        </div>
-
-        <!-- Ongoing 5: Financial Accounting -->
-        <div class="oq-card reveal">
-          <div class="oq-card-header">
-            <span class="status mono">IN PROGRESS</span>
-            <div class="progress-indicator"><div class="bar" style="width:70%;"></div></div>
-          </div>
-          <h4><a href="https://www.coursera.org/learn/wharton-accounting/home/welcome" target="_blank" rel="noopener">Introduction to Financial Accounting ↗</a></h4>
-          <span class="provider mono">Wharton School — University of Pennsylvania</span>
-        </div>
-
-        <!-- Ongoing 6: Mandarin Chinese -->
-        <div class="oq-card reveal">
-          <div class="oq-card-header">
-            <span class="status mono">IN PROGRESS</span>
-            <div class="progress-indicator"><div class="bar" style="width:60%;"></div></div>
-          </div>
-          <h4><a href="https://www.coursera.org/learn/mandarin-chinese-1/home/welcome" target="_blank" rel="noopener">Mandarin Chinese 1: Chinese for Beginners ↗</a></h4>
-          <span class="provider mono">Shanghai Jiao Tong University</span>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         10 CONTACT SECTION
-         ========================================================================== -->
-    <section id="contact">
-      <div class="contact-panel reveal">
-        <h2>Open Channel // Let's Connect</h2>
-        <p>
-          I am actively preparing for my engineering internship and welcome discussions regarding transport management, supply chain analytics, aviation logistics, or smart mobility projects.
+        <p class="subline">
+            Moving the world through innovative engineering and smart design.
         </p>
 
-        <div class="contact-links">
-          <a class="btn primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=rswic2003@gmail.com" target="_blank" rel="noopener">
-            ✉ Email: rswic2003@gmail.com
-          </a>
-          <a class="btn ghost" href="https://wa.me/94723615351" target="_blank" rel="noopener">
-            ◈ WhatsApp: +94 72 361 5351
-          </a>
-          <a class="btn ghost" href="tel:+94723615351">
-            ☎ Call: +94 72 361 5351
-          </a>
-          <a class="btn ghost" href="https://www.linkedin.com/in/ravindu-wickremasinghe-9b8b22307?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener">
-            in LinkedIn Profile
-          </a>
-          <a class="btn highlight cv-download-btn" href="Portfolio pic/Ravindu_Shakye_Wickremasinghe_CV.pdf" download="Ravindu_Shakye_Wickremasinghe_CV.pdf">
-            ↓ Download Official CV (PDF)
-          </a>
-        </div>
-
-        <div class="contact-metadata">
-          <span>📍 Colombo 07 / Moratuwa, Sri Lanka</span>
-          <span>⚡ Available Immediately for Internship Engagement</span>
-          <span>🎓 Dept. of Transport &amp; Logistics Management, UoM</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="mono">
-      <p>© 2026 W.G. RAVINDU SHAKYE WICKREMASINGHE // ALL RIGHTS RESERVED</p>
-      <p style="margin-top:0.4rem;color:var(--ink-muted);font-size:0.68rem;">
-        TRANSPORT MANAGEMENT &amp; LOGISTICS ENGINEERING // UNIVERSITY OF MORATUWA
-      </p>
-    </footer>
-
-  </div>
-
-  <!-- ==========================================================================
-       MODAL 1: EXECUTIVE PITCH / 60-SECOND INTERVIEW DOSSIER
-       ========================================================================== -->
-  <div class="modal-overlay" id="pitchModalOverlay" role="dialog" aria-modal="true" aria-labelledby="pitchModalTitle">
-    <div class="modal-card">
-      <button type="button" class="modal-close-btn" id="pitchModalClose" aria-label="Close modal">✕</button>
-
-      <span class="pitch-badge-tag mono">INTERVIEW DOSSIER // 60-SECOND EXECUTIVE PITCH</span>
-      <h2 id="pitchModalTitle">Why Choose Ravindu For Your Internship?</h2>
-      <p class="pitch-sub">A balanced synthesis of analytical engineering, field-tested operations, and creative execution.</p>
-
-      <div class="pitch-pillars">
-        
-        <div class="pillar-item">
-          <h4>1. Analytical Rigor &amp; Transport Modeling</h4>
-          <p>
-            Trained in the Faculty of Engineering at the University of Moratuwa with a <strong>3.47 GPA</strong> (Dean's List). Hands-on with transport simulation (SUMO, CUBE), spatial GIS (QGIS), and data analytics (Python, Power BI, Advanced Excel).
-          </p>
-        </div>
-
-        <div class="pillar-item pillar-2">
-          <h4>2. Proven Operational Leadership &amp; Delivery</h4>
-          <p>
-            As <strong>Club Service Avenue Director</strong> at Rotaract Mora, I have managed massive logistics workflows, coordinated financial budgets for high-profile projects, and led cross-functional teams under strict deadlines.
-          </p>
-        </div>
-
-        <div class="pillar-item pillar-3">
-          <h4>3. Creative Precision &amp; Communication</h4>
-          <p>
-            Certified as an <strong>NVQ Level 4 Graphic Designer</strong>. I can turn raw supply chain data into high-impact management dashboards, compelling client presentations, and clean executive summaries that bridge technical teams with stakeholders.
-          </p>
+        <div class="type-cycle">
+            <span id="typeText"></span>
+            <span class="cursor-char"></span>
         </div>
 
       </div>
 
-      <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;justify-content:space-between;border-top:1px solid var(--border-dim);padding-top:1.4rem;">
-        <div class="mono" style="font-size:0.75rem;color:var(--mint);">
-          STATUS: READY FOR IMMEDIATE DEPLOYMENT
-        </div>
-        <div style="display:flex;gap:0.6rem;">
-          <a class="btn primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=rswic2003@gmail.com" target="_blank" rel="noopener">
-            ✉ Schedule Interview
-          </a>
-          <a class="btn highlight cv-download-btn" href="Portfolio pic/Ravindu_Shakye_Wickremasinghe_CV.pdf" download="Ravindu_Shakye_Wickremasinghe_CV.pdf">
-            ↓ Download CV
-          </a>
-        </div>
+      <div class="hero-image">
+        <img src="Portfolio pic/IMG-20251114-WA0050.jpg" alt="Ravindu">
+      </div>
+
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head reveal"><span class="idx">01</span><h2>About</h2></div>
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <p>I am an undergraduate in <strong>Transport Management and Logistics Engineering</strong> at the University of Moratuwa with a strong passion for the maritime, aviation, and logistics industries. I am particularly interested in improving transport systems through innovation, data-driven decision-making, and sustainable engineering solutions.</p>
+        <p>My academic background has strengthened my analytical and problem-solving skills, while my leadership experience as the <strong>Club Service Avenue Director</strong> of the Rotaract Club of the University of Moratuwa has enhanced my abilities in project management, teamwork, and communication. Through organizing and leading multiple large-scale projects and community initiatives, I have developed the confidence to work effectively in dynamic and collaborative environments.</p>
+        <p>I am committed to continuous learning and enjoy exploring emerging technologies, supply chain optimization, and smart mobility solutions that shape the future of global transportation. My ambition is to contribute to the advancement of the maritime and aviation sectors by delivering innovative, efficient, and sustainable transport solutions while creating meaningful value for the industry and society.</p>
+      </div>
+      <div class="about-card reveal">
+        <div class="row"><span>FIELD</span><span>BSc. Transport Management and Logistics Engineering</span></div>
+        <div class="row"><span>INSTITUTION</span><span>University of Moratuwa</span></div>
+        <div class="row"><span>SCHOOL</span><span>Royal College, Colombo 07</span></div>
+        <div class="row"><span>STATUS</span><span>Undergraduate — Active</span></div>
+        <div class="row"><span>FOCUS</span><span>Aviation / Maritime / Supply Chain / Logistics</span></div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ==========================================================================
-       MODAL 2: CERTIFICATE LIGHTBOX MODAL
-       ========================================================================== -->
-  <div class="modal-overlay" id="certModalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalCertTitle">
-    <div class="modal-card">
-      <button type="button" class="modal-close-btn" id="certModalClose" aria-label="Close modal">✕</button>
+  <section id="achievements">
 
-      <div class="cert-lightbox-img-wrap">
-        <img id="modalCertImage" src="" alt="Certificate Preview">
+    <div class="section-head reveal">
+        <span class="idx">02</span>
+        <h2>Educational Achievements</h2>
+    </div>
+
+    <div class="cap-grid">
+
+        <div class="cap-card reveal" data-code="GPA">
+            <h3>Academic Performance</h3>
+            <ul>
+                <li>GPA — 3.47</li>
+                <li>Dean's List — Semester 4</li>
+            </ul>
+        </div>
+    </div>
+  </section>
+
+  <section id="capabilities">
+    <div class="section-head reveal"><span class="idx">03</span><h2>Core Capabilities</h2></div>
+    <div class="cap-grid">
+      <div class="cap-card reveal" data-code="AV/MAR">
+        <h3>Aviation &amp; Maritime Logistics</h3>
+        <ul>
+          <li>Cargo Handling training — IAAC, Colombo</li>
+          <li>SriLankan Aviation College Camp certification</li>
+          <li>Logistics Engineering</li>
+          <li>Supply Chain Optimization</li>
+        </ul>
       </div>
-
-      <div class="mono" id="modalCertIssuer" style="color:var(--mint);font-size:0.75rem;letter-spacing:0.08em;margin-bottom:0.4rem;">
-        VERIFIED ACCREDITATION
+      <div class="cap-card reveal" data-code="DES/IT">
+        <h3>Creative Design &amp; IT</h3>
+        <ul>
+          <li>NVQ Level 4 Certified Computer Graphic Designer</li>
+          <li>Interface Asset Generation</li>
+          <li>Advanced Microsoft Excel Mastery</li>
+        </ul>
       </div>
-      <h2 id="modalCertTitle" style="font-size:1.4rem;color:#fff;margin-bottom:0.8rem;">
-        Certificate Title
-      </h2>
-      <p id="modalCertDesc" style="color:var(--ink-dim);font-size:0.92rem;line-height:1.6;margin-bottom:1.4rem;">
-        Certificate details and demonstrated competencies.
-      </p>
-
-      <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-dim);padding-top:1rem;">
-        <span class="mono" style="font-size:0.72rem;color:var(--cyan);">
-          VERIFIED RECORD // CANDIDATE PORTFOLIO
-        </span>
-        <button type="button" class="btn ghost" onclick="document.getElementById('certModalClose').click()">
-          Close Preview
-        </button>
+	  <div class="cap-card reveal" data-code="TECH">
+        <h3>Technical Skills</h3>
+        <ul>
+          <li>MS Office</li>
+          <li>Power BI</li>
+          <li>Python</li>
+          <li>R</li>
+          <li>Visual Studio C#</li>
+          <li>QGIS</li>
+		</ul>
+        <ul>
+          <li>SUMO</li>
+          <li>CUBE</li>
+          <li>FreeCAD</li>
+          <li>Adobe Photoshop</li>
+          <li>Adobe Illustrator</li>
+          <li>Adobe InDesign</li>
+          <li>Adobe Premiere Pro</li>
+        </ul>
+      </div>
+      <div class="cap-card reveal" data-code="SYS/AI">
+        <h3>Advanced Knowledge</h3>
+        <ul>
+          <li>AI/ML Engineering foundations — Stage 1 (SLIIT CODE)</li>
+          <li>AI for Supply Chains</li>
+		  <li>Certification in IT – Esoft</li>
+          <li>Product distribution & Allert System – Geethani Motors</li>
+          <li>Professional Certificate in Marketing — SLIM</li>
+        </ul>
+      </div>
+      <div class="cap-card reveal" data-code="LEAD">
+        <h3>Leadership &amp; Strategy</h3>
+        <ul>
+          <li>Club Service Avenue Director — Rotaract</li>
+          <li>Project Management</li>
+          <li>Public Speaking</li>
+        </ul>
+      </div>
+	  <div class="cap-card reveal" data-code="LANG">
+        <h3>Languages</h3>
+        <ul>
+          <li>Sinhala — Native</li>
+          <li>English</li>
+          <li>Tamil</li>
+        </ul>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Main Logic Engine -->
-  <script src="script.js"></script>
+  <section id="experience">
+
+    <div class="section-head reveal">
+        <span class="idx">04</span>
+        <h2>Professional Experience</h2>
+    </div>
+    <div class="log-timeline">
+        <div class="log-entry reveal">
+            <span class="stamp mono">PWI (PVT) LTD.</span>
+            <h3>GRAPHIC DESIGNER</h3>
+            <ul>
+                <li>IETI NVQ 4 intern.</li>
+            </ul>
+        </div>
+        <div class="log-entry reveal">
+            <span class="stamp mono">CWIT</span>
+            <h3>Mentee</h3>
+        </div>
+    </div>
+  </section>
+	
+  <section id="log">
+    <div class="section-head reveal"><span class="idx">05</span><h2>Volunteering Log</h2></div>
+    <div class="log-timeline">
+      <div class="log-entry reveal">
+        <span class="stamp mono">ROTARACT CLUB (UOM)</span><br>
+        <h3>AS MEMBER</h3>
+        <ul>
+	  <li>Binara Padura</li>
+          <li>MonsterMash</li>
+          <li>Zooxanthellae</li>
+          <li>RUR'25</li>
+          <li>Colours</li>
+          <li>Kowul Wasanthaya</li>
+	</ul><br>
+        <h3>AS CHAIRPERSON</h3>
+        <ul>
+	  <li>Image</li>
+          <li>General Meeting</li>
+	</ul><br>
+        <h3>AS DIRECTOR (CLUB SERVICE AVENUE)</h3>
+	<ul>
+          <li>Rac Hike</li>
+          <li>Installation Ceremony</li>
+          <li>CarterDay Ceremony</li>
+	  <li>Binara Padura</li>
+          <li>MonsterMash</li>
+          <li>Lailat'26</li>
+          <li>RUR'26</li>
+          <li>General Meetings</li>
+	</ul>
+      </div>
+      <div class="log-entry reveal">
+        <span class="stamp mono">LEO CLUB (UOM)</span><br>
+        <h3>AS MEMBER</h3>
+        <ul>
+	  <li>Phoenix</li>
+          <li>Tharka</li>
+          <li>TerraForma</li>
+	</ul><br>
+        <h3>AS CHAIRPERSON</h3>
+	<ul>
+          <li>Leo Padura</li>
+	</ul>
+      </div>
+      <div class="log-entry reveal">
+        <span class="stamp mono">Academic</span><br>
+        <h3>AS SECRATORY</h3>
+        <ul>
+	      <li>CSR Project (Beyond the Books)</li>
+	    </ul><br>
+      </div>
+    </div>
+  </section>
+
+  <section id="interests">
+    <div class="section-head reveal">
+        <span class="idx">06</span>
+        <h2>Interests</h2>
+    </div>
+
+    <div class="cap-grid">
+        <div class="cap-card reveal" data-code="INT">
+            <h3>Areas of Interest</h3>
+            <ul>
+                <li>Aviation</li>
+                <li>Maritime</li>
+                <li>International Business</li>
+                <li>Designing</li>
+                <li>Exploring</li>
+            </ul>
+        </div>
+    </div>
+  </section>
+	
+  <section id="certs">
+    <div class="section-head reveal"><span class="idx">07</span><h2>Verified Certifications</h2></div>
+    <div class="cert-grid">
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/Alison_Certificate-6774-59487604_page-0001.jpg" alt="AI for Supply Chains certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · ALISON</span><h4>AI for Supply Chains &amp; Logistics (Alison Professional Certificate)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/sticker_1776306269719.png" alt="Aviation Education Camp certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · SRILANKAN AVIATION</span><h4>Aviation Education Camp (SriLankan Aviation College)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/Ravindu Wickremasinghe - 2026-06-26_page-0001.jpg" alt="AI/ML Engineer Stage 1 certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · SLIIT</span><h4>AI/ML Engineer - Stage 1 (CODE, Faculty of Computing — SLIIT)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/Coursera 3B6CCRTWMDWV_page-0001.jpg" alt="Work Smarter with Excel certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · MICROSOFT/COURSERA</span><h4>Work Smarter with Excel (Microsoft &amp; Coursera)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/sticker_1776305607876.png" alt="Professional Certificate in Marketing badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · SLIM</span><h4>Professional Certificate in Marketing (Sri Lanka Institute of Marketing — SLIM)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/sticker_1776305345018.png" alt="Computer Graphic Designer certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · TVEC</span><h4>Computer Graphic Designer (NVQ Level 4 — TVEC)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/sticker_1776306763121.png" alt="Esoft Metro Campus certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · ESOFT METRO CAMPUS</span><h4>Certificate in Information Technology (Esoft Metro Campus - Colombo 04)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/sticker_1776306815880.png" alt="AI for Supply Chains certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · INSTITUTE OF LANGUAGE DEVELOPMENT</span><h4>Diploma in English (Institute of Language Development - Maharagama)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/sticker_1776307564636.png" alt="Aviation Education Camp certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · ROTARACT CLUB</span><h4>Membership (Rotaract Club of University of Moratuwa)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/Internatinal_Business_page-0001.jpg" alt="Aviation Education Camp certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · UNIVERSITY OF LONDON/COURSERA</span><h4>Fundamentals of International Business</h4></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ongoing">
+    <div class="section-head reveal"><span class="idx">08</span><h2>Ongoing</h2></div>
+    <div class="oq-grid">
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4>Cargo Handling Course</h4>
+        <span class="provider mono">IAAC, Colombo 10</span>
+      </div>
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4><a href="https://www.coursera.org/specializations/practice-solidworks-3d-cad" target="_blank" rel="noopener">SOLIDWORKS 3D CAD for Education</a></h4>
+        <span class="provider mono"><a href="https://www.coursera.org/specializations/practice-solidworks-3d-cad" target="_blank" rel="noopener">Dassault Systemes</a></span>
+      </div>
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4><a href="https://www.coursera.org/specializations/microsoft-power-bi-data-analyst" target="_blank" rel="noopener">Power BI Data Analyst</a></h4>
+        <span class="provider mono"><a href="https://www.coursera.org/specializations/microsoft-power-bi-data-analyst" target="_blank" rel="noopener">Microsoft</a></span>
+      </div>
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4><a href="https://www.coursera.org/learn/machine-learning/home/welcome" target="_blank" rel="noopener">Supervised Machine Learning: Regression and Classification</a></h4>
+        <span class="provider mono">DeepLearning.AI</span>
+      </div>
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4><a href="https://www.coursera.org/learn/wharton-accounting/home/welcome" target="_blank" rel="noopener">Introduction to Financial Accounting</a></h4>
+        <span class="provider mono">University of Pennsylvania</span>
+      </div>
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4><a href="https://www.coursera.org/learn/mandarin-chinese-1/home/welcome" target="_blank" rel="noopener">Mandarin Chinese 1: Chinese for Beginners</a></h4>
+        <span class="provider mono">Shanghai Jiao Tong University</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-panel reveal">
+      <h2>Open Channel</h2>
+      <p>Direct lines for collaboration, opportunities, and conversations on transport, logistics, and smart mobility.</p>
+      <div class="contact-links">
+        <a class="btn primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=rswic2003@gmail.com" target="_blank" rel="noopener"> ✉ Email Direct</a>
+        <a class="btn ghost" href="https://wa.me/94723615351" target="_blank" rel="noopener">◈ WhatsApp</a>
+		<a class="btn ghost" href="tel:+94723615351">☎ Call Me</a>
+		<a class="btn ghost" href="https://www.linkedin.com/in/ravindu-wickremasinghe-9b8b22307?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener">in LinkedIn</a>
+		<a class="btn ghost" href="Portfolio pic/Ravindu_Shakye_Wickremasinghe_CV.pdf" download="Ravindu_Shakye_Wickremasinghe_CV.pdf"> ↓ Download CV</a>
+      </div>
+    </div>
+  </section>
+  <footer class="mono">© 2026 W.G. RAVINDU SHAKYE WICKREMASINGHE — TRANSPORT · LOGISTICS · AVIATION · MARITIME</footer>
+
+</div>
+
+<script>
+/* ================= particle network ================= */
+(function(){
+  const canvas=document.getElementById('net-canvas');
+  const ctx=canvas.getContext('2d');
+  let w,h,particles=[];
+  const mouse={x:null,y:null,radius:150};
+
+  function resize(){
+    w=canvas.width=window.innerWidth;
+    h=canvas.height=window.innerHeight;
+  }
+  window.addEventListener('resize',resize);
+  resize();
+
+  const COUNT=Math.min(90,Math.floor((window.innerWidth*window.innerHeight)/16000));
+  function initParticles(){
+    particles=[];
+    for(let i=0;i<COUNT;i++){
+      particles.push({
+        x:Math.random()*w,
+        y:Math.random()*h,
+        vx:(Math.random()-0.5)*0.35,
+        vy:(Math.random()-0.5)*0.35,
+        r:Math.random()*1.6+0.6
+      });
+    }
+  }
+  initParticles();
+
+  window.addEventListener('mousemove',(e)=>{
+    mouse.x=e.clientX;
+    mouse.y=e.clientY;
+  });
+  window.addEventListener('mouseout',()=>{mouse.x=null;mouse.y=null;});
+
+  function step(){
+    ctx.clearRect(0,0,w,h);
+
+    for(const p of particles){
+      p.x+=p.vx;
+      p.y+=p.vy;
+      if(p.x<0||p.x>w)p.vx*=-1;
+      if(p.y<0||p.y>h)p.vy*=-1;
+    }
+
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const a=particles[i],b=particles[j];
+        const dx=a.x-b.x,dy=a.y-b.y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<130){
+          ctx.strokeStyle=`rgba(62,230,224,${(1-dist/130)*0.18})`;
+          ctx.lineWidth=1;
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y);
+          ctx.lineTo(b.x,b.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    if(mouse.x!==null){
+      for(const p of particles){
+        const dx=p.x-mouse.x,dy=p.y-mouse.y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<mouse.radius){
+          ctx.strokeStyle=`rgba(77,255,180,${(1-dist/mouse.radius)*0.5})`;
+          ctx.lineWidth=1;
+          ctx.beginPath();
+          ctx.moveTo(p.x,p.y);
+          ctx.lineTo(mouse.x,mouse.y);
+          ctx.stroke();
+        }
+      }
+      ctx.fillStyle='rgba(255,107,94,0.9)';
+      ctx.beginPath();
+      ctx.arc(mouse.x,mouse.y,3,0,Math.PI*2);
+      ctx.fill();
+    }
+
+    for(const p of particles){
+      ctx.fillStyle='rgba(220,232,240,0.55)';
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fill();
+    }
+
+    requestAnimationFrame(step);
+  }
+  step();
+})();
+
+/* ================= custom cursor ================= */
+(function(){
+  const dot=document.getElementById('cursorDot');
+  const ring=document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  let lastTrail=0;
+
+  window.addEventListener('mousemove',(e)=>{
+    mx=e.clientX;my=e.clientY;
+    dot.style.left=mx+'px';
+    dot.style.top=my+'px';
+
+    const now=performance.now();
+    if(now-lastTrail>40){
+      lastTrail=now;
+      const trail=document.createElement('div');
+      trail.className='cursor-trail';
+      trail.style.left=mx+'px';
+      trail.style.top=my+'px';
+      document.body.appendChild(trail);
+      const start=performance.now();
+      function fade(){
+        const elapsed=performance.now()-start;
+        const t=elapsed/600;
+        if(t>=1){trail.remove();return;}
+        trail.style.opacity=String(0.7*(1-t));
+        trail.style.transform=`translate(-50%,-50%) scale(${1-t*0.6})`;
+        requestAnimationFrame(fade);
+      }
+      requestAnimationFrame(fade);
+    }
+  });
+
+  function easeRing(){
+    rx+=(mx-rx)*0.15;
+    ry+=(my-ry)*0.15;
+    ring.style.left=rx+'px';
+    ring.style.top=ry+'px';
+    requestAnimationFrame(easeRing);
+  }
+  easeRing();
+
+  const magnets=document.querySelectorAll('a,button,.btn,.cap-card,.cert-card,.oq-card');
+  magnets.forEach(el=>{
+    el.addEventListener('mouseenter',()=>ring.classList.add('magnet'));
+    el.addEventListener('mouseleave',()=>ring.classList.remove('magnet'));
+  });
+})();
+
+/* ================= hero typing loop ================= */
+(function(){
+  const strings=[
+    "Optimizing logistics networks.",
+    "Navigating future transport infrastructure.",
+    "Bridging tech design with system logistics."
+  ];
+  const el=document.getElementById('typeText');
+  let sIdx=0,cIdx=0,deleting=false;
+
+  function tick(){
+    const current=strings[sIdx];
+    if(!deleting){
+      cIdx++;
+      el.textContent=current.slice(0,cIdx);
+      if(cIdx===current.length){
+        deleting=true;
+        setTimeout(tick,1500);
+        return;
+      }
+      setTimeout(tick,55);
+    }else{
+      cIdx--;
+      el.textContent=current.slice(0,cIdx);
+      if(cIdx===0){
+        deleting=false;
+        sIdx=(sIdx+1)%strings.length;
+        setTimeout(tick,300);
+        return;
+      }
+      setTimeout(tick,30);
+    }
+  }
+  tick();
+})();
+
+/* ================= scroll reveal ================= */
+(function(){
+  const items=document.querySelectorAll('.reveal');
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.15});
+  items.forEach(item=>io.observe(item));
+})();
+</script>
+
 </body>
 </html>
