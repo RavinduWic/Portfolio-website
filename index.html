@@ -1,1623 +1,1158 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CELLULAR LK - Premium Phone Brokerage</title>
-  <meta name="description" content="CELLULAR LK - Sourcing, authenticating, and brokering premium handpicked smartphones in Sri Lanka. Fast inquiry and easy custom sell requests.">
-  
-  <!-- Tailwind CSS Play CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Google Fonts: Outfit (headings) & Inter (body) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Lucide Icons (CDN) -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ravindu Shakye Wickremasinghe — Transport &amp; Logistics Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-void:#050b14;
+  --bg-panel:#0b1826;
+  --bg-panel-2:#0f2233;
+  --border-slate:#1c3a4d;
+  --cyan:#3ee6e0;
+  --mint:#4dffb4;
+  --coral:#ff6b5e;
+  --ink:#dce8f0;
+  --ink-dim:#84a0ae;
+  --ink-faint:#4b6472;
+}
 
-  <!-- Tailwind Custom Configuration -->
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            heading: ['Outfit', 'sans-serif'],
-            body: ['Inter', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              charcoal: '#080C14',
-              slate: '#1E293B',
-              blue: '#3B82F6',
-              neonBlue: '#00F0FF',
-              emerald: '#10B981',
-              neonGreen: '#00FFA3',
-              purple: '#8B5CF6',
-              gold: '#F59E0B',
-            }
-          },
-          backgroundImage: {
-            'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-          },
-          animation: {
-            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            'float': 'float 6s ease-in-out infinite',
-            'glow-spin': 'glow-spin 12s linear infinite',
-            'slide-in': 'slide-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-12px)' },
-            },
-            'glow-spin': {
-              '0%': { transform: 'rotate(0deg)' },
-              '100%': { transform: 'rotate(360deg)' },
-            },
-            'slide-in': {
-              '0%': { transform: 'translateY(10px) scale(0.98)', opacity: '0' },
-              '100%': { transform: 'translateY(0) scale(1)', opacity: '1' }
-            }
-          }
-        }
-      }
-    }
-  </script>
+*{margin:0;padding:0;box-sizing:border-box;}
 
-  <style type="text/css">
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Outfit', sans-serif;
-    }
-    
-    /* Glassmorphism custom classes */
-    .glass-nav {
-      background: rgba(8, 12, 20, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .glass-card:hover {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: rgba(59, 130, 246, 0.35);
-      box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.15);
-    }
-    .glass-modal {
-      background: rgba(8, 12, 20, 0.92);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.09);
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--bg-void);
+  color:var(--ink);
+  font-family:'Barlow',sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+  cursor:none;
+}
+
+::selection{background:var(--cyan);color:var(--bg-void);}
+
+a{color:inherit;text-decoration:none;}
+
+h1{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  color:#fff;
+}
+
+h2,h3,h4{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+  color:#fff;
+}
+
+.mono{
+  font-family:'Share Tech Mono',monospace;
+  letter-spacing:0.03em;
+}
+
+/* ===== background canvas ===== */
+#net-canvas{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+}
+
+/* ===== custom cursor ===== */
+.cursor-dot{
+  position:fixed;
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--cyan);
+  box-shadow:0 0 8px var(--cyan),0 0 16px var(--cyan);
+  pointer-events:none;
+  z-index:9999;
+  transform:translate(-50%,-50%);
+  top:0;left:0;
+}
+.cursor-ring{
+  position:fixed;
+  width:34px;height:34px;
+  border-radius:50%;
+  border:1px solid var(--mint);
+  pointer-events:none;
+  z-index:9998;
+  transform:translate(-50%,-50%);
+  top:0;left:0;
+  transition:width .25s ease,height .25s ease,border-color .25s ease,opacity .25s ease;
+}
+.cursor-ring.magnet{
+  width:58px;height:58px;
+  border-color:var(--coral);
+  background:rgba(255,107,94,0.06);
+}
+.cursor-trail{
+  position:fixed;
+  width:4px;height:4px;
+  border-radius:50%;
+  background:var(--mint);
+  pointer-events:none;
+  z-index:9997;
+  top:0;left:0;
+  transform:translate(-50%,-50%);
+  opacity:0.7;
+}
+
+@media (hover:none), (pointer:coarse){
+  body{cursor:auto;}
+  .cursor-dot,.cursor-ring,.cursor-trail{display:none;}
+}
+
+/* ===== layout shell ===== */
+.wrap{
+  position:relative;
+  z-index:1;
+}
+
+.manifest-strip{
+  position:sticky;
+  top:0;
+  z-index:50;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:0.7rem 1.6rem;
+  background:rgba(5,11,20,0.85);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border-slate);
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.72rem;
+  color:var(--ink-dim);
+  flex-wrap:wrap;
+}
+.manifest-strip .seg{display:flex;align-items:center;gap:0.5rem;}
+.manifest-strip .tag{
+  color:var(--mint);
+  border:1px solid rgba(77,255,180,0.35);
+  padding:0.1rem 0.5rem;
+  border-radius:2px;
+}
+.manifest-strip .route{color:var(--cyan);}
+.manifest-strip nav{display:flex;gap:1.4rem;}
+.manifest-strip nav a{color:var(--ink-dim);transition:color .2s;}
+.manifest-strip nav a:hover{color:var(--cyan);}
+
+/* ===== hero ===== */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:8vh 6vw 6vh;
+  position:relative;
+}
+.hero .eyebrow{
+  font-family:'Share Tech Mono',monospace;
+  color:var(--mint);
+  font-size:0.85rem;
+  letter-spacing:0.25em;
+  margin-bottom:1.4rem;
+  display:flex;
+  align-items:center;
+  gap:0.6rem;
+}
+.hero .eyebrow::before{
+  content:"";
+  width:8px;height:8px;
+  background:var(--mint);
+  border-radius:50%;
+  box-shadow:0 0 10px var(--mint);
+  animation:pulse 1.6s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.25;}}
+
+.hero h1{
+  font-size:clamp(2.1rem,6.4vw,5.4rem);
+  line-height:0.98;
+  max-width:16ch;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+  background:linear-gradient(270deg,#fff 30%,var(--cyan) 65%,var(--mint) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero .subline{
+  margin-top:1.6rem;
+  font-size:clamp(1rem,2vw,1.3rem);
+  color:var(--ink-dim);
+  font-weight:400;
+  max-width:44ch;
+}
+.type-cycle{
+  margin-top:2.2rem;
+  font-family:'Share Tech Mono',monospace;
+  font-size:1rem;
+  color:var(--cyan);
+  min-height:1.6em;
+  border-left:2px solid var(--mint);
+  padding-left:0.9rem;
+}
+.type-cycle .cursor-char{
+  display:inline-block;
+  width:8px;
+  background:var(--mint);
+  margin-left:2px;
+  animation:blink 0.9s steps(1) infinite;
+}
+@keyframes blink{50%{opacity:0;}}
+
+.hero .cta-row{
+  margin-top:3rem;
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+.btn{
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.82rem;
+  letter-spacing:0.08em;
+  padding:0.85rem 1.5rem;
+  border:1px solid var(--border-slate);
+  border-radius:2px;
+  background:rgba(255,255,255,0.02);
+  transition:all .25s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+}
+.btn.primary{
+  border-color:var(--cyan);
+  color:var(--cyan);
+}
+.btn.primary:hover{
+  background:var(--cyan);
+  color:var(--bg-void);
+  box-shadow:0 0 24px rgba(62,230,224,0.45);
+}
+.btn.ghost:hover{
+  border-color:var(--mint);
+  color:var(--mint);
+}
+
+/* ===== Hero Layout ===== */
+.hero-content{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:80px;
+    flex-wrap:wrap;
+}
+
+.hero-text{
+    flex:1;
+    min-width:350px;
+}
+
+.hero-image{
+    flex:0 0 360px;
+    display:flex;
+    justify-content:center;
+}
+
+.hero-image img{
+    width:340px;
+    max-width:100%;
+    border-radius:20px;
+    border:3px solid var(--cyan);
+    box-shadow:0 0 35px rgba(62,230,224,.35);
+    transition:.4s;
+}
+
+.hero-image img:hover{
+    transform:scale(1.03);
+}
+
+@media(max-width:900px){
+    .hero-content{
+        flex-direction:column-reverse;
+        text-align:center;
     }
 
-    /* Light mode glass overrides */
-    .light .glass-nav {
-      background: rgba(255, 255, 255, 0.8);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    .hero-text{
+        min-width:100%;
     }
-    .light .glass-card {
-      background: rgba(0, 0, 0, 0.015);
-      border: 1px solid rgba(0, 0, 0, 0.05);
-    }
-    .light .glass-card:hover {
-      background: rgba(0, 0, 0, 0.03);
-      border-color: rgba(59, 130, 246, 0.4);
-      box-shadow: 0 10px 35px -10px rgba(59, 130, 246, 0.1);
-    }
-    .light .glass-modal {
-      background: rgba(255, 255, 255, 0.96);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-    }
+}
 
-    /* Scrollbars */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #080C14;
-    }
-    .light ::-webkit-scrollbar-track {
-      background: #F8FAFC;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #1E293B;
-      border-radius: 4px;
-    }
-    .light ::-webkit-scrollbar-thumb {
-      background: #CBD5E1;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #3B82F6;
-    }
+/* ===== sections general ===== */
+section{
+  position:relative;
+  padding:9vh 6vw;
+  max-width:1280px;
+  margin:0 auto;
+}
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:1rem;
+  margin-bottom:3rem;
+  border-bottom:1px solid var(--border-slate);
+  padding-bottom:1rem;
+}
+.section-head .idx{
+  font-family:'Share Tech Mono',monospace;
+  color:var(--ink-faint);
+  font-size:0.85rem;
+}
+.section-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);}
 
-    /* Gradient blur background spots */
-    .glow-blur-1 {
-      filter: blur(130px);
-      mix-blend-mode: plus-lighter;
-    }
-    .glow-blur-2 {
-      filter: blur(130px);
-      mix-blend-mode: plus-lighter;
-    }
-    
-    /* Carousel animation transition */
-    .carousel-image {
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-    }
-  </style>
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .7s ease, transform .7s ease;
+}
+.reveal.in-view{opacity:1;transform:translateY(0);}
+
+/* ===== about ===== */
+.about-grid{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:3rem;
+  align-items:start;
+}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr;}}
+.about-copy p{
+  color:var(--ink-dim);
+  line-height:1.8;
+  margin-bottom:1.2rem;
+  font-size:0.98rem;
+}
+.about-copy p strong{color:var(--ink);font-weight:500;}
+.about-card{
+  background:linear-gradient(160deg,var(--bg-panel),var(--bg-panel-2));
+  border:1px solid var(--border-slate);
+  border-radius:4px;
+  padding:1.8rem;
+}
+.about-card .row{
+  display:flex;
+  justify-content:space-between;
+  padding:0.7rem 0;
+  border-bottom:1px dashed rgba(75,100,114,0.3);
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.82rem;
+}
+.about-card .row:last-child{border-bottom:none;}
+.about-card .row span:first-child{color:var(--ink-faint);}
+.about-card .row span:last-child{color:var(--mint);text-align:right;}
+
+/* ===== capabilities ===== */
+.cap-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1.4rem;
+}
+.cap-card{
+  background:rgba(255,255,255,0.02);
+  border:1px solid var(--border-slate);
+  border-radius:4px;
+  padding:1.6rem;
+  position:relative;
+  overflow:hidden;
+  transition:transform .3s ease,border-color .3s ease;
+}
+.cap-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--cyan);
+}
+.cap-card::before{
+  content:attr(data-code);
+  position:absolute;
+  top:0.9rem;right:1rem;
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.7rem;
+  color:var(--ink-faint);
+}
+.cap-card h3{
+  font-size:1.15rem;
+  color:var(--cyan);
+  margin-bottom:0.9rem;
+  max-width:80%;
+}
+.cap-card ul{list-style:none;}
+.cap-card li{
+  color:var(--ink-dim);
+  font-size:0.88rem;
+  padding:0.35rem 0;
+  padding-left:1rem;
+  position:relative;
+  line-height:1.5;
+}
+.cap-card li::before{
+  content:"›";
+  position:absolute;
+  left:0;
+  color:var(--mint);
+}
+
+/* ===== timeline ===== */
+.log-timeline{
+  border-left:1px solid var(--border-slate);
+  margin-left:0.6rem;
+}
+.log-entry{
+  position:relative;
+  padding:0 0 2.6rem 2.2rem;
+}
+.log-entry:last-child{padding-bottom:0;}
+.log-entry::before{
+  content:"";
+  position:absolute;
+  left:-5.5px;top:0.3rem;
+  width:10px;height:10px;
+  border-radius:50%;
+  background:var(--bg-void);
+  border:2px solid var(--mint);
+}
+.log-entry .stamp{
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.72rem;
+  color:var(--coral);
+  letter-spacing:0.06em;
+  margin-bottom:0.4rem;
+  display:block;
+}
+.log-entry h3{
+  font-size:1.25rem;
+  color:#fff;
+  margin-bottom:0.4rem;
+}
+.log-entry ul{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 40px;
+
+    /* Leave space before the first column */
+    padding-left: 40px;
+
+    list-style-position: outside;
+}
+.log-entry li{
+  margin-bottom: 10px;
+  color:var(--ink-dim);
+  font-size:0.92rem;
+  line-height:0.5;
+  max-width:60ch;
+}
+
+/* ===== certifications ===== */
+.cert-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1.4rem;
+}
+.cert-card{
+  background:var(--bg-panel);
+  border:1px solid var(--border-slate);
+  border-radius:4px;
+  overflow:hidden;
+  transition:border-color .3s ease,transform .3s ease;
+}
+.cert-card:hover{
+  border-color:var(--mint);
+  transform:translateY(-3px);
+}
+.cert-frame{
+  height:190px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    linear-gradient(rgba(62,230,224,0.05),rgba(62,230,224,0.05)),
+    repeating-linear-gradient(45deg,rgba(255,255,255,0.02) 0 2px,transparent 2px 14px);
+  border-bottom:1px solid var(--border-slate);
+  padding:1rem;
+}
+.cert-frame img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  filter:drop-shadow(0 0 10px rgba(62,230,224,0.15));
+}
+.cert-meta{
+  padding:1rem 1.2rem 1.3rem;
+}
+.cert-meta .verified{
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.68rem;
+  color:var(--mint);
+  letter-spacing:0.1em;
+  display:flex;
+  align-items:center;
+  gap:0.4rem;
+  margin-bottom:0.5rem;
+}
+.cert-meta .verified::before{content:"✓";}
+.cert-meta h4{
+  font-size:1rem;
+  color:var(--ink);
+  text-transform:none;
+  font-weight:500;
+  letter-spacing:0;
+  line-height:1.4;
+}
+
+/* ===== ongoing qualifications ===== */
+.oq-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.4rem;
+}
+.oq-card{
+  background:rgba(255,255,255,0.02);
+  border:1px solid var(--border-slate);
+  border-radius:4px;
+  padding:1.4rem 1.6rem;
+  transition:transform .3s ease,border-color .3s ease;
+}
+.oq-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--coral);
+}
+.oq-card .status{
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.68rem;
+  color:var(--coral);
+  letter-spacing:0.1em;
+  display:inline-flex;
+  align-items:center;
+  gap:0.4rem;
+  margin-bottom:0.7rem;
+  border:1px solid rgba(255,107,94,0.35);
+  padding:0.1rem 0.5rem;
+  border-radius:2px;
+}
+.oq-card h4{
+  font-size:1.02rem;
+  color:var(--ink);
+  text-transform:none;
+  font-weight:500;
+  letter-spacing:0;
+  line-height:1.4;
+  margin-bottom:0.5rem;
+}
+.oq-card h4 a{
+  color:var(--cyan);
+  transition:color .2s;
+  border-bottom:1px dashed rgba(62,230,224,0.35);
+}
+.oq-card h4 a:hover{
+  color:var(--mint);
+  border-color:var(--mint);
+}
+.oq-card .provider{
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.78rem;
+  color:var(--ink-dim);
+}
+.oq-card .provider a{
+  color:var(--ink-dim);
+}
+.oq-card .provider a:hover{
+  color:var(--mint);
+}
+
+/* ===== contact / footer ===== */
+.contact-panel{
+  background:linear-gradient(160deg,var(--bg-panel),var(--bg-panel-2));
+  border:1px solid var(--border-slate);
+  border-radius:6px;
+  padding:3rem;
+  text-align:center;
+}
+.contact-panel h2{font-size:clamp(1.8rem,4vw,3rem);margin-bottom:1rem;}
+.contact-panel p{color:var(--ink-dim);max-width:50ch;margin:0 auto 2rem;}
+.contact-links{
+  display:flex;
+  justify-content:center;
+  gap:1.2rem;
+  flex-wrap:wrap;
+}
+.contact-address{
+    margin-top:1.5rem;
+    color:var(--ink-dim);
+    line-height:1.7;
+    font-size:0.8rem;
+}
+footer{
+  text-align:center;
+  padding:2.4rem 1rem 3rem;
+  color:var(--ink-faint);
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.75rem;
+}
+
+@media (max-width:600px){
+  section{padding:7vh 5vw;}
+  .contact-panel{padding:2rem 1.2rem;}
+}
+</style>
 </head>
-<body class="bg-brand-charcoal text-slate-200 transition-colors duration-300 overflow-x-hidden selection:bg-brand-blue selection:text-white dark:bg-brand-charcoal light:bg-slate-50 light:text-slate-900">
+<body>
 
-  <!-- Glowing Background Orbs (Dark Mode Only) -->
-  <div class="absolute top-[-10%] left-[-15%] w-[600px] h-[600px] rounded-full bg-brand-blue/10 glow-blur-1 pointer-events-none -z-10 animate-pulse-slow"></div>
-  <div class="absolute top-[35%] right-[-10%] w-[700px] h-[700px] rounded-full bg-brand-purple/5 glow-blur-2 pointer-events-none -z-10 animate-pulse-slow"></div>
-  <div class="absolute bottom-[20%] left-[5%] w-[600px] h-[600px] rounded-full bg-brand-emerald/5 glow-blur-1 pointer-events-none -z-10"></div>
+<canvas id="net-canvas"></canvas>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-  <!-- HEADER / NAVIGATION -->
-  <nav class="fixed top-0 left-0 right-0 z-40 glass-nav transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        <!-- Logo -->
-        <a href="#" class="flex items-center space-x-3 group">
-          <!-- Unique SVG Logo: Geometric Shield interlacing a C, L, and K logo -->
-          <div class="relative w-11 h-11 flex items-center justify-center bg-slate-950/50 rounded-2xl border border-white/10 group-hover:border-brand-neonBlue/50 transition-colors duration-300 shadow-inner">
-            <svg class="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="logo-grad-primary" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#3B82F6" />
-                  <stop offset="100%" stop-color="#00F0FF" />
-                </linearGradient>
-                <linearGradient id="logo-grad-secondary" x1="0%" y1="100%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#00FFA3" />
-                  <stop offset="100%" stop-color="#3B82F6" />
-                </linearGradient>
-              </defs>
-              <!-- Outer phone mockup grid silhouette / Shield outline -->
-              <path d="M50 8 L85 22 V62 C85 75, 65 90, 50 94 C35 90, 15 75, 15 62 V22 L50 8Z" stroke="url(#logo-grad-primary)" stroke-width="5" stroke-linejoin="round" fill="none" opacity="0.4"/>
-              
-              <!-- Letter "C" (blending into cell bars left side) -->
-              <path d="M42 28 C28 28, 25 40, 25 50 C25 60, 28 72, 42 72" stroke="url(#logo-grad-primary)" stroke-width="8" stroke-linecap="round" fill="none"/>
-              <!-- Letter "L" (forms the base corner bottom middle) -->
-              <path d="M44 48 V66 H62" stroke="url(#logo-grad-secondary)" stroke-width="7" stroke-linecap="round" fill="none"/>
-              <!-- Letter "K" (forms the right-side diagonals) -->
-              <path d="M68 32 V68 M68 50 L82 32 M68 50 L82 68" stroke="url(#logo-grad-primary)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              
-              <!-- Core cell transmission indicator point in the center -->
-              <circle cx="50" cy="18" r="3.5" fill="#00F0FF" class="animate-ping" style="transform-origin: 50px 18px;"/>
-              <circle cx="50" cy="18" r="2" fill="#00FFA3"/>
-            </svg>
-          </div>
-          <span class="text-2xl font-extrabold tracking-widest font-heading bg-gradient-to-r from-white via-slate-100 to-brand-blue bg-clip-text text-transparent group-hover:to-brand-neonBlue transition-all duration-300">
-            CELLULAR <span class="text-brand-neonBlue">LK</span>
-          </span>
-        </a>
+<div class="wrap">
 
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="#hero" class="text-sm font-medium hover:text-brand-blue transition-colors">Home</a>
-          <a href="#brands" class="text-sm font-medium hover:text-brand-blue transition-colors">Catalog</a>
-          <a href="#consignment" class="text-sm font-medium hover:text-brand-blue transition-colors">Sell Phone</a>
-          <a href="#about" class="text-sm font-medium hover:text-brand-blue transition-colors">Brokerage</a>
-          <a href="#faq" class="text-sm font-medium hover:text-brand-blue transition-colors">FAQ</a>
-        </div>
-
-        <!-- Right Side: Dark Mode Toggle & CTA -->
-        <div class="flex items-center space-x-4">
-          <!-- Light/Dark Mode Switcher -->
-          <button id="theme-toggle" class="p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-brand-blue/30 text-slate-300 hover:text-white transition-all focus:outline-none" aria-label="Toggle Theme">
-            <i data-lucide="sun" id="theme-toggle-light-icon" class="w-5 h-5 hidden"></i>
-            <i data-lucide="moon" id="theme-toggle-dark-icon" class="w-5 h-5"></i>
-          </button>
-          
-          <!-- CTA Nav Button -->
-          <a href="#brands" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-brand-blue to-blue-600 hover:from-brand-neonBlue hover:to-brand-blue shadow-lg shadow-brand-blue/25 hover:shadow-brand-blue/40 border border-brand-blue/30 transform hover:-translate-y-0.5 transition-all duration-300">
-            Browse Devices
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO SECTION -->
-  <section id="hero" class="relative pt-36 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <!-- Text Content -->
-        <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
-          <!-- Tagline -->
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold tracking-wide text-brand-blue uppercase">
-            <span class="flex h-2 w-2 relative">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-emerald opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-emerald"></span>
-            </span>
-            Premium Sri Lankan Phone Brokerage
-          </div>
-          
-          <!-- Main Heading -->
-          <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-none">
-            <span class="block text-white">Acquire & Broker</span>
-            <span class="block bg-gradient-to-r from-brand-blue via-brand-neonBlue to-brand-purple bg-clip-text text-transparent py-2">
-              Flawless Flagships
-            </span>
-          </h1>
-          
-          <!-- Subtext -->
-          <p class="text-base sm:text-lg text-slate-400 max-w-xl mx-auto lg:mx-0">
-            Welcome to <strong>CELLULAR LK</strong>. We broker certified flagship devices with strict physical grading and multi-point hardware diagnostics. Find verified listings or list your own device for sale.
-          </p>
-          
-          <!-- CTAs -->
-          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-            <a href="#brands" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-2xl text-base font-bold text-white bg-gradient-to-r from-brand-blue to-blue-600 hover:from-brand-neonBlue hover:to-brand-blue shadow-xl shadow-brand-blue/30 hover:shadow-brand-blue/55 border border-brand-blue/30 transition-all duration-300 group">
-              View Available Stock
-              <i data-lucide="arrow-right" class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-            </a>
-            <a href="#consignment" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-2xl text-base font-semibold text-slate-300 hover:text-white bg-white/5 border border-white/10 hover:bg-white/10 hover:border-slate-500 transition-all duration-300">
-              Sell Your Device
-            </a>
-          </div>
-
-          <!-- Quick trust stats -->
-          <div class="grid grid-cols-3 gap-6 pt-6 max-w-md mx-auto lg:mx-0 border-t border-white/5">
-            <div>
-              <p class="text-2xl font-bold font-heading text-white">LKR</p>
-              <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Local Pricing</p>
-            </div>
-            <div>
-              <p class="text-2xl font-bold font-heading text-white">100%</p>
-              <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Verified Stock</p>
-            </div>
-            <div>
-              <p class="text-2xl font-bold font-heading text-white">24h</p>
-              <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Broker Support</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Phone Showcase Mockup (Aesthetic Graphic) -->
-        <div class="lg:col-span-5 flex justify-center relative">
-          <!-- Glowing background sphere -->
-          <div class="absolute w-[350px] h-[350px] rounded-full bg-gradient-to-tr from-brand-blue to-brand-purple opacity-20 filter blur-3xl animate-float -z-10"></div>
-          
-          <div class="relative w-72 h-[560px] rounded-[48px] bg-slate-950 border-[6px] border-slate-800/80 shadow-[0_0_50px_rgba(0,240,255,0.12)] overflow-hidden flex flex-col p-4 justify-between animate-float">
-            <!-- Notch/Dynamic Island -->
-            <div class="absolute top-3 left-1/2 transform -translate-x-1/2 w-28 h-6 bg-slate-900 rounded-full flex items-center justify-center border border-white/5 z-20">
-              <span class="w-2.5 h-2.5 rounded-full bg-slate-950 border border-slate-800/50 mr-4"></span>
-              <span class="w-1.5 h-1.5 rounded-full bg-slate-950 border border-slate-800/50"></span>
-            </div>
-            
-            <!-- In-screen Header -->
-            <div class="flex items-center justify-between text-[10px] text-slate-500 px-2 pt-2 z-10">
-              <span>9:41</span>
-              <div class="flex space-x-1 items-center">
-                <i data-lucide="signal" class="w-3 h-3"></i>
-                <i data-lucide="wifi" class="w-3 h-3"></i>
-                <i data-lucide="battery" class="w-3.5 h-3.5"></i>
-              </div>
-            </div>
-
-            <!-- In-screen Content Mockup -->
-            <div class="flex-1 flex flex-col justify-center px-4 py-8 space-y-6">
-              <div class="space-y-2 text-center">
-                <span class="text-[9px] uppercase tracking-widest text-brand-neonBlue font-bold px-2 py-0.5 bg-brand-blue/10 rounded-full">Weekly Highlight</span>
-                <h3 class="text-xl font-bold font-heading text-white">iPhone 15 Pro Max</h3>
-                <p class="text-xs text-slate-400">Natural Titanium • 256GB</p>
-              </div>
-
-              <!-- Product Graphic in Mockup -->
-              <div class="relative h-44 flex items-center justify-center">
-                <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=300&auto=format&fit=crop&q=80" alt="iPhone 15 Pro Max" class="h-full object-contain drop-shadow-[0_15px_20px_rgba(0,0,0,0.6)] rounded-2xl">
-              </div>
-
-              <!-- Details/CTA in Mockup -->
-              <div class="space-y-3">
-                <div class="flex justify-between items-center bg-white/5 border border-white/10 rounded-xl p-2 px-3 text-[11px]">
-                  <span class="text-slate-400">Condition</span>
-                  <span class="text-brand-emerald font-semibold">Mint (10/10)</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <div>
-                    <span class="text-[9px] text-slate-500 line-through">Rs. 320,000</span>
-                    <p class="text-sm font-extrabold text-white leading-none">Rs. 299,000</p>
-                  </div>
-                  <span class="px-2.5 py-1.5 rounded-lg bg-brand-blue text-[9px] font-bold text-white shadow-lg shadow-brand-blue/20">CELLULAR LK Spec</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Home Indicator -->
-            <div class="w-24 h-1 bg-slate-700/80 rounded-full mx-auto mb-1"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BRAND SELECTOR & BROKER CATALOG -->
-  <section id="brands" class="relative py-20 border-t border-white/5 bg-slate-950/20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Section Title & Search -->
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-16">
-        <div class="text-center md:text-left space-y-3 max-w-xl">
-          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-            Premium Handpicked Stock
-          </h2>
-          <p class="text-slate-400 text-sm sm:text-base">
-            Select a brand or search to explore. Click any card to inspect full condition files, multi-angle images, and owner specifications.
-          </p>
-        </div>
-        
-        <!-- Live Search Bar -->
-        <div class="relative w-full md:w-80">
-          <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
-            <i data-lucide="search" class="w-4 h-4"></i>
-          </span>
-          <input type="text" id="live-search-input" onkeyup="handleSearch()" placeholder="Search model, color, specs..." class="w-full pl-10 pr-4 py-3 rounded-2xl bg-white/5 border border-white/10 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-brand-blue transition-colors">
-        </div>
-      </div>
-
-      <!-- 1. Grid of Brands -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-12" id="brand-selector-grid">
-        <button onclick="filterBrand('All')" class="brand-tab-btn active w-full flex flex-col items-center justify-center p-6 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden" data-brand="All">
-          <div class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-brand-blue to-brand-neonBlue opacity-100 transition-opacity"></div>
-          <div class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 group-hover:border-brand-blue/40 mb-3 transition-colors">
-            <i data-lucide="layout-grid" class="w-6 h-6 text-brand-blue"></i>
-          </div>
-          <span class="font-heading text-sm font-semibold text-white">All Stock</span>
-          <span class="text-[10px] text-slate-500 mt-1" id="count-all">0 devices</span>
-        </button>
-
-        <button onclick="filterBrand('Apple')" class="brand-tab-btn w-full flex flex-col items-center justify-center p-6 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden" data-brand="Apple">
-          <div class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-brand-blue to-brand-neonBlue opacity-0 transition-opacity"></div>
-          <div class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 group-hover:border-brand-blue/40 mb-3 transition-colors">
-            <svg class="w-6 h-6 fill-current text-slate-400 group-hover:text-white transition-colors" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.22.67-2.94 1.5-.64.73-1.2 1.87-1.05 2.97 1.12.09 2.26-.57 3-1.41z"/>
-            </svg>
-          </div>
-          <span class="font-heading text-sm font-semibold text-slate-300 group-hover:text-white transition-colors">Apple</span>
-          <span class="text-[10px] text-slate-500 mt-1" id="count-apple">0 devices</span>
-        </button>
-
-        <button onclick="filterBrand('Samsung')" class="brand-tab-btn w-full flex flex-col items-center justify-center p-6 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden" data-brand="Samsung">
-          <div class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-brand-blue to-brand-neonBlue opacity-0 transition-opacity"></div>
-          <div class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 group-hover:border-brand-blue/40 mb-3 transition-colors">
-            <i data-lucide="smartphone" class="w-6 h-6 text-slate-400 group-hover:text-white transition-colors"></i>
-          </div>
-          <span class="font-heading text-sm font-semibold text-slate-300 group-hover:text-white transition-colors">Samsung</span>
-          <span class="text-[10px] text-slate-500 mt-1" id="count-samsung">0 devices</span>
-        </button>
-
-        <button onclick="filterBrand('Google')" class="brand-tab-btn w-full flex flex-col items-center justify-center p-6 rounded-2xl glass-card transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden" data-brand="Google">
-          <div class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-brand-blue to-brand-neonBlue opacity-0 transition-opacity"></div>
-          <div class="w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl border border-white/10 group-hover:border-brand-blue/40 mb-3 transition-colors">
-            <!-- Custom Google G Icon SVG -->
-            <svg class="w-6 h-6 fill-current text-slate-400 group-hover:text-white transition-colors" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.113-5.211 4.113A5.73 5.73 0 018 12.8a5.73 5.73 0 015.916-5.713c1.642.022 3.1 1.343 3.1 1.343l2.842-2.844S17.447 3.325 13.92 3.325C8.91 3.325 5 7.235 5 12.2s3.91 8.875 8.92 8.875c5.385 0 8.784-3.791 8.784-8.875 0-.61-.061-1.2-.183-1.715H12.24z"/>
-            </svg>
-          </div>
-          <span class="font-heading text-sm font-semibold text-slate-300 group-hover:text-white transition-colors">Google</span>
-          <span class="text-[10px] text-slate-500 mt-1" id="count-google">0 devices</span>
-        </button>
-      </div>
-
-      <!-- 2. Dynamic Catalog Container -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12" id="inventory-grid">
-        <!-- Cards dynamically loaded -->
-      </div>
-      
-      <!-- Empty Search/Filter State -->
-      <div id="empty-state" class="hidden text-center py-16 space-y-4">
-        <div class="w-16 h-16 bg-white/5 border border-white/10 rounded-full flex items-center justify-center mx-auto text-slate-500">
-          <i data-lucide="package-search" class="w-8 h-8"></i>
-        </div>
-        <h3 class="text-lg font-semibold text-white">No matching stock found</h3>
-        <p class="text-slate-500 text-sm max-w-sm mx-auto">We don't currently have this specific configuration listed. Submit a request to buy or ask our broker to source it.</p>
-        <button onclick="scrollToConsignment()" class="inline-flex items-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-          Sourcing Request
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- BROKER CONSIGNMENT & NEW UPLOADS SECTION -->
-  <section id="consignment" class="py-20 relative overflow-hidden border-t border-white/5 bg-slate-950/45">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Header -->
-      <div class="text-center space-y-4 max-w-xl mx-auto mb-16">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-emerald/10 border border-brand-emerald/30 text-xs font-semibold tracking-wide text-brand-neonGreen uppercase">
-          Consignment Program
-        </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-          Sell Your Phone On CELLULAR LK
-        </h2>
-        <p class="text-slate-400 text-sm sm:text-base">
-          Pay a listing fee, submit your device specs, and we will list it in our catalog. Buyers will contact our broker directly. We verify payment slips before publishing any device.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        
-        <!-- Left: Listing fees, Bank Account Details & Guidelines -->
-        <div class="lg:col-span-5 space-y-8">
-          <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-6 relative overflow-hidden">
-            <!-- Neon cyan corner glow -->
-            <div class="absolute -top-12 -right-12 w-28 h-28 rounded-full bg-brand-neonBlue/15 blur-2xl pointer-events-none"></div>
-            
-            <h3 class="text-xl font-bold font-heading text-white flex items-center gap-2">
-              <i data-lucide="landmark" class="w-5 h-5 text-brand-neonBlue"></i>
-              Listing Fee Payment details
-            </h3>
-            
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Every upload request requires a standard listing verification fee to be paid before we publish it on the site. Please transfer to the account below and take a screenshot of the slip.
-            </p>
-
-            <!-- Bank Details Box -->
-            <div class="p-5 rounded-2xl bg-white/5 border border-white/5 space-y-4 text-xs">
-              <div class="flex justify-between items-center border-b border-white/5 pb-2">
-                <span class="text-slate-500 uppercase tracking-wider font-semibold">Bank Name</span>
-                <span class="font-bold text-slate-200" id="broker-bank-name">Commercial Bank of Ceylon</span>
-              </div>
-              <div class="flex justify-between items-center border-b border-white/5 pb-2">
-                <span class="text-slate-500 uppercase tracking-wider font-semibold">Account Number</span>
-                <span class="font-extrabold text-white text-sm" id="broker-bank-account">8009123456</span>
-              </div>
-              <div class="flex justify-between items-center border-b border-white/5 pb-2">
-                <span class="text-slate-500 uppercase tracking-wider font-semibold">Account Holder</span>
-                <span class="font-bold text-slate-200" id="broker-bank-holder">CELLULAR LK BROKERAGE</span>
-              </div>
-              <div class="flex justify-between items-center border-b border-white/5 pb-2">
-                <span class="text-slate-500 uppercase tracking-wider font-semibold">Branch</span>
-                <span class="font-bold text-slate-200" id="broker-bank-branch">Colombo Fort</span>
-              </div>
-              <div class="flex justify-between items-center pt-1">
-                <span class="text-slate-500 uppercase tracking-wider font-semibold">Listing Fee</span>
-                <span class="font-bold text-brand-neonGreen text-sm" id="broker-listing-fee">LKR 1,500</span>
-              </div>
-            </div>
-
-            <!-- Workflow guidelines -->
-            <div class="space-y-3">
-              <h4 class="text-xs uppercase tracking-wider font-bold text-slate-400">Steps to publish:</h4>
-              <ul class="space-y-2.5 text-xs text-slate-400">
-                <li class="flex items-start gap-2">
-                  <span class="flex-shrink-0 w-4 h-4 rounded-full bg-brand-blue/20 text-brand-neonBlue flex items-center justify-center font-bold text-[9px] mt-0.5">1</span>
-                  <span>Transfer <strong>LKR 1,500</strong> to the bank details above.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="flex-shrink-0 w-4 h-4 rounded-full bg-brand-blue/20 text-brand-neonBlue flex items-center justify-center font-bold text-[9px] mt-0.5">2</span>
-                  <span>Fill out the Phone Details form with exact specifications.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="flex-shrink-0 w-4 h-4 rounded-full bg-brand-blue/20 text-brand-neonBlue flex items-center justify-center font-bold text-[9px] mt-0.5">3</span>
-                  <span>Attach your transfer slip and phone images.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="flex-shrink-0 w-4 h-4 rounded-full bg-brand-blue/20 text-brand-neonBlue flex items-center justify-center font-bold text-[9px] mt-0.5">4</span>
-                  <span>Click submit to generate your WhatsApp block. You must attach the slip & images in the WhatsApp chat.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Sourcing Senders Form -->
-        <div class="lg:col-span-7">
-          <form id="phone-upload-form" onsubmit="compileSellerSubmission(event)" class="glass-card p-6 sm:p-8 rounded-3xl space-y-6">
-            <h3 class="text-xl font-bold font-heading text-white">Phone Details & Specs Form</h3>
-            
-            <!-- Owner Contact Details -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1.5" for="seller-name">Your Full Name</label>
-                <input type="text" id="seller-name" required placeholder="e.g. Priyantha Silva" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all">
-              </div>
-              <div>
-                <label class="block text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1.5" for="seller-contact">Your Contact No (WhatsApp)</label>
-                <input type="text" id="seller-contact" required placeholder="e.g. +94771234567" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all">
-              </div>
-            </div>
-
-            <!-- Basic Phone Details -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div>
-                <label class="block text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1.5" for="seller-brand">Brand</label>
-                <select id="seller-brand" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white focus:outline-none focus:border-brand-blue transition-all">
-                  <option value="Apple">Apple</option>
-                  <option value="Samsung">Samsung</option>
-                  <option value="Google">Google</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1.5" for="seller-model">Model Name</label>
-                <input type="text" id="seller-model" required placeholder="e.g. iPhone 15 Pro" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all">
-              </div>
-              <div>
-                <label class="block text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1.5" for="seller-color">Color</label>
-                <input type="text" id="seller-color" required placeholder="e.g. Titanium Blue" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all">
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div>
-                <label class="block text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1.5" for="seller-storage">Storage Capacity</label>
-                <input type="text" id="seller-storage" required placeholder="e.g. 128GB, 256GB" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all">
-              </div>
-              <div>
-                <label class="block text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1.5" for="seller-condition">Physical Condition</label>
-                <select id="seller-condition" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-white focus:outline-none focus:border-brand-blue transition-all">
-                  <option value="Mint">Mint (10/10 - No Scratches)</option>
-                  <option value="Excellent">Excellent (9/10 - Minor Scratches)</option>
-                  <option value="Good">Good (8/10 - Moderate Scratches)</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1.5" for="seller-price">Price (LKR)</label>
-                <input type="number" id="seller-price" required placeholder="e.g. 245000" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all">
-              </div>
-            </div>
-
-            <!-- Technical specs -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1.5" for="seller-battery">Battery Health %</label>
-                <input type="text" id="seller-battery" required placeholder="e.g. 94%" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all">
-              </div>
-              <div>
-                <label class="block text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1.5" for="seller-screen">Screen Size/Type</label>
-                <input type="text" id="seller-screen" required placeholder="e.g. 6.1 inch OLED" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all">
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1.5" for="seller-chip">Processor / Chip</label>
-                <input type="text" id="seller-chip" required placeholder="e.g. A17 Pro, Tensor G3" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all">
-              </div>
-              <div>
-                <label class="block text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1.5" for="seller-camera">Camera Specs</label>
-                <input type="text" id="seller-camera" required placeholder="e.g. 48MP Triple | 3x Optical" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all">
-              </div>
-            </div>
-
-            <!-- Additional details -->
-            <div>
-              <label class="block text-xs uppercase tracking-wider font-semibold text-slate-400 mb-1.5" for="seller-desc">Additional Details / History</label>
-              <textarea id="seller-desc" rows="3" placeholder="Explain device history, warranty status, scratch locations, original box/accessories availability..." class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all"></textarea>
-            </div>
-
-            <!-- File Upload indicators (Mock fields) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="p-4 rounded-2xl bg-white/5 border border-white/5 border-dashed flex flex-col items-center justify-center text-center">
-                <i data-lucide="image" class="w-6 h-6 text-slate-500 mb-2"></i>
-                <label class="text-xs font-semibold text-slate-300 cursor-pointer hover:text-brand-blue transition-colors">
-                  Upload Phone Photos (Max 3)
-                  <input type="file" id="seller-photos" accept="image/*" multiple class="hidden" onchange="updateFilesLabel(this, 'photos-label')">
-                </label>
-                <span id="photos-label" class="text-[10px] text-slate-500 mt-1">No images selected</span>
-              </div>
-              
-              <div class="p-4 rounded-2xl bg-white/5 border border-white/5 border-dashed flex flex-col items-center justify-center text-center">
-                <i data-lucide="file-text" class="w-6 h-6 text-slate-500 mb-2"></i>
-                <label class="text-xs font-semibold text-slate-300 cursor-pointer hover:text-brand-blue transition-colors">
-                  Upload Bank Transfer Slip
-                  <input type="file" id="seller-slip" accept="image/*,.pdf" class="hidden" onchange="updateFilesLabel(this, 'slip-label')">
-                </label>
-                <span id="slip-label" class="text-[10px] text-slate-500 mt-1">No slip uploaded</span>
-              </div>
-            </div>
-
-            <!-- CTA submit button -->
-            <button type="submit" class="w-full py-4 rounded-2xl text-base font-bold text-white bg-gradient-to-r from-brand-emerald to-emerald-600 hover:from-brand-neonGreen hover:to-brand-emerald hover:text-black shadow-lg shadow-brand-emerald/10 hover:shadow-brand-emerald/30 border border-brand-emerald/30 transition-all flex items-center justify-center gap-2">
-              <i data-lucide="message-circle" class="w-5 h-5"></i>
-              Compile Request & WhatsApp Broker
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BROKERAGE PROCESS / ABOUT -->
-  <section id="about" class="py-20 relative overflow-hidden border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <!-- Visuals / Infographic -->
-        <div class="lg:col-span-5 order-2 lg:order-1 relative">
-          <!-- Ambient Glow -->
-          <div class="absolute inset-0 bg-brand-blue/10 rounded-3xl filter blur-2xl -z-10"></div>
-          
-          <div class="glass-card p-8 rounded-3xl space-y-6">
-            <h3 class="text-xl font-bold font-heading text-white">The CELLULAR LK Quality Standard</h3>
-            
-            <div class="space-y-4">
-              <div class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
-                <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-brand-blue/20 flex items-center justify-center text-brand-neonBlue text-sm font-bold">1</span>
-                <div>
-                  <h4 class="text-sm font-bold text-white">Condition Handpicking</h4>
-                  <p class="text-xs text-slate-400 mt-0.5">We broker only Mint (10/10 like-new) and Excellent (9/10 minimal wear) graded devices.</p>
-                </div>
-              </div>
-              
-              <div class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
-                <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-brand-emerald/20 flex items-center justify-center text-brand-neonGreen text-sm font-bold">2</span>
-                <div>
-                  <h4 class="text-sm font-bold text-white">Hardware Diagnostics</h4>
-                  <p class="text-xs text-slate-400 mt-0.5">Every device undergoes 35-point testing, including battery capacity check (minimum 85%+ verified).</p>
-                </div>
-              </div>
-              
-              <div class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
-                <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-brand-purple/20 flex items-center justify-center text-brand-purple text-sm font-bold">3</span>
-                <div>
-                  <h4 class="text-sm font-bold text-white">Sanitized & Unlocked</h4>
-                  <p class="text-xs text-slate-400 mt-0.5">Physically detailed, fully sanitised, factory unlocked (works on all carriers worldwide), and eSIM ready.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Copy -->
-        <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
-          <span class="text-xs font-bold tracking-widest text-brand-blue uppercase">Why Use a Broker?</span>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-            A Premium Brokerage Built on Verification and Trust.
-          </h2>
-          <p class="text-slate-400 text-sm sm:text-base">
-            Buying second-hand phones online can be a lottery of blacklisted devices, bad batteries, and hidden repairs. At **CELLULAR LK**, we act as your personal brokerage. We negotiate volume pricing directly with verified wholesalers, authenticate every serial number, grade the aesthetic details precisely, and offer standard guarantees.
-          </p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-            <div class="flex items-center space-x-3 text-slate-300">
-              <div class="w-6 h-6 rounded-full bg-brand-blue/10 border border-brand-blue/30 flex items-center justify-center">
-                <i data-lucide="check" class="w-4 h-4 text-brand-blue"></i>
-              </div>
-              <span class="text-sm">Carrier Status Clean (Not blacklisted)</span>
-            </div>
-            <div class="flex items-center space-x-3 text-slate-300">
-              <div class="w-6 h-6 rounded-full bg-brand-blue/10 border border-brand-blue/30 flex items-center justify-center">
-                <i data-lucide="check" class="w-4 h-4 text-brand-blue"></i>
-              </div>
-              <span class="text-sm">OEM Original Screens (No cheap replacements)</span>
-            </div>
-            <div class="flex items-center space-x-3 text-slate-300">
-              <div class="w-6 h-6 rounded-full bg-brand-blue/10 border border-brand-blue/30 flex items-center justify-center">
-                <i data-lucide="check" class="w-4 h-4 text-brand-blue"></i>
-              </div>
-              <span class="text-sm">Guaranteed Battery Health stats</span>
-            </div>
-            <div class="flex items-center space-x-3 text-slate-300">
-              <div class="w-6 h-6 rounded-full bg-brand-blue/10 border border-brand-blue/30 flex items-center justify-center">
-                <i data-lucide="check" class="w-4 h-4 text-brand-blue"></i>
-              </div>
-              <span class="text-sm">Free Express Shipping or Insured Delivery</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS & TRUST -->
-  <section class="py-20 bg-slate-950/40 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center space-y-4 max-w-xl mx-auto mb-16">
-        <h2 class="text-3xl font-extrabold text-white">Client Testimonials</h2>
-        <p class="text-slate-400 text-sm">Hear from collectors, corporate managers, and individuals who acquire flagship stock through CELLULAR LK.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="glass-card p-8 rounded-2xl space-y-4">
-          <div class="flex items-center space-x-1 text-brand-gold">
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          </div>
-          <p class="text-slate-300 text-sm leading-relaxed">
-            "Acquired an iPhone 15 Pro from CELLULAR LK. Condition was pristine, original packaging included, battery 99% health. The WhatsApp order flow took 2 minutes. Outstanding."
-          </p>
-          <div>
-            <h4 class="text-sm font-bold text-white">David K.</h4>
-            <p class="text-xs text-slate-500">Corporate Strategy Consultant</p>
-          </div>
-        </div>
-
-        <div class="glass-card p-8 rounded-2xl space-y-4">
-          <div class="flex items-center space-x-1 text-brand-gold">
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          </div>
-          <p class="text-slate-300 text-sm leading-relaxed">
-            "I'm extremely picky about screen scratches. CELLULAR LK sent me exact microscopic photos of the model before I bought it. Honest grading, fair wholesale pricing."
-          </p>
-          <div>
-            <h4 class="text-sm font-bold text-white">Sarah M.</h4>
-            <p class="text-xs text-slate-500">Creative Director</p>
-          </div>
-        </div>
-
-        <div class="glass-card p-8 rounded-2xl space-y-4">
-          <div class="flex items-center space-x-1 text-brand-gold">
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-          </div>
-          <p class="text-slate-300 text-sm leading-relaxed">
-            "Brokered a fleet of 12 Google Pixel devices for my engineering team. Every single phone was unlocked, reset, and tested. Kept us way under budget."
-          </p>
-          <div>
-            <h4 class="text-sm font-bold text-white">Marcus T.</h4>
-            <p class="text-xs text-slate-500">Tech Co-founder</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ SECTION -->
-  <section id="faq" class="py-20 relative border-t border-white/5">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center space-y-4 mb-16">
-        <h2 class="text-3xl font-extrabold text-white">Frequently Asked Questions</h2>
-        <p class="text-slate-400 text-sm">Everything you need to know about purchasing and listings.</p>
-      </div>
-
-      <div class="space-y-4">
-        <!-- FAQ item 1 -->
-        <div class="glass-card rounded-2xl overflow-hidden border border-white/5">
-          <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-            <span class="font-heading font-semibold text-white">How do I buy a phone on the catalog?</span>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transform transition-transform duration-300"></i>
-          </button>
-          <div class="px-6 pb-6 text-slate-400 text-sm hidden">
-            Simply click on any phone card in our catalog, inspect the specifications, click "Inquire / Purchase via WhatsApp", and send the pre-written message to our broker. The broker will confirm the availability and detail payment and shipping options.
-          </div>
-        </div>
-
-        <!-- FAQ item 2 -->
-        <div class="glass-card rounded-2xl overflow-hidden border border-white/5">
-          <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-            <span class="font-heading font-semibold text-white">How does listing my phone work?</span>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transform transition-transform duration-300"></i>
-          </button>
-          <div class="px-6 pb-6 text-slate-400 text-sm hidden">
-            Fill out the "Sell Your Phone" form at the consignment section, upload a copy of your bank slip showing the paid listing fee (LKR 1,500), and hit submit. The website compiles your information and forwards a formatted JavaScript code block directly to the owner via WhatsApp. Once the owner verifies payment receipt, they paste this code block directly into the website code to publish it!
-          </div>
-        </div>
-
-        <!-- FAQ item 3 -->
-        <div class="glass-card rounded-2xl overflow-hidden border border-white/5">
-          <button class="w-full flex items-center justify-between p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-            <span class="font-heading font-semibold text-white">What payment methods are supported?</span>
-            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transform transition-transform duration-300"></i>
-          </button>
-          <div class="px-6 pb-6 text-slate-400 text-sm hidden">
-            We accept local bank transfers (Commercial Bank, Sampath Bank, HNB, etc.), cash on delivery, and major cryptocurrencies (USDT). Brokerage receipts are generated for all transfers.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="py-12 border-t border-white/5 bg-brand-charcoal text-slate-500">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
-      <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
-        <div class="flex items-center space-x-3">
-          <div class="w-8 h-8 flex items-center justify-center bg-slate-900 border border-white/10 rounded-lg">
-            <svg class="w-5 h-5" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M78 20 C65 8, 30 10, 20 35 C10 60, 20 85, 50 88 C70 90, 80 75, 80 75" stroke="#3B82F6" stroke-width="8" stroke-linecap="round" fill="none"/>
-            </svg>
-          </div>
-          <span class="font-heading font-bold text-white tracking-widest text-lg">CELLULAR LK</span>
-        </div>
-        <p class="text-xs text-slate-500">
-          &copy; 2026 CELLULAR LK Brokerage. All rights reserved. Hand-inspected with premium care.
-        </p>
-        <div class="flex space-x-6">
-          <a href="#" class="hover:text-slate-300 transition-colors text-xs">Terms</a>
-          <a href="#" class="hover:text-slate-300 transition-colors text-xs">Privacy Policy</a>
-          <a href="#brands" class="hover:text-slate-300 transition-colors text-xs">Available Stock</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- NOTIFICATION TOAST -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 glass-card p-4 px-6 rounded-2xl max-w-sm border border-brand-emerald/30 shadow-2xl flex items-start gap-3 transform translate-y-10 opacity-0 pointer-events-none transition-all duration-300">
-    <div class="w-6 h-6 rounded-full bg-brand-emerald/20 flex items-center justify-center text-brand-neonGreen">
-      <i data-lucide="check" class="w-4 h-4"></i>
-    </div>
-    <div class="space-y-1">
-      <h4 class="text-sm font-bold text-white" id="toast-title">Request Compiled!</h4>
-      <p class="text-xs text-slate-400" id="toast-desc">WhatsApp message generated successfully.</p>
-    </div>
+  <div class="manifest-strip">
+    <div class="seg"><span class="route">CMB</span>&nbsp;→&nbsp;<span class="tag">GLOBAL</span></div>
+    <nav>
+      <a href="#about">About</a>
+	  <a href="#achievements">Educational</a>
+      <a href="#capabilities">Capabilities</a>
+	  <a href="#experience">Professional</a>
+      <a href="#log">Volunteering</a>
+	  <a href="#interests">Interests</a>
+      <a href="#certs">Certifications</a>
+      <a href="#ongoing">Ongoing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="seg mono" id="clockSeg">STATUS: <span class="tag">ACTIVE</span></div>
   </div>
 
-  <!-- PRODUCT SPECIFICATION DETAIL MODAL / DRAWER -->
-  <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm hidden transition-all duration-300">
-    <!-- Modal Container -->
-    <div class="glass-modal w-full max-w-lg rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-white/10 flex flex-col transform scale-95 opacity-0 transition-all duration-300" id="modal-container">
-      
-      <!-- Modal Header -->
-      <div class="flex items-center justify-between p-6 border-b border-white/10">
-        <h3 class="text-xl font-bold font-heading text-white flex items-center gap-2">
-          <span id="modal-title-brand" class="text-brand-blue uppercase text-xs font-bold tracking-wider px-2 py-0.5 bg-brand-blue/10 rounded">Apple</span>
-          <span id="modal-title-model" class="text-slate-100">iPhone 15 Pro Max</span>
-        </h3>
-        <button onclick="closeProductModal()" class="p-2 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 transition-all">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
+  <section class="hero">
+    <div class="hero-content">
+
+      <div class="hero-text">
+
+        <div class="eyebrow">
+            UNDERGRADUATE · TRANSPORT MANAGEMENT &amp; LOGISTICS ENGINEERING
+        </div>
+
+        <h1>
+            Weerasiri Gamaarachchige<br>
+            Ravindu Shakye<br>
+            Wickremasinghe
+        </h1>
+
+        <p class="subline">
+            Moving the world through innovative engineering and smart design.
+        </p>
+
+        <div class="type-cycle">
+            <span id="typeText"></span>
+            <span class="cursor-char"></span>
+        </div>
+
       </div>
 
-      <!-- Modal Content (Scrollable) -->
-      <div class="p-6 overflow-y-auto space-y-6 max-h-[70vh]">
-        
-        <!-- MULTI-IMAGE CAROUSEL CONTAINER -->
-        <div class="relative w-full h-56 bg-slate-950/60 rounded-2xl border border-white/5 p-4 flex items-center justify-center overflow-hidden group">
-          <!-- Main Slide -->
-          <img id="modal-carousel-img" src="" alt="Phone view" class="carousel-image h-full object-contain drop-shadow-[0_12px_20px_rgba(0,0,0,0.6)]">
-          
-          <!-- Prev Button -->
-          <button onclick="prevModalImage()" id="modal-carousel-prev" class="absolute left-3 p-2 rounded-lg bg-slate-900/60 hover:bg-slate-900 border border-white/5 hover:border-white/20 text-slate-400 hover:text-white transition-all hidden">
-            <i data-lucide="chevron-left" class="w-4 h-4"></i>
-          </button>
-          
-          <!-- Next Button -->
-          <button onclick="nextModalImage()" id="modal-carousel-next" class="absolute right-3 p-2 rounded-lg bg-slate-900/60 hover:bg-slate-900 border border-white/5 hover:border-white/20 text-slate-400 hover:text-white transition-all hidden">
-            <i data-lucide="chevron-right" class="w-4 h-4"></i>
-          </button>
-
-          <!-- Index Dot Indicators -->
-          <div id="modal-carousel-dots" class="absolute bottom-3 inset-x-0 flex items-center justify-center gap-1.5 pointer-events-none">
-            <!-- Dynamically populated dots -->
-          </div>
-        </div>
-
-        <!-- Storage, Color & Condition -->
-        <div class="grid grid-cols-3 gap-3 text-center">
-          <div class="p-3 bg-white/5 border border-white/5 rounded-2xl">
-            <span class="text-[9px] uppercase tracking-wider text-slate-500 font-semibold block mb-0.5">Storage</span>
-            <span id="modal-storage" class="text-sm font-bold text-white">256GB</span>
-          </div>
-          <div class="p-3 bg-white/5 border border-white/5 rounded-2xl">
-            <span class="text-[9px] uppercase tracking-wider text-slate-500 font-semibold block mb-0.5">Color</span>
-            <span id="modal-color" class="text-sm font-bold text-white">Titanium</span>
-          </div>
-          <div class="p-3 bg-white/5 border border-white/5 rounded-2xl">
-            <span class="text-[9px] uppercase tracking-wider text-slate-500 font-semibold block mb-0.5">Condition</span>
-            <span id="modal-condition" class="text-sm font-extrabold text-brand-emerald">Mint</span>
-          </div>
-        </div>
-
-        <!-- Phone Sourcing Description details -->
-        <div class="space-y-2">
-          <h4 class="text-xs uppercase tracking-wider font-bold text-slate-400 border-b border-white/5 pb-2">Broker Notes & Description</h4>
-          <p id="modal-desc" class="text-xs text-slate-400 leading-relaxed">
-            No broker notes uploaded for this device.
-          </p>
-        </div>
-
-        <!-- Technical specifications breakdown -->
-        <div class="space-y-3">
-          <h4 class="text-xs uppercase tracking-wider font-bold text-slate-400 border-b border-white/5 pb-2">Technical Specifications</h4>
-          <div class="grid grid-cols-2 gap-4 text-xs">
-            <div class="bg-white/5 border border-white/5 p-3 rounded-xl space-y-1">
-              <span class="text-slate-500 uppercase tracking-wider block font-semibold text-[10px]">Screen size</span>
-              <p id="modal-spec-screen" class="font-medium text-slate-200">-</p>
-            </div>
-            <div class="bg-white/5 border border-white/5 p-3 rounded-xl space-y-1">
-              <span class="text-slate-500 uppercase tracking-wider block font-semibold text-[10px]">Processor / Chip</span>
-              <p id="modal-spec-chip" class="font-medium text-slate-200">-</p>
-            </div>
-            <div class="bg-white/5 border border-white/5 p-3 rounded-xl space-y-1">
-              <span class="text-slate-500 uppercase tracking-wider block font-semibold text-[10px]">Battery Health</span>
-              <p id="modal-spec-battery" class="font-medium text-slate-200">-</p>
-            </div>
-            <div class="bg-white/5 border border-white/5 p-3 rounded-xl space-y-1">
-              <span class="text-slate-500 uppercase tracking-wider block font-semibold text-[10px]">Camera Array</span>
-              <p id="modal-spec-camera" class="font-medium text-slate-200">-</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Owner / Consignment metadata info -->
-        <div class="p-4 rounded-2xl bg-white/5 border border-white/5 space-y-2 text-xs">
-          <h4 class="text-[10px] uppercase tracking-wider font-bold text-slate-500">Ownership & Listing Details</h4>
-          <div class="flex justify-between items-center text-slate-300">
-            <span>Listed By</span>
-            <span id="modal-owner-name" class="font-bold text-white">CELLULAR LK</span>
-          </div>
-          <div class="flex justify-between items-center text-slate-300">
-            <span>Broker Verified Status</span>
-            <span id="modal-broker-verified" class="text-brand-emerald font-bold flex items-center gap-1">
-              <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> Verified
-            </span>
-          </div>
-        </div>
-
-        <!-- Price Section -->
-        <div class="flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/5">
-          <div class="space-y-0.5">
-            <span class="text-xs text-slate-500">Final Price</span>
-            <div class="flex items-center gap-2">
-              <span id="modal-price" class="text-xl font-bold font-heading text-white">Rs. 0</span>
-              <span id="modal-original-price" class="text-xs text-slate-500 line-through">Rs. 0</span>
-            </div>
-          </div>
-          <div id="modal-status-badge" class="px-3 py-1.5 rounded-lg text-xs font-bold border">
-            Available
-          </div>
-        </div>
+      <div class="hero-image">
+        <img src="Portfolio pic/IMG-20251114-WA0050.jpg" alt="Ravindu">
       </div>
 
-      <!-- Modal Footer -->
-      <div class="p-6 border-t border-white/10 flex flex-col gap-3">
-        <!-- WhatsApp Call to Action -->
-        <a id="modal-whatsapp-link" href="#" target="_blank" class="w-full py-4 rounded-2xl text-center text-sm font-bold text-white bg-gradient-to-r from-brand-emerald to-emerald-600 hover:from-brand-neonGreen hover:to-brand-emerald hover:text-black shadow-xl shadow-brand-emerald/20 hover:shadow-brand-emerald/45 border border-brand-emerald/30 transition-all flex items-center justify-center gap-2">
-          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12.012 2c-5.506 0-9.988 4.482-9.988 9.988 0 1.76.458 3.473 1.332 4.986l-1.417 5.176 5.302-1.39a9.92 9.92 0 0 0 4.771 1.216c5.506 0 9.988-4.482 9.988-9.988s-4.482-9.988-9.988-9.988zm0 18.293a8.27 8.27 0 0 1-4.219-1.155l-.303-.18-3.138.822.836-3.053-.197-.314a8.27 8.27 0 0 1-1.267-4.425c0-4.57 3.719-8.289 8.289-8.289s8.289 3.719 8.289 8.289c-.001 4.57-3.72 8.289-8.29 8.289zm4.551-6.216c-.249-.125-1.472-.727-1.7-.81-.228-.083-.393-.125-.559.125-.166.249-.643.81-.788.975-.145.166-.29.186-.539.062-.25-.125-1.05-.388-2.002-1.237-.741-.661-1.242-1.478-1.387-1.727-.145-.25-.015-.385.11-.51.112-.112.249-.29.373-.435.124-.145.166-.249.249-.415.083-.166.041-.311-.02-.435-.062-.125-.559-1.348-.766-1.847-.202-.487-.406-.42-.559-.427h-.477c-.166 0-.435.062-.663.311-.228.249-.871.851-.871 2.075 0 1.224.891 2.406.991 2.541.1.135 1.752 2.674 4.246 3.746.593.255 1.056.408 1.417.523.596.19 1.138.163 1.567.099.478-.072 1.472-.601 1.679-1.182.207-.581.207-1.079.145-1.182-.061-.103-.227-.166-.476-.291z"/>
-          </svg>
-          Inquire / Purchase via WhatsApp
-        </a>
-        <button onclick="closeProductModal()" class="w-full py-3.5 rounded-2xl text-center text-sm font-semibold text-slate-300 hover:text-white bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-          Back to Catalog
-        </button>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head reveal"><span class="idx">01</span><h2>About</h2></div>
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <p>I am an undergraduate in <strong>Transport Management and Logistics Engineering</strong> at the University of Moratuwa with a strong passion for the maritime, aviation, and logistics industries. I am particularly interested in improving transport systems through innovation, data-driven decision-making, and sustainable engineering solutions.</p>
+        <p>My academic background has strengthened my analytical and problem-solving skills, while my leadership experience as the <strong>Club Service Avenue Director</strong> of the Rotaract Club of the University of Moratuwa has enhanced my abilities in project management, teamwork, and communication. Through organizing and leading multiple large-scale projects and community initiatives, I have developed the confidence to work effectively in dynamic and collaborative environments.</p>
+        <p>I am committed to continuous learning and enjoy exploring emerging technologies, supply chain optimization, and smart mobility solutions that shape the future of global transportation. My ambition is to contribute to the advancement of the maritime and aviation sectors by delivering innovative, efficient, and sustainable transport solutions while creating meaningful value for the industry and society.</p>
+      </div>
+      <div class="about-card reveal">
+        <div class="row"><span>FIELD</span><span>BSc. Transport Management and Logistics Engineering</span></div>
+        <div class="row"><span>INSTITUTION</span><span>University of Moratuwa</span></div>
+        <div class="row"><span>SCHOOL</span><span>Royal College, Colombo 07</span></div>
+        <div class="row"><span>STATUS</span><span>Undergraduate — Active</span></div>
+        <div class="row"><span>FOCUS</span><span>Aviation / Maritime / Supply Chain / Logistics</span></div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- JAVASCRIPT CODE -->
-  <script>
-    // ==========================================================
-    // 1. BROKER INVENTORY DATA (EDIT THIS SECTION TO UPDATE APPS)
-    // ==========================================================
-    // Images: array of image URLs (Unsplash presets or custom upload urls). First image serves as card cover.
-    // Owner details added to each device. Broker-owned devices are flagged.
-    // Price and originalPrice are numbers (formatted in Sri Lankan Rupees LKR, i.e. Rs. X).
-    const INVENTORY_DATA = [
-      {
-        id: "iphone-15-pro-max-titanium-001",
-        brand: "Apple",
-        model: "iPhone 15 Pro Max",
-        color: "Natural Titanium",
-        storage: "256GB",
-        condition: "Mint",
-        price: 299000,
-        originalPrice: 320000,
-        status: "In Stock",
-        description: "Immaculate condition. Single owner. Includes original box, factory sealed Type-C cable, and a high-quality Spigen casing. Factory unlocked, physical SIM + eSIM dual setup. Battery is at 98% capacity.",
-        specs: {
-          screen: "6.7\" Super Retina XDR OLED",
-          chip: "A17 Pro (3nm)",
-          battery: "98% Health",
-          camera: "48MP Main | 12MP Ultrawide | 5x Optical Telephoto"
-        },
-        images: [
-          "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&auto=format&fit=crop&q=80",
-          "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&auto=format&fit=crop&q=80"
-        ],
-        owner: {
-          name: "CELLULAR LK Brokerage",
-          contact: "+94771234567",
-          isBrokerOwned: true
-        }
-      },
-      {
-        id: "iphone-15-pro-blue-002",
-        brand: "Apple",
-        model: "iPhone 15 Pro",
-        color: "Blue Titanium",
-        storage: "128GB",
-        condition: "Mint",
-        price: 245000,
-        originalPrice: 260000,
-        status: "In Stock",
-        description: "Zero cosmetic blemishes. Comes with full box and all default accessories. The screen has had a tempered glass shield applied from day one. Carrier unlocked.",
-        specs: {
-          screen: "6.1\" Super Retina XDR OLED",
-          chip: "A17 Pro (3nm)",
-          battery: "99% Health",
-          camera: "48MP Triple | 3x Optical Telephoto"
-        },
-        images: [
-          "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&auto=format&fit=crop&q=80",
-          "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&auto=format&fit=crop&q=80"
-        ],
-        owner: {
-          name: "CELLULAR LK Brokerage",
-          contact: "+94771234567",
-          isBrokerOwned: true
-        }
-      },
-      {
-        id: "galaxy-s24-ultra-gray-003",
-        brand: "Samsung",
-        model: "Galaxy S24 Ultra",
-        color: "Titanium Gray",
-        storage: "512GB",
-        condition: "Mint",
-        price: 315000,
-        originalPrice: 340000,
-        status: "In Stock",
-        description: "Absolute pristine flagship. Includes original S-Pen, charging block, and silicon case. Zero scratches on the frame. Local warranty remaining for 4 months.",
-        specs: {
-          screen: "6.8\" Dynamic AMOLED 2X 120Hz",
-          chip: "Snapdragon 8 Gen 3 for Galaxy",
-          battery: "100% Health",
-          camera: "200MP Quad Cam | 100x Space Zoom"
-        },
-        images: [
-          "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&auto=format&fit=crop&q=80",
-          "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600&auto=format&fit=crop&q=80"
-        ],
-        owner: {
-          name: "Asanka Perera",
-          contact: "+94718876543",
-          isBrokerOwned: false
-        }
-      },
-      {
-        id: "pixel-8-pro-porcelain-004",
-        brand: "Google",
-        model: "Pixel 8 Pro",
-        color: "Porcelain",
-        storage: "256GB",
-        condition: "Mint",
-        price: 199000,
-        originalPrice: 220000,
-        status: "In Stock",
-        description: "Aesthetic porcelain colorway. Features advanced AI features and Gemini integration. Fully functional, unlocked, with box.",
-        specs: {
-          screen: "6.7\" Super Actua LTPO OLED",
-          chip: "Google Tensor G3",
-          battery: "97% Health",
-          camera: "50MP Main | 48MP Zoom | Best Take AI"
-        },
-        images: [
-          "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&auto=format&fit=crop&q=80"
-        ],
-        owner: {
-          name: "CELLULAR LK Brokerage",
-          contact: "+94771234567",
-          isBrokerOwned: true
-        }
-      },
-      {
-        id: "pixel-7-pro-hazel-005",
-        brand: "Google",
-        model: "Pixel 7 Pro",
-        color: "Hazel",
-        storage: "128GB",
-        condition: "Excellent",
-        price: 145000,
-        originalPrice: 160000,
-        status: "Pending",
-        description: "Hazel gold metallic finish. Display has minor cosmetic micro-scratches only visible under direct light. Box and charging cable included. Tested clean.",
-        specs: {
-          screen: "6.7\" QHD+ LTPO OLED 120Hz",
-          chip: "Google Tensor G2",
-          battery: "88% Health",
-          camera: "50MP Main | 48MP Telephoto | Magic Eraser"
-        },
-        images: [
-          "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600&auto=format&fit=crop&q=80",
-          "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&auto=format&fit=crop&q=80"
-        ],
-        owner: {
-          name: "Dilan Sandeep",
-          contact: "+94722211900",
-          isBrokerOwned: false
+  <section id="achievements">
+
+    <div class="section-head reveal">
+        <span class="idx">02</span>
+        <h2>Educational Achievements</h2>
+    </div>
+
+    <div class="cap-grid">
+
+        <div class="cap-card reveal" data-code="GPA">
+            <h3>Academic Performance</h3>
+            <ul>
+                <li>GPA — 3.47</li>
+                <li>Dean's List — Semester 4</li>
+            </ul>
+        </div>
+    </div>
+  </section>
+
+  <section id="capabilities">
+    <div class="section-head reveal"><span class="idx">03</span><h2>Core Capabilities</h2></div>
+    <div class="cap-grid">
+      <div class="cap-card reveal" data-code="AV/MAR">
+        <h3>Aviation &amp; Maritime Logistics</h3>
+        <ul>
+          <li>Cargo Handling training — IAAC, Colombo</li>
+          <li>SriLankan Aviation College Camp certification</li>
+          <li>Logistics Engineering</li>
+          <li>Supply Chain Optimization</li>
+        </ul>
+      </div>
+      <div class="cap-card reveal" data-code="DES/IT">
+        <h3>Creative Design &amp; IT</h3>
+        <ul>
+          <li>NVQ Level 4 Certified Computer Graphic Designer</li>
+          <li>Interface Asset Generation</li>
+          <li>Advanced Microsoft Excel Mastery</li>
+        </ul>
+      </div>
+	  <div class="cap-card reveal" data-code="TECH">
+        <h3>Technical Skills</h3>
+        <ul>
+          <li>MS Office</li>
+          <li>Power BI</li>
+          <li>Python</li>
+          <li>R</li>
+          <li>Visual Studio C#</li>
+          <li>QGIS</li>
+		</ul>
+        <ul>
+          <li>SUMO</li>
+          <li>CUBE</li>
+          <li>FreeCAD</li>
+          <li>Adobe Photoshop</li>
+          <li>Adobe Illustrator</li>
+          <li>Adobe InDesign</li>
+          <li>Adobe Premiere Pro</li>
+        </ul>
+      </div>
+      <div class="cap-card reveal" data-code="SYS/AI">
+        <h3>Advanced Knowledge</h3>
+        <ul>
+          <li>AI/ML Engineering foundations — Stage 1 (SLIIT CODE)</li>
+          <li>AI for Supply Chains</li>
+		  <li>Certification in IT – Esoft</li>
+          <li>Product distribution & Allert System – Geethani Motors</li>
+          <li>Professional Certificate in Marketing — SLIM</li>
+        </ul>
+      </div>
+      <div class="cap-card reveal" data-code="LEAD">
+        <h3>Leadership &amp; Strategy</h3>
+        <ul>
+          <li>Club Service Avenue Director — Rotaract</li>
+          <li>Project Management</li>
+          <li>Public Speaking</li>
+        </ul>
+      </div>
+	  <div class="cap-card reveal" data-code="LANG">
+        <h3>Languages</h3>
+        <ul>
+          <li>Sinhala — Native</li>
+          <li>English</li>
+          <li>Tamil</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+
+    <div class="section-head reveal">
+        <span class="idx">04</span>
+        <h2>Professional Experience</h2>
+    </div>
+    <div class="log-timeline">
+        <div class="log-entry reveal">
+            <span class="stamp mono">PWI (PVT) LTD.</span>
+            <h3>GRAPHIC DESIGNER</h3>
+            <ul>
+                <li>IETI NVQ 4 intern.</li>
+            </ul>
+        </div>
+        <div class="log-entry reveal">
+            <span class="stamp mono">CWIT</span>
+            <h3>Mentee</h3>
+        </div>
+    </div>
+  </section>
+	
+  <section id="log">
+    <div class="section-head reveal"><span class="idx">05</span><h2>Volunteering Log</h2></div>
+    <div class="log-timeline">
+      <div class="log-entry reveal">
+        <span class="stamp mono">ROTARACT CLUB (UOM)</span><br>
+        <h3>AS MEMBER</h3>
+        <ul>
+	  <li>Binara Padura</li>
+          <li>MonsterMash</li>
+          <li>Zooxanthellae</li>
+          <li>RUR'25</li>
+          <li>Colours</li>
+          <li>Kowul Wasanthaya</li>
+	</ul><br>
+        <h3>AS CHAIRPERSON</h3>
+        <ul>
+	  <li>Image</li>
+          <li>General Meeting</li>
+	</ul><br>
+        <h3>AS DIRECTOR (CLUB SERVICE AVENUE)</h3>
+	<ul>
+          <li>Rac Hike</li>
+          <li>Installation Ceremony</li>
+          <li>CarterDay Ceremony</li>
+	  <li>Binara Padura</li>
+          <li>MonsterMash</li>
+          <li>Lailat'26</li>
+          <li>RUR'26</li>
+          <li>General Meetings</li>
+	</ul>
+      </div>
+      <div class="log-entry reveal">
+        <span class="stamp mono">LEO CLUB (UOM)</span><br>
+        <h3>AS MEMBER</h3>
+        <ul>
+	  <li>Phoenix</li>
+          <li>Tharka</li>
+          <li>TerraForma</li>
+	</ul><br>
+        <h3>AS CHAIRPERSON</h3>
+	<ul>
+          <li>Leo Padura</li>
+	</ul>
+      </div>
+      <div class="log-entry reveal">
+        <span class="stamp mono">Academic</span><br>
+        <h3>AS SECRATORY</h3>
+        <ul>
+	      <li>CSR Project (Beyond the Books)</li>
+	    </ul><br>
+      </div>
+    </div>
+  </section>
+
+  <section id="interests">
+    <div class="section-head reveal">
+        <span class="idx">06</span>
+        <h2>Interests</h2>
+    </div>
+
+    <div class="cap-grid">
+        <div class="cap-card reveal" data-code="INT">
+            <h3>Areas of Interest</h3>
+            <ul>
+                <li>Aviation</li>
+                <li>Maritime</li>
+                <li>International Business</li>
+                <li>Designing</li>
+                <li>Exploring</li>
+            </ul>
+        </div>
+    </div>
+  </section>
+	
+  <section id="certs">
+    <div class="section-head reveal"><span class="idx">07</span><h2>Verified Certifications</h2></div>
+    <div class="cert-grid">
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/Alison_Certificate-6774-59487604_page-0001.jpg" alt="AI for Supply Chains certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · ALISON</span><h4>AI for Supply Chains &amp; Logistics (Alison Professional Certificate)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/sticker_1776306269719.png" alt="Aviation Education Camp certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · SRILANKAN AVIATION</span><h4>Aviation Education Camp (SriLankan Aviation College)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/Ravindu Wickremasinghe - 2026-06-26_page-0001.jpg" alt="AI/ML Engineer Stage 1 certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · SLIIT</span><h4>AI/ML Engineer - Stage 1 (CODE, Faculty of Computing — SLIIT)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/Coursera 3B6CCRTWMDWV_page-0001.jpg" alt="Work Smarter with Excel certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · MICROSOFT/COURSERA</span><h4>Work Smarter with Excel (Microsoft &amp; Coursera)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/sticker_1776305607876.png" alt="Professional Certificate in Marketing badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · SLIM</span><h4>Professional Certificate in Marketing (Sri Lanka Institute of Marketing — SLIM)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/sticker_1776305345018.png" alt="Computer Graphic Designer certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · TVEC</span><h4>Computer Graphic Designer (NVQ Level 4 — TVEC)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/sticker_1776306763121.png" alt="Esoft Metro Campus certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · ESOFT METRO CAMPUS</span><h4>Certificate in Information Technology (Esoft Metro Campus - Colombo 04)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/sticker_1776306815880.png" alt="AI for Supply Chains certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · INSTITUTE OF LANGUAGE DEVELOPMENT</span><h4>Diploma in English (Institute of Language Development - Maharagama)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/sticker_1776307564636.png" alt="Aviation Education Camp certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · ROTARACT CLUB</span><h4>Membership (Rotaract Club of University of Moratuwa)</h4></div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-frame"><img src="Portfolio pic/Internatinal_Business_page-0001.jpg" alt="Aviation Education Camp certification badge"></div>
+        <div class="cert-meta"><span class="verified mono">VERIFIED · UNIVERSITY OF LONDON/COURSERA</span><h4>Fundamentals of International Business</h4></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ongoing">
+    <div class="section-head reveal"><span class="idx">08</span><h2>Ongoing</h2></div>
+    <div class="oq-grid">
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4>Cargo Handling Course</h4>
+        <span class="provider mono">IAAC, Colombo 10</span>
+      </div>
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4><a href="https://www.coursera.org/specializations/practice-solidworks-3d-cad" target="_blank" rel="noopener">SOLIDWORKS 3D CAD for Education</a></h4>
+        <span class="provider mono"><a href="https://www.coursera.org/specializations/practice-solidworks-3d-cad" target="_blank" rel="noopener">Dassault Systemes</a></span>
+      </div>
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4><a href="https://www.coursera.org/specializations/microsoft-power-bi-data-analyst" target="_blank" rel="noopener">Power BI Data Analyst</a></h4>
+        <span class="provider mono"><a href="https://www.coursera.org/specializations/microsoft-power-bi-data-analyst" target="_blank" rel="noopener">Microsoft</a></span>
+      </div>
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4><a href="https://www.coursera.org/learn/machine-learning/home/welcome" target="_blank" rel="noopener">Supervised Machine Learning: Regression and Classification</a></h4>
+        <span class="provider mono">DeepLearning.AI</span>
+      </div>
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4><a href="https://www.coursera.org/learn/wharton-accounting/home/welcome" target="_blank" rel="noopener">Introduction to Financial Accounting</a></h4>
+        <span class="provider mono">University of Pennsylvania</span>
+      </div>
+      <div class="oq-card reveal">
+        <span class="status mono">IN PROGRESS</span>
+        <h4><a href="https://www.coursera.org/learn/mandarin-chinese-1/home/welcome" target="_blank" rel="noopener">Mandarin Chinese 1: Chinese for Beginners</a></h4>
+        <span class="provider mono">Shanghai Jiao Tong University</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-panel reveal">
+      <h2>Open Channel</h2>
+      <p>Direct lines for collaboration, opportunities, and conversations on transport, logistics, and smart mobility.</p>
+      <div class="contact-links">
+        <a class="btn primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=rswic2003@gmail.com" target="_blank" rel="noopener"> ✉ Email Direct</a>
+        <a class="btn ghost" href="https://wa.me/94723615351" target="_blank" rel="noopener">◈ WhatsApp</a>
+		<a class="btn ghost" href="tel:+94723615351">☎ Call Me</a>
+		<a class="btn ghost" href="https://www.linkedin.com/in/ravindu-wickremasinghe-9b8b22307?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener">in LinkedIn</a>
+		<a class="btn ghost" href="Portfolio pic/Ravindu_Shakye_Wickremasinghe_CV.pdf" download="Ravindu_Shakye_Wickremasinghe_CV.pdf"> ↓ Download CV</a>
+      </div>
+    </div>
+  </section>
+  <footer class="mono">© 2026 W.G. RAVINDU SHAKYE WICKREMASINGHE — TRANSPORT · LOGISTICS · AVIATION · MARITIME</footer>
+
+</div>
+
+<script>
+/* ================= particle network ================= */
+(function(){
+  const canvas=document.getElementById('net-canvas');
+  const ctx=canvas.getContext('2d');
+  let w,h,particles=[];
+  const mouse={x:null,y:null,radius:150};
+
+  function resize(){
+    w=canvas.width=window.innerWidth;
+    h=canvas.height=window.innerHeight;
+  }
+  window.addEventListener('resize',resize);
+  resize();
+
+  const COUNT=Math.min(90,Math.floor((window.innerWidth*window.innerHeight)/16000));
+  function initParticles(){
+    particles=[];
+    for(let i=0;i<COUNT;i++){
+      particles.push({
+        x:Math.random()*w,
+        y:Math.random()*h,
+        vx:(Math.random()-0.5)*0.35,
+        vy:(Math.random()-0.5)*0.35,
+        r:Math.random()*1.6+0.6
+      });
+    }
+  }
+  initParticles();
+
+  window.addEventListener('mousemove',(e)=>{
+    mouse.x=e.clientX;
+    mouse.y=e.clientY;
+  });
+  window.addEventListener('mouseout',()=>{mouse.x=null;mouse.y=null;});
+
+  function step(){
+    ctx.clearRect(0,0,w,h);
+
+    for(const p of particles){
+      p.x+=p.vx;
+      p.y+=p.vy;
+      if(p.x<0||p.x>w)p.vx*=-1;
+      if(p.y<0||p.y>h)p.vy*=-1;
+    }
+
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const a=particles[i],b=particles[j];
+        const dx=a.x-b.x,dy=a.y-b.y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<130){
+          ctx.strokeStyle=`rgba(62,230,224,${(1-dist/130)*0.18})`;
+          ctx.lineWidth=1;
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y);
+          ctx.lineTo(b.x,b.y);
+          ctx.stroke();
         }
       }
-    ];
-
-    // ==========================================
-    // 2. CONFIGURATIONS
-    // ==========================================
-    // Set website owner's contact for WhatsApp (with country code, no symbols)
-    const OWNER_WHATSAPP_NUMBER = "94771234567";
-
-    // Global filters and searching state
-    let currentBrandFilter = "All";
-    let searchQuery = "";
-
-    // Modal carousel trackers
-    let activeCarouselIndex = 0;
-    let activeCarouselImages = [];
-
-    // Initialize content
-    document.addEventListener("DOMContentLoaded", () => {
-      lucide.createIcons();
-      updateBrandCounts();
-      renderCatalog();
-      initTheme();
-    });
-
-    // ==========================================
-    // 3. CATALOG FILTERING & LIVE SEARCH
-    // ==========================================
-    function updateBrandCounts() {
-      const allCount = INVENTORY_DATA.length;
-      const appleCount = INVENTORY_DATA.filter(item => item.brand === "Apple").length;
-      const samsungCount = INVENTORY_DATA.filter(item => item.brand === "Samsung").length;
-      const googleCount = INVENTORY_DATA.filter(item => item.brand === "Google").length;
-
-      document.getElementById("count-all").textContent = `${allCount} device${allCount !== 1 ? 's' : ''}`;
-      document.getElementById("count-apple").textContent = `${appleCount} device${appleCount !== 1 ? 's' : ''}`;
-      document.getElementById("count-samsung").textContent = `${samsungCount} device${samsungCount !== 1 ? 's' : ''}`;
-      document.getElementById("count-google").textContent = `${googleCount} device${googleCount !== 1 ? 's' : ''}`;
     }
 
-    function filterBrand(brand) {
-      currentBrandFilter = brand;
-      
-      const tabs = document.querySelectorAll(".brand-tab-btn");
-      tabs.forEach(tab => {
-        const tabBrand = tab.getAttribute("data-brand");
-        const outlineLine = tab.querySelector("div");
-        const titleSpan = tab.querySelector("span:first-of-type");
-        const svgIcon = tab.querySelector("svg, i");
-        
-        if (tabBrand === brand) {
-          tab.classList.add("active");
-          outlineLine.classList.remove("opacity-0");
-          outlineLine.classList.add("opacity-100");
-          titleSpan.classList.add("text-white");
-          titleSpan.classList.remove("text-slate-300");
-          if (svgIcon) {
-            svgIcon.classList.add("text-brand-blue");
-            svgIcon.classList.remove("text-slate-400");
-          }
-        } else {
-          tab.classList.remove("active");
-          outlineLine.classList.remove("opacity-100");
-          outlineLine.classList.add("opacity-0");
-          titleSpan.classList.remove("text-white");
-          titleSpan.classList.add("text-slate-300");
-          if (svgIcon) {
-            svgIcon.classList.remove("text-brand-blue");
-            svgIcon.classList.add("text-slate-400");
-          }
+    if(mouse.x!==null){
+      for(const p of particles){
+        const dx=p.x-mouse.x,dy=p.y-mouse.y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<mouse.radius){
+          ctx.strokeStyle=`rgba(77,255,180,${(1-dist/mouse.radius)*0.5})`;
+          ctx.lineWidth=1;
+          ctx.beginPath();
+          ctx.moveTo(p.x,p.y);
+          ctx.lineTo(mouse.x,mouse.y);
+          ctx.stroke();
         }
-      });
-
-      renderCatalog();
+      }
+      ctx.fillStyle='rgba(255,107,94,0.9)';
+      ctx.beginPath();
+      ctx.arc(mouse.x,mouse.y,3,0,Math.PI*2);
+      ctx.fill();
     }
 
-    function handleSearch() {
-      searchQuery = document.getElementById("live-search-input").value.toLowerCase();
-      renderCatalog();
+    for(const p of particles){
+      ctx.fillStyle='rgba(220,232,240,0.55)';
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fill();
     }
 
-    function formatLKR(num) {
-      return "Rs. " + num.toLocaleString('en-LK');
-    }
+    requestAnimationFrame(step);
+  }
+  step();
+})();
 
-    function renderCatalog() {
-      const grid = document.getElementById("inventory-grid");
-      const emptyState = document.getElementById("empty-state");
-      
-      const filteredData = INVENTORY_DATA.filter(phone => {
-        const matchesBrand = currentBrandFilter === "All" || phone.brand === currentBrandFilter;
-        
-        const matchesSearch = phone.model.toLowerCase().includes(searchQuery) ||
-                              phone.brand.toLowerCase().includes(searchQuery) ||
-                              phone.color.toLowerCase().includes(searchQuery) ||
-                              phone.storage.toLowerCase().includes(searchQuery) ||
-                              phone.condition.toLowerCase().includes(searchQuery) ||
-                              (phone.description && phone.description.toLowerCase().includes(searchQuery));
-        
-        return matchesBrand && matchesSearch;
-      });
-      
-      if (filteredData.length === 0) {
-        grid.innerHTML = "";
-        emptyState.classList.remove("hidden");
+/* ================= custom cursor ================= */
+(function(){
+  const dot=document.getElementById('cursorDot');
+  const ring=document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  let lastTrail=0;
+
+  window.addEventListener('mousemove',(e)=>{
+    mx=e.clientX;my=e.clientY;
+    dot.style.left=mx+'px';
+    dot.style.top=my+'px';
+
+    const now=performance.now();
+    if(now-lastTrail>40){
+      lastTrail=now;
+      const trail=document.createElement('div');
+      trail.className='cursor-trail';
+      trail.style.left=mx+'px';
+      trail.style.top=my+'px';
+      document.body.appendChild(trail);
+      const start=performance.now();
+      function fade(){
+        const elapsed=performance.now()-start;
+        const t=elapsed/600;
+        if(t>=1){trail.remove();return;}
+        trail.style.opacity=String(0.7*(1-t));
+        trail.style.transform=`translate(-50%,-50%) scale(${1-t*0.6})`;
+        requestAnimationFrame(fade);
+      }
+      requestAnimationFrame(fade);
+    }
+  });
+
+  function easeRing(){
+    rx+=(mx-rx)*0.15;
+    ry+=(my-ry)*0.15;
+    ring.style.left=rx+'px';
+    ring.style.top=ry+'px';
+    requestAnimationFrame(easeRing);
+  }
+  easeRing();
+
+  const magnets=document.querySelectorAll('a,button,.btn,.cap-card,.cert-card,.oq-card');
+  magnets.forEach(el=>{
+    el.addEventListener('mouseenter',()=>ring.classList.add('magnet'));
+    el.addEventListener('mouseleave',()=>ring.classList.remove('magnet'));
+  });
+})();
+
+/* ================= hero typing loop ================= */
+(function(){
+  const strings=[
+    "Optimizing logistics networks.",
+    "Navigating future transport infrastructure.",
+    "Bridging tech design with system logistics."
+  ];
+  const el=document.getElementById('typeText');
+  let sIdx=0,cIdx=0,deleting=false;
+
+  function tick(){
+    const current=strings[sIdx];
+    if(!deleting){
+      cIdx++;
+      el.textContent=current.slice(0,cIdx);
+      if(cIdx===current.length){
+        deleting=true;
+        setTimeout(tick,1500);
         return;
       }
-      
-      emptyState.classList.add("hidden");
-      
-      grid.innerHTML = filteredData.map((phone, index) => {
-        let conditionColor = "text-brand-emerald bg-brand-emerald/10 border-brand-emerald/20";
-        if (phone.condition === "Excellent") conditionColor = "text-brand-blue bg-brand-blue/10 border-brand-blue/20";
-        if (phone.condition === "Good") conditionColor = "text-brand-purple bg-brand-purple/10 border-brand-purple/20";
-
-        let statusColor = "text-brand-emerald bg-brand-emerald/10 border-brand-emerald/20";
-        if (phone.status === "Pending") statusColor = "text-brand-gold bg-brand-gold/10 border-brand-gold/20";
-        if (phone.status === "Sold") statusColor = "text-slate-400 bg-slate-800/50 border-slate-700/50";
-
-        const discountTag = phone.originalPrice && phone.originalPrice > phone.price
-          ? `<span class="absolute top-4 left-4 z-10 px-2.5 py-1 rounded-lg bg-brand-purple text-[9px] font-bold text-white tracking-wide uppercase">Save ${formatLKR(phone.originalPrice - phone.price)}</span>`
-          : "";
-
-        const firstImage = (phone.images && phone.images.length > 0) ? phone.images[0] : "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&auto=format&fit=crop&q=80";
-
-        return `
-          <div onclick="openProductModal('${phone.id}')" class="glass-card rounded-3xl p-5 space-y-4 hover:-translate-y-1.5 transition-all duration-300 group cursor-pointer relative overflow-hidden flex flex-col justify-between animate-slide-in" style="animation-delay: ${index * 0.04}s">
-            ${discountTag}
-            
-            <!-- Phone Image -->
-            <div class="relative h-48 bg-slate-950/40 rounded-2xl border border-white/5 flex items-center justify-center p-4 overflow-hidden mb-2">
-              <div class="absolute inset-0 bg-radial-gradient from-brand-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <img src="${firstImage}" alt="${phone.model}" class="h-full object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)] transform group-hover:scale-105 transition-transform duration-500 z-10">
-            </div>
-
-            <!-- Header Content -->
-            <div class="space-y-1.5">
-              <div class="flex items-center justify-between">
-                <span class="text-[9px] font-bold uppercase tracking-widest text-brand-blue">${phone.brand}</span>
-                <div class="flex items-center gap-1.5">
-                  <span class="px-2 py-0.5 rounded text-[8px] font-bold border ${conditionColor}">${phone.condition}</span>
-                  <span class="px-2 py-0.5 rounded text-[8px] font-bold border ${statusColor}">${phone.status}</span>
-                </div>
-              </div>
-              <h3 class="text-lg font-bold font-heading text-white group-hover:text-brand-blue transition-colors leading-snug">${phone.model}</h3>
-              <p class="text-xs text-slate-400">${phone.color} • ${phone.storage}</p>
-            </div>
-
-            <!-- Pricing & Call to Action -->
-            <div class="flex items-center justify-between pt-4 border-t border-white/5 mt-auto">
-              <div class="flex flex-col">
-                ${phone.originalPrice ? `<span class="text-[9px] text-slate-500 line-through leading-none mb-0.5">${formatLKR(phone.originalPrice)}</span>` : ""}
-                <span class="text-base font-extrabold text-white leading-none">${formatLKR(phone.price)}</span>
-              </div>
-              <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 group-hover:bg-brand-blue group-hover:text-white group-hover:border-brand-blue flex items-center justify-center transition-all">
-                <i data-lucide="arrow-right" class="w-5 h-5 text-slate-300 group-hover:text-white transition-colors"></i>
-              </div>
-            </div>
-          </div>
-        `;
-      }).join("");
-
-      lucide.createIcons();
-    }
-
-    // ==========================================
-    // 4. MODAL CAROUSEL & PHOTO CONTROLS
-    // ==========================================
-    function openProductModal(phoneId) {
-      const phone = INVENTORY_DATA.find(item => item.id === phoneId);
-      if (!phone) return;
-
-      activeCarouselImages = phone.images || ["https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&auto=format&fit=crop&q=80"];
-      activeCarouselIndex = 0;
-
-      // Populate Elements
-      document.getElementById("modal-title-brand").textContent = phone.brand;
-      document.getElementById("modal-title-model").textContent = phone.model;
-      document.getElementById("modal-storage").textContent = phone.storage;
-      document.getElementById("modal-color").textContent = phone.color;
-      document.getElementById("modal-condition").textContent = phone.condition;
-      document.getElementById("modal-price").textContent = formatLKR(phone.price);
-      document.getElementById("modal-desc").textContent = phone.description || "No description provided.";
-      
-      // Technical specs
-      document.getElementById("modal-spec-screen").textContent = phone.specs.screen;
-      document.getElementById("modal-spec-chip").textContent = phone.specs.chip;
-      document.getElementById("modal-spec-battery").textContent = phone.specs.battery;
-      document.getElementById("modal-spec-camera").textContent = phone.specs.camera;
-
-      // Original pricing
-      const originalPriceEl = document.getElementById("modal-original-price");
-      if (phone.originalPrice && phone.originalPrice > phone.price) {
-        originalPriceEl.textContent = formatLKR(phone.originalPrice);
-        originalPriceEl.classList.remove("hidden");
-      } else {
-        originalPriceEl.classList.add("hidden");
+      setTimeout(tick,55);
+    }else{
+      cIdx--;
+      el.textContent=current.slice(0,cIdx);
+      if(cIdx===0){
+        deleting=false;
+        sIdx=(sIdx+1)%strings.length;
+        setTimeout(tick,300);
+        return;
       }
-
-      // Status Badge
-      const statusBadge = document.getElementById("modal-status-badge");
-      statusBadge.textContent = phone.status;
-      statusBadge.className = "px-3 py-1.5 rounded-lg text-xs font-bold border";
-      if (phone.status === "In Stock") {
-        statusBadge.classList.add("text-brand-emerald", "bg-brand-emerald/10", "border-brand-emerald/20");
-      } else if (phone.status === "Pending") {
-        statusBadge.classList.add("text-brand-gold", "bg-brand-gold/10", "border-brand-gold/20");
-      } else {
-        statusBadge.classList.add("text-slate-400", "bg-slate-800/50", "border-slate-700/50");
-      }
-
-      // Owner Meta Info
-      document.getElementById("modal-owner-name").textContent = phone.owner.name;
-      const verifiedEl = document.getElementById("modal-broker-verified");
-      if (phone.owner.isBrokerOwned) {
-        verifiedEl.innerHTML = `<i data-lucide="check-circle" class="w-3.5 h-3.5 text-brand-emerald"></i> Broker Owned (CELLULAR LK)`;
-        verifiedEl.className = "text-brand-emerald font-bold flex items-center gap-1";
-      } else {
-        verifiedEl.innerHTML = `<i data-lucide="user" class="w-3.5 h-3.5 text-brand-blue"></i> Customer Listing (Verified Slip)`;
-        verifiedEl.className = "text-brand-blue font-bold flex items-center gap-1";
-      }
-
-      // Load Carousel images
-      updateModalCarousel();
-
-      // Construct WhatsApp URL
-      const textMessage = `Hi CELLULAR LK! I am interested in purchasing this device:\n\n` + 
-        `• Model: ${phone.brand} ${phone.model}\n` +
-        `• Storage: ${phone.storage}\n` +
-        `• Color: ${phone.color}\n` +
-        `• Condition Grade: ${phone.condition}\n` +
-        `• Listed Price: ${formatLKR(phone.price)}\n` +
-        `• Listed By: ${phone.owner.name}\n` +
-        `• Item ID: ${phone.id}\n\n` +
-        `Please confirm if it is still available. Thanks!`;
-      
-      const encodedMessage = encodeURIComponent(textMessage);
-      const whatsappUrl = `https://wa.me/${OWNER_WHATSAPP_NUMBER}?text=${encodedMessage}`;
-      document.getElementById("modal-whatsapp-link").href = whatsappUrl;
-
-      // Reveal Modal with slide-in animation
-      const modal = document.getElementById("product-modal");
-      const container = document.getElementById("modal-container");
-      
-      modal.classList.remove("hidden");
-      document.body.classList.add("overflow-hidden");
-      
-      setTimeout(() => {
-        container.classList.remove("scale-95", "opacity-0");
-        container.classList.add("scale-100", "opacity-100");
-      }, 50);
-      
-      lucide.createIcons();
+      setTimeout(tick,30);
     }
+  }
+  tick();
+})();
 
-    function updateModalCarousel() {
-      const imageEl = document.getElementById("modal-carousel-img");
-      const prevBtn = document.getElementById("modal-carousel-prev");
-      const nextBtn = document.getElementById("modal-carousel-next");
-      const dotsContainer = document.getElementById("modal-carousel-dots");
-
-      imageEl.src = activeCarouselImages[activeCarouselIndex];
-
-      if (activeCarouselImages.length > 1) {
-        prevBtn.classList.remove("hidden");
-        nextBtn.classList.remove("hidden");
-      } else {
-        prevBtn.classList.add("hidden");
-        nextBtn.classList.add("hidden");
-      }
-
-      dotsContainer.innerHTML = activeCarouselImages.map((img, idx) => {
-        const activeClass = idx === activeCarouselIndex 
-          ? "bg-brand-neonBlue w-4" 
-          : "bg-white/30 w-1.5";
-        return `<span class="h-1.5 rounded-full transition-all duration-300 ${activeClass}"></span>`;
-      }).join("");
-    }
-
-    function prevModalImage() {
-      const img = document.getElementById("modal-carousel-img");
-      img.style.opacity = "0";
-      img.style.transform = "scale(0.95)";
-      
-      setTimeout(() => {
-        activeCarouselIndex = (activeCarouselIndex - 1 + activeCarouselImages.length) % activeCarouselImages.length;
-        updateModalCarousel();
-        img.style.opacity = "1";
-        img.style.transform = "scale(1)";
-      }, 200);
-    }
-
-    function nextModalImage() {
-      const img = document.getElementById("modal-carousel-img");
-      img.style.opacity = "0";
-      img.style.transform = "scale(0.95)";
-      
-      setTimeout(() => {
-        activeCarouselIndex = (activeCarouselIndex + 1) % activeCarouselImages.length;
-        updateModalCarousel();
-        img.style.opacity = "1";
-        img.style.transform = "scale(1)";
-      }, 200);
-    }
-
-    function closeProductModal() {
-      const modal = document.getElementById("product-modal");
-      const container = document.getElementById("modal-container");
-
-      container.classList.add("scale-95", "opacity-0");
-      container.classList.remove("scale-100", "opacity-100");
-
-      setTimeout(() => {
-        modal.classList.add("hidden");
-        document.body.classList.remove("overflow-hidden");
-      }, 300);
-    }
-
-    document.getElementById("product-modal").addEventListener("click", (e) => {
-      if (e.target === document.getElementById("product-modal")) {
-        closeProductModal();
+/* ================= scroll reveal ================= */
+(function(){
+  const items=document.querySelectorAll('.reveal');
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
       }
     });
+  },{threshold:0.15});
+  items.forEach(item=>io.observe(item));
+})();
+</script>
 
-    // ==========================================
-    // 5. SELLER CONSIGNMENT SUBMISSION (WHATSAPP JS COMPILE)
-    // ==========================================
-    function updateFilesLabel(input, labelId) {
-      const label = document.getElementById(labelId);
-      if (input.files && input.files.length > 0) {
-        if (input.files.length === 1) {
-          label.textContent = input.files[0].name;
-          label.classList.remove("text-slate-500");
-          label.classList.add("text-brand-neonGreen", "font-medium");
-        } else {
-          label.textContent = `${input.files.length} images selected`;
-          label.classList.remove("text-slate-500");
-          label.classList.add("text-brand-neonGreen", "font-medium");
-        }
-      } else {
-        label.textContent = "No file selected";
-        label.classList.add("text-slate-500");
-        label.classList.remove("text-brand-neonGreen", "font-medium");
-      }
-    }
-
-    function compileSellerSubmission(event) {
-      event.preventDefault();
-
-      const sellerName = document.getElementById("seller-name").value;
-      const sellerContact = document.getElementById("seller-contact").value;
-      const brand = document.getElementById("seller-brand").value;
-      const model = document.getElementById("seller-model").value;
-      const color = document.getElementById("seller-color").value;
-      const storage = document.getElementById("seller-storage").value;
-      const condition = document.getElementById("seller-condition").value;
-      const price = parseInt(document.getElementById("seller-price").value);
-      const battery = document.getElementById("seller-battery").value;
-      const screen = document.getElementById("seller-screen").value;
-      const chip = document.getElementById("seller-chip").value;
-      const camera = document.getElementById("seller-camera").value;
-      const description = document.getElementById("seller-desc").value || `Mint condition ${model} available.`;
-
-      const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-      const generatedId = `${model.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${randomSuffix}`;
-
-      const compiledCodeBlock = `{\n` +
-        `  id: "${generatedId}",\n` +
-        `  brand: "${brand}",\n` +
-        `  model: "${model}",\n` +
-        `  color: "${color}",\n` +
-        `  storage: "${storage}",\n` +
-        `  condition: "${condition}",\n` +
-        `  price: ${price},\n` +
-        `  originalPrice: null,\n` +
-        `  status: "In Stock",\n` +
-        `  description: "${description.replace(/"/g, '\\"')}",\n` +
-        `  specs: {\n` +
-        `    screen: "${screen}",\n` +
-        `    chip: "${chip}",\n` +
-        `    battery: "${battery} Health",\n` +
-        `    camera: "${camera}"\n` +
-        `  },\n` +
-        `  images: [\n` +
-        `    "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&auto=format&fit=crop&q=80"\n` +
-        `  ],\n` +
-        `  owner: {\n` +
-        `    name: "${sellerName}",\n` +
-        `    contact: "${sellerContact}",\n` +
-        `    isBrokerOwned: false\n` +
-        `  }\n` +
-        `}`;
-
-      const whatsAppText = `Hi CELLULAR LK! I have transferred the listing fee and want to list my phone for sale.\n\n` +
-        `*SELLER SUMMARY*:\n` +
-        `• Seller: ${sellerName} (${sellerContact})\n` +
-        `• Phone: ${brand} ${model} (${storage}, ${color})\n` +
-        `• Price: ${formatLKR(price)}\n` +
-        `• Battery Health: ${battery}\n\n` +
-        `===========================\n` +
-        `COPY-PASTE DATABASE BLOCK:\n` +
-        `===========================\n` +
-        `\`\`\`javascript\n${compiledCodeBlock}\n\`\`\`\n` +
-        `===========================\n\n` +
-        `I will attach my transfer receipt and device photos right below this message!`;
-
-      const encodedMsg = encodeURIComponent(whatsAppText);
-      const whatsappUrl = `https://wa.me/${OWNER_WHATSAPP_NUMBER}?text=${encodedMsg}`;
-      window.open(whatsappUrl, "_blank");
-
-      showToast("Listing Compiled!", "Please attach your receipt and images in the WhatsApp chat.");
-      
-      document.getElementById("phone-upload-form").reset();
-      document.getElementById("photos-label").textContent = "No images selected";
-      document.getElementById("slip-label").textContent = "No slip uploaded";
-    }
-
-    function showToast(title, desc) {
-      const toast = document.getElementById("toast");
-      document.getElementById("toast-title").textContent = title;
-      document.getElementById("toast-desc").textContent = desc;
-      
-      toast.classList.remove("translate-y-10", "opacity-0", "pointer-events-none");
-      
-      setTimeout(() => {
-        toast.classList.add("translate-y-10", "opacity-0", "pointer-events-none");
-      }, 7000);
-    }
-
-    function scrollToConsignment() {
-      document.getElementById("consignment").scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function toggleFaq(button) {
-      const content = button.nextElementSibling;
-      const icon = button.querySelector("i");
-      
-      const isHidden = content.classList.contains("hidden");
-      
-      if (isHidden) {
-        content.classList.remove("hidden");
-        icon.classList.add("rotate-180");
-      } else {
-        content.classList.add("hidden");
-        icon.classList.remove("rotate-180");
-      }
-    }
-
-    // ==========================================
-    // 6. DARK / LIGHT THEME TOGGLE
-    // ==========================================
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-
-    function initTheme() {
-      const isLight = localStorage.getItem('color-theme') === 'light' || 
-        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches);
-
-      if (isLight) {
-        document.documentElement.classList.add('light');
-        document.documentElement.classList.remove('dark');
-        themeToggleLightIcon.classList.remove('hidden');
-        themeToggleDarkIcon.classList.add('hidden');
-      } else {
-        document.documentElement.classList.add('dark');
-        document.documentElement.classList.remove('light');
-        themeToggleDarkIcon.classList.remove('hidden');
-        themeToggleLightIcon.classList.add('hidden');
-      }
-    }
-
-    themeToggleBtn.addEventListener('click', function() {
-      themeToggleDarkIcon.classList.toggle('hidden');
-      themeToggleLightIcon.classList.toggle('hidden');
-
-      if (document.documentElement.classList.contains('light')) {
-        document.documentElement.classList.remove('light');
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('color-theme', 'dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-        document.documentElement.classList.add('light');
-        localStorage.setItem('color-theme', 'light');
-      }
-      
-      renderCatalog();
-    });
-  </script>
 </body>
 </html>
